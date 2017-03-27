@@ -1,0 +1,63 @@
+{
+  "name": "uoit-signature-generator",
+  "version": "1.0.0",
+  "description": "A tool for generating HTML email signatures for UOIT faculty and staff within UOIT brand guidelines.",
+  "main": "",
+  "scripts": {
+    "prestart": "yarn",
+    "start": "webpack-dev-server",
+    "build": "NODE_ENV=production node node_modules/webpack/bin/webpack.js -p --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wosevision/uoit-signature-generator.git"
+  },
+  "keywords": [
+    "webpack",
+    "angular",
+    "angularjs",
+    "es6",
+    "javascript",
+    "php",
+    "phpmailer",
+    "email"
+  ],
+  "author": "Jackson Teather <jackson.teather@uoit.ca>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wosevision/uoit-signature-generator/issues"
+  },
+  "homepage": "https://github.com/wosevision/uoit-signature-generator#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.24.0",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.27.3",
+    "file-loader": "^0.10.1",
+    "html-webpack-plugin": "^2.28.0",
+    "json-loader": "^0.5.4",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.16.0",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/http": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "es6-promise": "^4.1.0",
+    "es6-shim": "^0.35.3",
+    "node-sass": "^4.5.1",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.2.0",
+    "sass-loader": "^6.0.3",
+    "zone.js": "^0.8.5"
+  }
+}
