@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Email signature generator</title>
+  <base href="/static/ro_signatures_2016/">
+  <link rel="stylesheet" type="text/css" href="https://shared.uoit.ca/global/files/css/global.css">
+  <style>
+  	iframe {
+  		border: solid 1px rgba(0,119,202,0.4);
+  	}
+  	iframe:hover {
+  		border: solid 3px rgba(0,119,202,0.6);
+  	}
+  	kbd
+		{
+		    -moz-border-radius:3px;
+		    -moz-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+		    -webkit-border-radius:3px;
+		    -webkit-box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+		    background-color:#f7f7f7;
+		    border:1px solid #ccc;
+		    border-radius:3px;
+		    box-shadow:0 1px 0 rgba(0,0,0,0.2),0 0 0 2px #fff inset;
+		    color:#333;
+		    display:inline-block;
+		    font-family:Arial,Helvetica,sans-serif;
+		    font-size:11px;
+		    line-height:1.4;
+		    margin:0 .1em;
+		    padding:.1em .6em;
+		    text-shadow:0 1px 0 #fff;
+		}
+  </style>
+</head>
+<body ng-controller="FieldCtrl">
+
+  <div class="wrapper">
+
+<!--     <div class="container">
+      <div>
+        <select name="templates" ng-model="template" ng-change="loadTemplate()">
+          <option value="" selected>None</option>
+          <option value="template.html">Template 1</option>
+        </select>
+        <input type="text" id="loading" placeholder="Loading..." />
+        <input type="text" name="title" ng-model="title" update-view value="" placeholder="The Title For This Page" />
+        <textarea name="content" ng-model="textarea" update-view placeholder="Content for this page"></textarea>
+      </div>
+    </div> -->
+    <br/>
+	  <div class="row panel">
+	    <h1>UOIT Event
+	    <small>Email Signature Generator</small></h1>
+	    <form ng-submit="submit()">
+	      <div class="small-6 columns">
+	      	<div class="row">
+		      	<div class="small-4 columns">
+			        <label>Icon:
+		            <select ng-model="formData.eventIcon" update-view name="eventIcon">
+		            	<option value="" selected="true" disabled="disabled">Please select...</option>
+		            	<option value="calendar">Calendar</option>
+		            	<option value="chat">Chat</option>
+		            	<option value="compass">Compass</option>
+		            	<option value="cursor">Cursor</option>
+		            	<option value="link">Link</option>
+		            	<option value="location">Location</option>
+		            	<option value="question">Question</option>
+		            	<option value="uoitbook">UOIT book</option>
+		            </select>
+		          </label>
+			        <label>Icon size:
+		            <select ng-model="formData.eventIconLrg" update-view name="eventIconLrg">
+		            	<option value="" selected="true" disabled="disabled">Please select...</option>
+		            	<option value="0">Small</option>
+		            	<option value="1">Large</option>
+		            </select>
+		          </label>
+		        </div>
+		      	<div class="small-8 columns">
+			        <label>Event name:
+		            <input type="text" ng-model="formData.eventName" update-view value="" name="eventName" placeholder="Enter a name here">
+		          </label>
+			        <label>Date:
+		            <input type="text" ng-model="formData.eventDate" update-view value="" name="eventDate" placeholder="Enter date[s]">
+		          </label>
+		        </div>
+	        </div>
+	      </div>
+
+	      <div class="small-6 columns">
+	        <label>Description:
+	            <input type="text" ng-model="formData.eventDesc" update-view value="" name="eventDesc" placeholder="Enter description here">
+	          </label>
+	        <label>Call-to-action:
+	            <input type="text" ng-model="formData.eventCta" update-view value="" name="eventCta" placeholder="e.g. Learn more &raquo;">
+	          </label>
+	      </div>
+
+	      <div class="small-12 columns">
+	        <label>Link URL:
+	          <input type="text" ng-model="formData.eventUrl" update-view value="" name="eventUrl" placeholder="http://">
+	        </label>
+	      </div>
+	    </form>
+	  </div>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <h2 class="left">Generated</h2>
+      <!-- <button id="clip" class="button right tiny" data-clipboard-target="#generatedSig">Copy to clipboard</button> -->
+    </div>
+    <div class="small-12 columns">
+      <iframe tabindex="0" width="100%" id="iframe" ng-src="{{activeTemplate}}" sandbox="allow-same-origin allow-scripts" scrolling="no"></iframe>
+    </div>
+    <div class="small-12 columns">
+  		<div ng-if="result" ng-bind-html="result"></div>
+      <p class="right text-right">To copy this signature, <strong>click inside the blue box to highlight it</strong>, and press <kbd>CTRL+A</kbd> (or <kbd>&#8984;+A</kbd>) to <strong>Select All</strong> before copying.<br/>
+      ...Or, email this signature to:</p>
+		  <div class="row">
+		    <div class="small-6 columns right">
+		      <div class="row collapse">
+		        <div class="xxsmall-10 columns">
+		          <input type="text" placeholder="jane.doe@uoit.ca" ng-model="sendTo" name="sendTo" ng-disabled="disabled" />
+		        </div>
+		        <div class="xxsmall-2 columns">
+		          <button href="#" class="button postfix" ng-click="sendMail()" ng-disabled="disabled">Go</button>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-sanitize.min.js"></script>
+  <script>
+
+    var iframe = document.getElementById('iframe');
+
+    iframe.addEventListener('load', function() {
+      document.body.classList.remove("loading-iframe");
+    });
+
+    angular.module('app', ['ngSanitize'])
+    	.controller('FieldCtrl', ['$scope', '$sce', '$http', function ($scope, $sce, $http) {
+
+	      // angular.element(document).ready(function () {
+	      //   document.body.className = "loaded";
+	      // });
+
+				$scope.activeTemplate = $sce.trustAsResourceUrl('template.html');
+
+				function validateEmail(email) {
+				  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				  return re.test(email);
+				}
+				function httpHandler(response) {
+	        $scope.result = response.data;
+	      	$scope.disabled = false;
+				}
+
+	      $scope.sendMail = function () {
+	      	$scope.disabled = true;
+	      	var message = iframe.contentWindow.document.body.innerHTML;
+	      	if (!validateEmail($scope.sendTo)) {
+	      		return httpHandler({data: '<br/><div data-alert class="alert-box alert"><strong style="font-family:franklin_gothic_fsdemi;">Mailer error:</strong> Please enter a valid email address! <a href="#" class="close">&times;</a></div>'});
+	      	}
+	      	$http.post('send.php', {
+	      		html: message,
+	      		sendto: $scope.sendTo
+	      	}).then(httpHandler, httpHandler); 
+	      }
+	      // 
+	    }])
+    	.directive('updateView', function() {
+	      return function(scope, element) {
+	        element.bind('input change', function() {
+	          // the iframe function we are calling is called `update`
+	          iframe.contentWindow.update({
+	            name: element[0].name,
+	            value: element[0].value
+	          });
+	        });
+	      };
+	    })
+	    .config(function($locationProvider) {
+			  $locationProvider.html5Mode(true).hashPrefix('!');
+			});
+  </script>
+</body>
+</html>
