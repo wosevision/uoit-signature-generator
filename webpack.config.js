@@ -4,7 +4,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 const config = {
 
-  entry: './src/bootstrap.js',
+  entry: './src/app.js',
   output: {
     path: __dirname + '/dist',
     filename: "bundle.js"

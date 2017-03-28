@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-import template from './form.html';
+import template from './signature-form.component.html';
 
 @Component({
-  selector: 'generator-form',
+  selector: 'signature-form',
   template
 })
-export class FormComponent {
+export class SignatureFormComponent {
   constructor() {
     // this.formData = {};
   }

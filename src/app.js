@@ -1,14 +1,28 @@
-import { Component } from '@angular/core';
+import 'reflect-metadata';
+import 'zone.js';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import template from './app.html';
-import './app.scss';
+// import { enableProdMode } from '@angular/core';
 
-@Component({
-  selector: 'signature-generator',
-  template
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+/* App root */
+import { AppComponent } from './app.component';
+
+/* Feature modules */
+import { SignatureFormModule } from './signature-form/signature-form';
+
+@NgModule({
+  imports: [
+  	BrowserModule,
+  	SignatureFormModule,
+  ],
+  declarations: [
+    AppComponent,
+  ],
+  bootstrap: [ AppComponent ]
 })
-export class AppComponent {
-  constructor() {
-    this.what = "a good time!";
-  }
-};
+class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);
