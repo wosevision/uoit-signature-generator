@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"project_syntaxes": [
+			{
+				"syntax": "Angular2 HTML Syntax/Angular2HTML",
+				"match": "all",
+				"rules": [
+					{"file_path": ".*\\.html$"}
+				]
+			}
+		]
+	}
+}
