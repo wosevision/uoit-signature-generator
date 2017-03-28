@@ -17,57 +17,7 @@
 	<div class="row panel">
 	  <h1>UOIT Event
 	  <small>Email Signature Generator</small></h1>
-	  <form ng-submit="submit()">
-	    <div class="small-6 columns">
-	    	<div class="row">
-	      	<div class="small-4 columns">
-		        <label>Icon:
-	            <select ng-model="formData.eventIcon" update-view name="eventIcon">
-	            	<option value="" selected="true" disabled="disabled">Please select...</option>
-	            	<option value="calendar">Calendar</option>
-	            	<option value="chat">Chat</option>
-	            	<option value="compass">Compass</option>
-	            	<option value="cursor">Cursor</option>
-	            	<option value="link">Link</option>
-	            	<option value="location">Location</option>
-	            	<option value="question">Question</option>
-	            	<option value="uoitbook">UOIT book</option>
-	            </select>
-	          </label>
-		        <label>Icon size:
-	            <select ng-model="formData.eventIconLrg" update-view name="eventIconLrg">
-	            	<option value="" selected="true" disabled="disabled">Please select...</option>
-	            	<option value="0">Small</option>
-	            	<option value="1">Large</option>
-	            </select>
-	          </label>
-	        </div>
-	      	<div class="small-8 columns">
-		        <label>Event name:
-	            <input type="text" ng-model="formData.eventName" update-view value="" name="eventName" placeholder="Enter a name here">
-	          </label>
-		        <label>Date:
-	            <input type="text" ng-model="formData.eventDate" update-view value="" name="eventDate" placeholder="Enter date[s]">
-	          </label>
-	        </div>
-	      </div>
-	    </div>
-
-	    <div class="small-6 columns">
-	      <label>Description:
-	          <input type="text" ng-model="formData.eventDesc" update-view value="" name="eventDesc" placeholder="Enter description here">
-	        </label>
-	      <label>Call-to-action:
-	          <input type="text" ng-model="formData.eventCta" update-view value="" name="eventCta" placeholder="e.g. Learn more &raquo;">
-	        </label>
-	    </div>
-
-	    <div class="small-12 columns">
-	      <label>Link URL:
-	        <input type="text" ng-model="formData.eventUrl" update-view value="" name="eventUrl" placeholder="http://">
-	      </label>
-	    </div>
-	  </form>
+	  <generator-form></generator-form>
 	</div>
 
 	<div class="row">

@@ -7,7 +7,7 @@ import './app.scss';
   selector: 'signature-generator',
   template
 })
-export default class App {
+export class AppComponent {
   constructor() {
     this.what = "a good time!";
   }

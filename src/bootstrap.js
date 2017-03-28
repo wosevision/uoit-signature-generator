@@ -6,15 +6,21 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from "@angular/forms";
 
-import App from './app';
+import { AppComponent } from './app';
+import { FormComponent } from './form/form';
 
 @NgModule({
-  imports: [ BrowserModule ],
-  declarations: [
-    App
+  imports: [
+  	BrowserModule,
+  	FormsModule
   ],
-  bootstrap: [ App ]
+  declarations: [
+    AppComponent,
+    FormComponent
+  ],
+  bootstrap: [ AppComponent ]
 })
 class AppModule { }
 
