@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 import template from './app.component.html';
-import './app.component.scss';
 
 @Component({
   selector: 'signature-generator',
+  styleUrls: [ './app.component.scss' ],
   template
 })
 export class AppComponent {
