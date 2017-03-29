@@ -17,8 +17,8 @@ const config = {
       { test: /\.js$/, exclude: /node_modules/, loader:"babel-loader" },
       
       // load and compile sass assets and css leftovers
-			{ test: /\.scss$/, loader: "style-loader!css-loader!sass-loader" },
-      { test: /\.css$/, loader: "style-loader!css-loader"},
+			{ test: /\.scss$/, loader: "raw-loader!css-loader!resolve-url-loader!sass-loader" },
+      { test: /\.css$/, loader: "raw-loader!css-loader!resolve-url-loader"},
 
       // load JSON files and HTML
       { test: /\.json$/, loader: "json" },
