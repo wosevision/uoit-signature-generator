@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
 
 import template from './signature-form.component.html';
 
@@ -7,8 +8,34 @@ import template from './signature-form.component.html';
   template
 })
 export class SignatureFormComponent {
-  constructor() {
-    // this.formData = {};
+	static get parameters() {
+	  return [[FormBuilder]];
+	}
+
+	@Output()
+  get data() {
+    return new EventEmitter();
+  }
+
+  constructor(FormBuilder) {
+    this.formData = FormBuilder.group({
+    	expert: false,
+      name: FormBuilder.group({
+      	first: ['', Validators.required ],
+      	last: ['', Validators.required ],
+      }),
+      email: ['', Validators.required ],
+      credentials: FormBuilder.group({
+      	title: '',
+      	dept: '',
+      }),
+      phone: FormBuilder.group({
+      	area: '',
+      	office: '',
+      	line: '',
+      	ext: '',
+      }),
+    });
   }
 
 	onSubmit(event, formData) {
