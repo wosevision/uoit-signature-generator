@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import template from './signature-preview.component.html';
 
@@ -6,4 +6,17 @@ import template from './signature-preview.component.html';
   selector: 'signature-preview',
   template
 })
-export class SignaturePreviewComponent { };
+export class SignaturePreviewComponent {
+
+	constructor() {
+		this._previewData = {};
+	}
+
+	@Input()
+  get data() {
+    return this._previewData;
+  }
+  set data(data) {
+  	this._previewData = data || 'No data entered!';
+  }
+};
