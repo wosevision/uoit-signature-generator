@@ -1,8 +1,12 @@
 <form #formData="ngForm" (ngSubmit)="onSubmit($event, formData.value)" class="row">
-	<div class="small-6 columns">
-		<fieldset class="fieldset" ngModelGroup="name">
-			<legend>Name:</legend>
-		  <div class="row">
+	<fieldset class="fieldset">
+		<legend>Personal details</legend>
+		<label>Use a linked Expert Centre profile?
+			<input type="checkbox" [(ngModel)]="expert" name="expert">
+		</label>
+	  <fieldset class="fieldset" ngModelGroup="name">
+			<legend>Name</legend>
+			<div class="row">
 		    <div class="small-6 columns">
 			    <label>First
 			      <input type="text" required [ngModel]="first" update-view name="first" placeholder="Jane">
@@ -13,13 +17,10 @@
 			    	<input type="text" required [ngModel]="last" update-view name="last" placeholder="Doe">
 		    	</label>
 		    </div>
-		  </div>
-		</fieldset>
+	    </div>
+	  </fieldset>
 		<fieldset class="fieldset" ngModelGroup="credentials">
-			<legend>Credentials:</legend>
-			<label>Use a linked Expert Centre profile?
-				<input type="checkbox" [(ngModel)]="expert" name="expert">
-			</label>
+			<legend>Credentials</legend>
 		  <div class="row" *ngIf="expert">
 		    <div class="small-6 columns">
 			    <label>Title
@@ -40,62 +41,79 @@
 		    </div>
 		  </div>
 		</fieldset>
-	</div>
-	<div class="small-6 columns">
+		<fieldset class="fieldset" ngModelGroup="credentials">
+			<legend>Contact</legend>
+		  <div class="row" *ngIf="expert">
+		    <div class="small-6 columns">
+			    <label>Title
+			      <input type="text" required [ngModel]="title" update-view name="title" placeholder="Head chef">
+		    	</label>
+		    </div>
+		  </div>
+		  <div class="row" *ngIf="!expert">
+		    <div class="small-6 columns">
+			    <label>Title
+			      <input type="text" required [ngModel]="title" update-view name="title" placeholder="Head chef">
+		    	</label>
+		    </div>
+		    <div class="small-6 columns">
+			    <label>Department or faculty
+			    	<input type="text" required [ngModel]="dept" update-view name="dept" placeholder="Faculty of Fun and Games">
+		    	</label>
+		    </div>
     <label>Email
     	<input type="email" required [ngModel]="email" update-view name="email" placeholder="Doe">
   	</label>
-	</div>
-  <div class="small-6 columns">
-  	<div class="row">
-    	<div class="small-4 columns">
-        <label>Icon:
-          <select [ngModel]="eventIcon" update-view name="eventIcon">
-          	<option value="" selected="true" disabled="disabled">Please select...</option>
-          	<option value="calendar">Calendar</option>
-          	<option value="chat">Chat</option>
-          	<option value="compass">Compass</option>
-          	<option value="cursor">Cursor</option>
-          	<option value="link">Link</option>
-          	<option value="location">Location</option>
-          	<option value="question">Question</option>
-          	<option value="uoitbook">UOIT book</option>
-          </select>
-        </label>
-        <label>Icon size:
-          <select [ngModel]="eventIconLrg" update-view name="eventIconLrg">
-          	<option value="" selected="true" disabled="disabled">Please select...</option>
-          	<option value="0">Small</option>
-          	<option value="1">Large</option>
-          </select>
-        </label>
-      </div>
+		  </div>
+		</fieldset>
+	</fieldset>
+	<div class="row">
+  	<div class="small-4 columns">
+      <label>Icon:
+        <select [ngModel]="eventIcon" update-view name="eventIcon">
+        	<option value="" selected="true" disabled="disabled">Please select...</option>
+        	<option value="calendar">Calendar</option>
+        	<option value="chat">Chat</option>
+        	<option value="compass">Compass</option>
+        	<option value="cursor">Cursor</option>
+        	<option value="link">Link</option>
+        	<option value="location">Location</option>
+        	<option value="question">Question</option>
+        	<option value="uoitbook">UOIT book</option>
+        </select>
+      </label>
+      <label>Icon size:
+        <select [ngModel]="eventIconLrg" update-view name="eventIconLrg">
+        	<option value="" selected="true" disabled="disabled">Please select...</option>
+        	<option value="0">Small</option>
+        	<option value="1">Large</option>
+        </select>
+      </label>
+    </div>
 
-    	<div class="small-8 columns">
-        <label>Event name:
-          <input type="text" [ngModel]="eventName" update-view value="" name="eventName" placeholder="Enter a name here">
-        </label>
-        <label>Date:
-          <input type="text" [ngModel]="eventDate" update-view value="" name="eventDate" placeholder="Enter date[s]">
-        </label>
-      </div>
+  	<div class="small-8 columns">
+      <label>Event name:
+        <input type="text" [ngModel]="eventName" update-view value="" name="eventName" placeholder="Enter a name here">
+      </label>
+      <label>Date:
+        <input type="text" [ngModel]="eventDate" update-view value="" name="eventDate" placeholder="Enter date[s]">
+      </label>
     </div>
   </div>
 
-  <div class="small-6 columns">
+<!--   <div class="small-6 columns">
     <label>Description:
         <input type="text" [ngModel]="eventDesc" update-view value="" name="eventDesc" placeholder="Enter description here">
       </label>
     <label>Call-to-action:
         <input type="text" [ngModel]="eventCta" update-view value="" name="eventCta" placeholder="e.g. Learn more &raquo;">
       </label>
-  </div>
+  </div> -->
 
-  <div class="small-12 columns">
+<!--   <div class="small-12 columns">
     <label>Link URL:
       <input type="text" [ngModel]="eventUrl" update-view value="" name="eventUrl" placeholder="http://">
     </label>
-  </div>
-  {{ formData.value | json }}
+  </div> -->
   <button class="button" type="submit" [disabled]="formData.invalid">Submit stuff</button>
 </form>

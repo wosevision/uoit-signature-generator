@@ -17,17 +17,15 @@
 	<div class="row panel">
 	  <h1>UOIT Event
 	  <small>Email Signature Generator</small></h1>
-	  <signature-form></signature-form>
+	  <div class="small-6 columns">
+		  <signature-form></signature-form>
+	  </div>
+	  <div class="small-6 columns">
+	  	<signature-preview></signature-preview>
+	  </div>
 	</div>
 
 	<div class="row">
-	  <div class="small-12 columns">
-	    <h2 class="left">Generated</h2>
-	    <!-- <button id="clip" class="button right tiny" data-clipboard-target="#generatedSig">Copy to clipboard</button> -->
-	  </div>
-	  <div class="small-12 columns">
-	    <!-- <iframe tabindex="0" width="100%" id="iframe" ng-src="{{activeTemplate}}" sandbox="allow-same-origin allow-scripts" scrolling="no"></iframe> -->
-	  </div>
 	  <div class="small-12 columns">
 			<div ng-if="result" ng-bind-html="result"></div>
 	    <p class="right text-right">To copy this signature, <strong>click inside the blue box to highlight it</strong>, and press <kbd>CTRL+A</kbd> (or <kbd>&#8984;+A</kbd>) to <strong>Select All</strong> before copying.<br/>
