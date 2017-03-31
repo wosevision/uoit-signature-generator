@@ -15,34 +15,57 @@ export class SignatureFormComponent {
 	@Output()
   formChange = new EventEmitter();
 
+  signature = {};
+
   constructor(FormBuilder) {
-    this.formData = FormBuilder.group({
+  	this.FormBuilder = FormBuilder;
+  }
+
+  ngOnInit() {
+  	this.buildForm();
+  }
+
+  buildForm() {
+    this.formData = this.FormBuilder.group({
     	expert: { value: false, disabled: true },
-      name: FormBuilder.group({
+      name: this.FormBuilder.group({
       	first: ['', Validators.required ],
       	last: ['', Validators.required ],
       }),
       email: ['', Validators.required ],
-      credentials: FormBuilder.group({
+      credentials: this.FormBuilder.group({
       	title: '',
       	dept: '',
       }),
-      phone: FormBuilder.group({
+      phone: this.FormBuilder.group({
       	area: '',
       	office: '',
       	line: '',
       	ext: '',
       }),
     });
+ 
+    this._name = this.formData.controls['name'];
+ 
+    this._name.valueChanges
+    	.subscribe(({ first, last }) => this.onValueChanged({ first, last }));
 
-    this.formData.valueChanges.subscribe(data => {
-      console.log('Form changes', data);
-      this.formChange.emit(this.formData.value);
-    })
+    this.formData.valueChanges
+    	.subscribe(data => this.onFormChanged(data));
+  }
+
+  onValueChanged(data) {
+    console.log('Form value change:', data);
+  }
+
+  onFormChanged(data) {
+    console.log('Form change:', data);
+		this.signature = data;
+    this.formChange.emit(data);
   }
 
 	onSubmit(event, formData) {
-		console.log(formData);
+		console.log('Form submit:', formData);
 		event.preventDefault();
 	}
 };
