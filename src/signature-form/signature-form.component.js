@@ -13,9 +13,7 @@ export class SignatureFormComponent {
 	}
 
 	@Output()
-  get data() {
-    return new EventEmitter();
-  }
+  formChange = new EventEmitter();
 
   constructor(FormBuilder) {
     this.formData = FormBuilder.group({
