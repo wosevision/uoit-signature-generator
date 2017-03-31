@@ -1,4 +1,32 @@
-<fieldset class="fieldset">
-	<legend><strong>Preview</strong></legend>
-	{{ data | json }}
-</fieldset>
+<div style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
+	<p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; margin-bottom:16px">
+		<strong>{{ formData.name?.first }} {{ formData.name?.last }}</strong><br /> 
+		{{ formData.credentials?.title }} - {{ formData.credentials?.dept }}<br /> 
+		University of Ontario Institute of Technology<br /> 
+		{{ formData.phone?.area }}.{{ formData.phone?.office }}.{{ formData.phone?.line }} ext. {{ formData.phone?.ext }}<br/>
+		{{ formData.cell?.area }}.{{ formData.cell?.office }}.{{ formData.cell?.line }} ext. {{ formData.cell?.ext }} (cell)<br/>
+		<a href="mailto:{{ formData.email }}" style="color: #0077CA;">{{ formData.email }}</a><br/>
+		<a href="http://{{ formData.website }}" style="color: #0077CA;">{{ formData.website }}</a><br/> 
+	</p>
+	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;">
+		<tr>
+			<td>
+				<a style="border: 0; outline: none;" title="Like us on Facebook" href="{{ formData.social?.facebook }}"><img src="http://shared.uoit.ca/site-images/socialicons/socialicon_facebook.jpg" alt="Facebook icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a> 
+			</td>
+			<td>
+				<a style="border: 0; outline: none;" title="Connect with us on Twitter" href="{{ formData.social?.twitter }}"><img src="http://shared.uoit.ca/site-images/socialicons/socialicon_twitter.jpg" alt="Twitter icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a> 
+			</td>
+			<td>
+				<a style="border: 0; outline: none;" title="Connect with us on LinkedIn" href="{{ formData.social?.linkedin }}"><img src="http://shared.uoit.ca/site-images/socialicons/socialicon_linkedin.jpg" alt="LinkedIn icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a> 
+			</td>
+			<td>
+				<a style="border: 0; outline: none;" title="Watch us on YouTube" href="{{ formData.social?.youtube }}"><img src="http://shared.uoit.ca/site-images/socialicons/socialicon_youtube.jpg" alt="Twitter icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<a style="border: 0; outline: none;" title="UOIT website" href="http://uoit.ca"><img style="border: 0; width: 150px; height: 56px;" src="http://shared.uoit.ca/site-images/layout/header_UOITlogo.gif" alt="UOIT logo" width="150" height="56" /></a>
+			</td>
+		</tr>
+	</table>
+</div>

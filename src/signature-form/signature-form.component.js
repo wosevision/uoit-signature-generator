@@ -17,7 +17,7 @@ export class SignatureFormComponent {
 
   constructor(FormBuilder) {
     this.formData = FormBuilder.group({
-    	expert: false,
+    	expert: { value: false, disabled: true },
       name: FormBuilder.group({
       	first: ['', Validators.required ],
       	last: ['', Validators.required ],
@@ -34,6 +34,11 @@ export class SignatureFormComponent {
       	ext: '',
       }),
     });
+
+    this.formData.valueChanges.subscribe(data => {
+      console.log('Form changes', data);
+      this.formChange.emit(this.formData.value);
+    })
   }
 
 	onSubmit(event, formData) {

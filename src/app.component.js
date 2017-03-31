@@ -11,4 +11,9 @@ export class AppComponent {
   constructor() {
     this.what = "a good time!";
   }
+
+  onFormChange(event) {
+  	console.log('Form changes; outside', event);
+  	this.formData = event;
+  }
 };

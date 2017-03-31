@@ -9,14 +9,14 @@ import template from './signature-preview.component.html';
 export class SignaturePreviewComponent {
 
 	constructor() {
-		this._previewData = {};
+		this.formData = {};
 	}
 
 	@Input()
   get data() {
-    return this._previewData;
+    return this.formData;
   }
   set data(data) {
-  	this._previewData = data || 'No data entered!';
+  	this.formData = data || 'No data entered!';
   }
 };

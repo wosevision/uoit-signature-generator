@@ -1,5 +1,5 @@
 <form [formGroup]="formData" (ngSubmit)="onSubmit($event, formData.value)" class="row flex-dir-column">
-	<label>Use a linked Expert Centre profile?
+	<label class="disabled">Use a linked Expert Centre profile?
 		<input type="checkbox" formControlName="expert">
 	</label>
 	<fieldset class="fieldset" [hidden]="!formData.value.expert">
