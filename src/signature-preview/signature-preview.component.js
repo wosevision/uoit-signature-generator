@@ -8,11 +8,6 @@ import template from './signature-preview.component.html';
   template
 })
 export class SignaturePreviewComponent {
-
-	constructor() {
-		this.formData = {};
-	}
-
 	@Input()
   get data() {
     return this.formData;
@@ -22,4 +17,8 @@ export class SignaturePreviewComponent {
   }
 
 	socialNetworks = SocialNetworks;
+
+	constructor() {
+		this.formData = {};
+	}
 };

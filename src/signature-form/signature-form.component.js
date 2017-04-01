@@ -33,10 +33,10 @@ export class SignatureFormComponent {
     this.formData = this.FormBuilder.group({
     	expert: { value: false, disabled: true },
       name: this.FormBuilder.group({
-      	first: ['', Validators.required ],
-      	last: ['', Validators.required ],
+      	first: [ '', Validators.required ],
+      	last: [ '', Validators.required ],
       }),
-      email: ['', Validators.required ],
+      email: [ '', Validators.required ],
       credentials: this.FormBuilder.group({
       	title: '',
       	dept: '',
@@ -52,9 +52,7 @@ export class SignatureFormComponent {
       ]),
     });
  
-    this._name = this.formData.controls['name'];
- 
-    this._name.valueChanges
+    this.formData.controls['name'].valueChanges
     	.subscribe(({ first, last }) => this.onValueChanged({ first, last }));
 
     this.formData.valueChanges

@@ -15,13 +15,13 @@ export const SocialNetworks = [{
 },{
 	name: 'YouTube',
 	href: 'https://youtube.com/user/',
-	cta: 'Subscribe to'
+	cta: 'Subscribe to',
 	value: 'yt',
 	src: `${ ICONS_ROOT }socialicon_youtube.jpg`
 },{
 	name: 'LinkedIn',
 	href: 'https://linkedin.com/in/',
-	cta: 'Connect with'
+	cta: 'Connect with',
 	value: 'li',
 	src: `${ ICONS_ROOT }socialicon_linkedin.jpg`
 }];
