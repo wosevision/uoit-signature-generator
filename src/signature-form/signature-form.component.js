@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 
-import { SocialNetworks } from '../social-networks.constant';
+import { SocialNetworks } from '../common/social-networks.constant';
 import template from './signature-form.component.html';
 
 @Component({
