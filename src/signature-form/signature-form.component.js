@@ -6,6 +6,7 @@ import template from './signature-form.component.html';
 
 @Component({
   selector: 'signature-form',
+  styleUrls: [ './signature-form/signature-form.component.scss' ],
   template
 })
 export class SignatureFormComponent {
