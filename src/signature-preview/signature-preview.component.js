@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 
+import { SocialNetworks } from '../social-networks.constant';
 import template from './signature-preview.component.html';
 
 @Component({
@@ -19,4 +20,6 @@ export class SignaturePreviewComponent {
   set data(data) {
   	this.formData = data || 'No data entered!';
   }
+
+	socialNetworks = SocialNetworks;
 };

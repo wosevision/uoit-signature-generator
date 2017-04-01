@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 
+import { SocialNetworks } from '../social-networks.constant';
 import template from './signature-form.component.html';
 
 @Component({
@@ -16,6 +17,8 @@ export class SignatureFormComponent {
   formChange = new EventEmitter();
 
   signature = {};
+
+  socialNetworks = SocialNetworks;
 
   constructor(FormBuilder) {
   	this.FormBuilder = FormBuilder;
@@ -43,6 +46,9 @@ export class SignatureFormComponent {
       	line: '',
       	ext: '',
       }),
+      social: this.FormBuilder.array([
+      	this.initSocial()
+      ]),
     });
  
     this._name = this.formData.controls['name'];
@@ -52,6 +58,23 @@ export class SignatureFormComponent {
 
     this.formData.valueChanges
     	.subscribe(data => this.onFormChanged(data));
+  }
+
+  initSocial() {
+  	return this.FormBuilder.group({
+    	type: '',
+    	username: [ '', Validators.required ],
+    	url: '',
+    	style: '',
+    });
+  }
+
+  addSocial() {
+  	this.formData.controls['social'].push(this.initSocial());
+  }
+
+  removeSocial(i) {
+  	this.formData.controls['social'].removeAt(i);
   }
 
   onValueChanged(data) {

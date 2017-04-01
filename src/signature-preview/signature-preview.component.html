@@ -10,17 +10,8 @@
 	</p>
 	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;">
 		<tr>
-			<td>
-				<a style="border: 0; outline: none;" title="Like us on Facebook" href="{{ formData.social?.facebook }}"><img src="http://shared.uoit.ca/site-images/socialicons/socialicon_facebook.jpg" alt="Facebook icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a> 
-			</td>
-			<td>
-				<a style="border: 0; outline: none;" title="Connect with us on Twitter" href="{{ formData.social?.twitter }}"><img src="http://shared.uoit.ca/site-images/socialicons/socialicon_twitter.jpg" alt="Twitter icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a> 
-			</td>
-			<td>
-				<a style="border: 0; outline: none;" title="Connect with us on LinkedIn" href="{{ formData.social?.linkedin }}"><img src="http://shared.uoit.ca/site-images/socialicons/socialicon_linkedin.jpg" alt="LinkedIn icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a> 
-			</td>
-			<td>
-				<a style="border: 0; outline: none;" title="Watch us on YouTube" href="{{ formData.social?.youtube }}"><img src="http://shared.uoit.ca/site-images/socialicons/socialicon_youtube.jpg" alt="Twitter icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a>
+			<td *ngFor="let network of formData.social;">
+				<a style="border: 0; outline: none;" title="Follow {{ network.type.value === 'tw' ? '@' : '' }}{{ network.username }} on {{ network.type.name }}" href="#"><img [src]="network.type.src" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a> 
 			</td>
 		</tr>
 		<tr>

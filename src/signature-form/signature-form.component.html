@@ -66,6 +66,57 @@
 		  </div>
 		</fieldset>
 	</fieldset>
+
+	  <fieldset class="fieldset" formArrayName="social">
+			<legend><h3>Social</h3></legend>
+			<div class="row flex-container">
+
+      	<div class="column flex-child-auto" *ngFor="let network of formData.controls.social.controls; let i=index">
+      		<div class="callout secondary">
+	          <h4 class="flex-container align-justify">
+	          	<span>
+	          		<small class="subheader">Network {{i + 1}}:</small>
+	          		{{ formData.value.social[i].type.name || '(Select)' }}
+	          	</span>
+	          	<button *ngIf="formData.controls.social.controls.length > 1"
+	          					(click)="removeSocial(i)"
+	          					[attr.aria-label]="'Remove social network: ' + (formData.value.social[i].type.name || '(Select)')"
+	          					class="button hollow alert icon_cancel">
+	          					Remove
+	          	</button>
+	          </h4>
+	          <div [formGroupName]="i">
+	            <label>Type
+	              <select formControlName="type">
+	              	<option *ngFor="let type of socialNetworks;" [ngValue]="type">{{type.name}}</option>
+	              </select>
+	              <span class="form-error"
+	              			[class.is-visible]="formData.controls.social.controls[i].controls.type.invalid && formData.controls.social.controls[i].controls.type.dirty">
+	                  Type is required
+	              </span>
+	            </label>
+	            <label>Username
+	              <div class="input-group">
+								  <span class="input-group-label" [hidden]="formData.value.social[i].type.value !== 'tw'">@</span>
+	                <input type="text" class="input-group-field" formControlName="username">
+								</div>
+	              <span class="form-error"
+	              			[class.is-visible]="formData.controls.social.controls[i].controls.username.invalid && formData.controls.social.controls[i].controls.username.dirty">
+	                  Username is required
+	              </span>
+	            </label>
+	          </div>
+          </div>
+      	</div>
+
+      	<div class="column flex-child-auto">
+      		<div class="callout flex-container align-middle align-center">
+	      		<button class="hollow button" (click)="addSocial()">+ Add social network</button>
+      		</div>
+      	</div>
+      </div>
+	  </fieldset>
+
 	<div class="row">
 	  <div class="small-6 columns">
 	    <label>Description:
