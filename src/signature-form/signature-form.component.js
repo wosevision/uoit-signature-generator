@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
+import { Headers, Http } from '@angular/http';
 
 import { SocialNetworks } from '../common/social-networks.constant';
 import template from './signature-form.component.html';
@@ -11,18 +12,20 @@ import template from './signature-form.component.html';
 })
 export class SignatureFormComponent {
 	static get parameters() {
-	  return [[FormBuilder]];
+	  return [
+	  	[FormBuilder],
+	  	[Http],
+	  ];
 	}
 
-	@Output()
-  formChange = new EventEmitter();
+	@Output() formChange = new EventEmitter();
 
   signature = {};
-
   socialNetworks = SocialNetworks;
 
-  constructor(FormBuilder) {
-  	this.FormBuilder = FormBuilder;
+  constructor(FormBuilder, Http) {
+  	this.fb = FormBuilder;
+  	this.http = Http;
   }
 
   ngOnInit() {
@@ -30,24 +33,24 @@ export class SignatureFormComponent {
   }
 
   buildForm() {
-    this.formData = this.FormBuilder.group({
+    this.formData = this.fb.group({
     	expert: { value: false, disabled: true },
-      name: this.FormBuilder.group({
+      name: this.fb.group({
       	first: [ '', Validators.required ],
       	last: [ '', Validators.required ],
       }),
       email: [ '', Validators.required ],
-      credentials: this.FormBuilder.group({
+      credentials: this.fb.group({
       	title: '',
       	dept: '',
       }),
-      phone: this.FormBuilder.group({
+      phone: this.fb.group({
       	area: '',
       	office: '',
       	line: '',
       	ext: '',
       }),
-      social: this.FormBuilder.array([
+      social: this.fb.array([
       	this.initSocial()
       ]),
     });
@@ -60,7 +63,7 @@ export class SignatureFormComponent {
   }
 
   initSocial() {
-  	return this.FormBuilder.group({
+  	return this.fb.group({
     	type: '',
     	username: [ '', Validators.required ],
     	url: '',
