@@ -13,59 +13,59 @@
 	<accordion>
 		<accordion-panel heading="Contact">
 			<div class="padding-1">
-	  <fieldset class="fieldset" formGroupName="name">
-			<legend>Name</legend>
-			<div class="row">
-		    <div class="small-6 columns">
-			    <label>First
-			      <input type="text" placeholder="Jane" formControlName="first">
-		    	</label>
-		    </div>
-		    <div class="small-6 columns">
-			    <label>Last
-			    	<input type="text" placeholder="Doe" formControlName="last">
-		    	</label>
-		    </div>
-	    </div>
-	  </fieldset>
-    <label>Email
-    	<input type="email" placeholder="jane.doe@uoit.ca" formControlName="email">
-  	</label>
-		<fieldset class="fieldset" formGroupName="credentials">
-			<legend>Credentials</legend>
-		  <div class="row">
-		    <div class="small-6 columns">
-			    <label>Title
-			      <input type="text" placeholder="Head chef" formControlName="title">
-		    	</label>
-		    </div>
-		    <div class="small-6 columns">
-			    <label>Department or faculty
-			    	<input type="text" placeholder="Faculty of Fun and Games" formControlName="dept">
-		    	</label>
-		    </div>
-		  </div>
-		</fieldset>
-		<fieldset class="fieldset" formGroupName="phone">
-			<legend>Phone</legend>
-		  <div class="row">
-		    <div class="small-2 columns">
-		      <input type="number" formControlName="area">
-		    </div>
-		    <div class="small-3 columns">
-		      <input type="number" formControlName="office">
-		    </div>
-		    <div class="small-3 columns">
-		      <input type="number" formControlName="line">
-		    </div>
-		    <div class="small-1 columns align-middle align-center flex-container">
-		      <label>EXT</label>
-		    </div>
-		    <div class="small-3 columns">
-		      <input type="number" formControlName="ext">
-		    </div>
-		  </div>
-		</fieldset>
+			  <fieldset class="fieldset" formGroupName="name">
+					<legend>Name</legend>
+					<div class="row">
+				    <div class="small-6 columns">
+					    <label>First
+					      <input type="text" placeholder="Jane" formControlName="first">
+				    	</label>
+				    </div>
+				    <div class="small-6 columns">
+					    <label>Last
+					    	<input type="text" placeholder="Doe" formControlName="last">
+				    	</label>
+				    </div>
+			    </div>
+			  </fieldset>
+		    <label>Email
+		    	<input type="email" placeholder="jane.doe@uoit.ca" formControlName="email">
+		  	</label>
+				<fieldset class="fieldset" formGroupName="credentials">
+					<legend>Credentials</legend>
+				  <div class="row">
+				    <div class="small-6 columns">
+					    <label>Title
+					      <input type="text" placeholder="Head chef" formControlName="title">
+				    	</label>
+				    </div>
+				    <div class="small-6 columns">
+					    <label>Department or faculty
+					    	<input type="text" placeholder="Faculty of Fun and Games" formControlName="dept">
+				    	</label>
+				    </div>
+				  </div>
+				</fieldset>
+				<fieldset class="fieldset" formGroupName="phone">
+					<legend>Phone</legend>
+				  <div class="row">
+				    <div class="small-2 columns">
+				      <input type="text" formControlName="area">
+				    </div>
+				    <div class="small-3 columns">
+				      <input type="text" formControlName="office">
+				    </div>
+				    <div class="small-3 columns">
+				      <input type="text" formControlName="line">
+				    </div>
+				    <div class="small-1 columns align-middle align-center flex-container">
+				      <label>EXT</label>
+				    </div>
+				    <div class="small-3 columns">
+				      <input type="text" formControlName="ext">
+				    </div>
+				  </div>
+				</fieldset>
 			</div>
 		</accordion-panel>
 
@@ -118,12 +118,44 @@
 
 		<accordion-panel heading="Event">
 			<div class="row padding-1">
+	      <div class="small-6 columns">
+	      	<div class="row">
+		      	<div class="small-4 columns">
+			        <label>Icon:
+		            <select ng-model="formData.eventIcon" update-view name="eventIcon">
+		            	<option value="" selected="true" disabled="disabled">Please select...</option>
+		            	<option value="calendar">Calendar</option>
+		            	<option value="chat">Chat</option>
+		            	<option value="compass">Compass</option>
+		            	<option value="cursor">Cursor</option>
+		            	<option value="link">Link</option>
+		            	<option value="location">Location</option>
+		            	<option value="question">Question</option>
+		            	<option value="uoitbook">UOIT book</option>
+		            </select>
+		          </label>
+			        <label>Icon size:
+		            <select ng-model="formData.eventIconLrg" update-view name="eventIconLrg">
+		            	<option value="" selected="true" disabled="disabled">Please select...</option>
+		            	<option value="0">Small</option>
+		            	<option value="1">Large</option>
+		            </select>
+		          </label>
+		        </div>
+		      	<div class="small-8 columns">
+			        <label>Event name:
+		            <input type="text" ng-model="formData.eventName" update-view value="" name="eventName" placeholder="Enter a name here">
+		          </label>
+			        <label>Date:
+		            <input type="text" ng-model="formData.eventDate" update-view value="" name="eventDate" placeholder="Enter date[s]">
+		          </label>
+		        </div>
+	        </div>
+	      </div>
 			  <div class="small-6 columns">
 			    <label>Description:
 		        <input type="text" placeholder="Enter description here">
 		      </label>
-			  </div>
-			  <div class="small-6 columns">
 			    <label>Call-to-action:
 			        <input type="text" placeholder="e.g. Learn more &raquo;">
 			      </label>
