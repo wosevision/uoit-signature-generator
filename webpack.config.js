@@ -1,5 +1,6 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanPlugin       = require('clean-webpack-plugin');
+const HtmlWebpackPlugin 		= require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const CleanPlugin       		= require('clean-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 const config = {
@@ -34,11 +35,16 @@ const config = {
   },
 
   // inject js bundle to index.html
-  plugins: [new HtmlWebpackPlugin({
-    template: './src/index.html',
-    inject: 'body',
-    minify: false
-  })],
+  plugins: [
+
+	  new HtmlWebpackPlugin({
+	    template: './src/index.html',
+	    inject: 'body',
+	    minify: false
+	  }),
+
+	  new FaviconsWebpackPlugin('./src/assets/favicon.png')
+  ],
 
   // webpack dev server configuration
   devServer: {
