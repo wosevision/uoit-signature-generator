@@ -1,5 +1,5 @@
-// .accordion {
-	.accordion-content {
-		display: block !important;
-	}
-// }	
+.accordion-content {
+	display: block;
+	overflow: hidden;
+	padding: 0;
+}

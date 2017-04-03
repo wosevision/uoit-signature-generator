@@ -91,7 +91,7 @@
 	              	<option *ngFor="let type of socialNetworks;" [ngValue]="type">{{type.name}}</option>
 	              </select>
 	              <span class="form-error"
-	              			[class.is-visible]="formData.controls.social.controls[i].controls.type.invalid && formData.controls.social.controls[i].controls.type.dirty">
+	              			[class.is-visible]="formData.controls.social.controls[i].controls.type.invalid &amp;&amp; formData.controls.social.controls[i].controls.type.dirty">
 	                  Type is required
 	              </span>
 	            </label>
@@ -101,7 +101,7 @@
 	                <input type="text" class="input-group-field" formControlName="username">
 								</div>
 	              <span class="form-error"
-	              			[class.is-visible]="formData.controls.social.controls[i].controls.username.invalid && formData.controls.social.controls[i].controls.username.dirty">
+	              			[class.is-visible]="formData.controls.social.controls[i].controls.username.invalid &amp;&amp; formData.controls.social.controls[i].controls.username.dirty">
 	                  Username is required
 	              </span>
 	            </label>

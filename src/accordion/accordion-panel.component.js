@@ -20,11 +20,11 @@ import template from './accordion-panel.component.html';
       state('open', style({height: '*'})),
       transition('* => void', [
         style({height: '*'}),
-        animate(400, style({height: 0}))
+        animate('600ms ease-out', style({height: 0}))
       ]),
       transition('* => open', [
         style({height: 0}),
-        animate(400, style({height: '*'}))
+        animate('600ms ease-out', style({height: '*'}))
       ]),
     ])
   ],
