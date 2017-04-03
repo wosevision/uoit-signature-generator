@@ -1,12 +1,12 @@
 <div style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">
 	<p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; margin-bottom:16px">
-		<strong>{{ formData.name?.first }} {{ formData.name?.last }}</strong><br /> 
-		{{ formData.credentials?.title }} - {{ formData.credentials?.dept }}<br /> 
+		<strong *ngIf="formData.name?.first || formData.name?.last">{{ formData.name.first }} {{ formData.name.last }}<br/></strong>
+		<span *ngIf="formData.credentials?.title || formData.credentials?.dept">{{ formData.credentials.title }} - {{ formData.credentials.dept }}<br/></span>
 		University of Ontario Institute of Technology<br /> 
-		<a href="http://{{ formData.website }}" style="color: #0077CA;">{{ formData.website }}</a><br/> 
 		<span *ngIf="formData.contact?.phone || formData.contact?.ext">{{ formData.contact.phone }} {{ formData.contact.ext ? 'ext. ' + formData.contact.ext : '' }}<br/></span>
 		<span *ngIf="formData.contact?.mobile">{{ formData.contact.mobile }} (cell)<br/></span>
 		<span *ngIf="formData.contact?.email"><a href="mailto:{{ formData.contact.email }}" style="color: #0077CA;">{{ formData.contact.email }}</a><br/></span>
+		<span *ngIf="formData.website"><a href="http://{{ formData.website }}" style="color: #0077CA;">{{ formData.website }}</a></span>
 	</p>
 	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;">
 
