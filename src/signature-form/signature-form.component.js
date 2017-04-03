@@ -5,6 +5,9 @@ import { Headers, Http } from '@angular/http';
 import { SocialNetworks } from '../common/social-networks.constant';
 import template from './signature-form.component.html';
 
+const DIGIT = /\d/,
+			DIGIT_1TO9 = /[1-9]/;
+
 @Component({
   selector: 'signature-form',
   styleUrls: [ './signature-form/signature-form.component.scss' ],
@@ -22,6 +25,11 @@ export class SignatureFormComponent {
 
   signature = {};
   socialNetworks = SocialNetworks;
+  phoneMask = [
+  	'(', DIGIT_1TO9, DIGIT, DIGIT, ')',
+  	' ', DIGIT, DIGIT, DIGIT,
+  	'.', DIGIT, DIGIT, DIGIT, DIGIT
+  ];
 
   constructor(FormBuilder, Http) {
   	this.fb = FormBuilder;
@@ -39,7 +47,11 @@ export class SignatureFormComponent {
       	first: [ '', Validators.required ],
       	last: [ '', Validators.required ],
       }),
-      email: [ '', Validators.required ],
+      contact: this.fb.group({
+	      phone: [ '', Validators.required ],
+	      ext: [ '', Validators.required ],
+	      email: [ '', Validators.required ],
+      }),
       credentials: this.fb.group({
       	title: '',
       	dept: '',

@@ -11,7 +11,7 @@
 		</label>
 	</fieldset>
 	<accordion>
-		<accordion-panel heading="Contact">
+		<accordion-panel heading="Personal">
 			<div class="padding-1">
 			  <fieldset class="fieldset" formGroupName="name">
 					<legend>Name</legend>
@@ -28,9 +28,24 @@
 				    </div>
 			    </div>
 			  </fieldset>
-		    <label>Email
-		    	<input type="email" placeholder="jane.doe@uoit.ca" formControlName="email">
-		  	</label>
+			  <fieldset class="fieldset" formGroupName="contact">
+					<legend>Contact</legend>
+				  <div class="row">
+				    <div class="small-9 columns">
+						  <label>Phone number
+					      <input type="tel" formControlName="phone" autocomplete="tel" [textMask]="{ mask: phoneMask }">
+				      </label>
+				    </div>
+				    <div class="small-3 columns">
+						  <label>Extension
+					      <input type="text" formControlName="ext">
+				      </label>
+				    </div>
+				  </div>
+			    <label>Email
+			    	<input type="email" placeholder="jane.doe@uoit.ca" formControlName="email">
+			  	</label>
+		  	</fieldset>
 				<fieldset class="fieldset" formGroupName="credentials">
 					<legend>Credentials</legend>
 				  <div class="row">
@@ -43,26 +58,6 @@
 					    <label>Department or faculty
 					    	<input type="text" placeholder="Faculty of Fun and Games" formControlName="dept">
 				    	</label>
-				    </div>
-				  </div>
-				</fieldset>
-				<fieldset class="fieldset" formGroupName="phone">
-					<legend>Phone</legend>
-				  <div class="row">
-				    <div class="small-2 columns">
-				      <input type="text" formControlName="area">
-				    </div>
-				    <div class="small-3 columns">
-				      <input type="text" formControlName="office">
-				    </div>
-				    <div class="small-3 columns">
-				      <input type="text" formControlName="line">
-				    </div>
-				    <div class="small-1 columns align-middle align-center flex-container">
-				      <label>EXT</label>
-				    </div>
-				    <div class="small-3 columns">
-				      <input type="text" formControlName="ext">
 				    </div>
 				  </div>
 				</fieldset>

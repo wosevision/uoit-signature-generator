@@ -3,10 +3,10 @@
 		<strong>{{ formData.name?.first }} {{ formData.name?.last }}</strong><br /> 
 		{{ formData.credentials?.title }} - {{ formData.credentials?.dept }}<br /> 
 		University of Ontario Institute of Technology<br /> 
-		{{ formData.phone?.area }}.{{ formData.phone?.office }}.{{ formData.phone?.line }} ext. {{ formData.phone?.ext }}<br/>
-		{{ formData.cell?.area }}.{{ formData.cell?.office }}.{{ formData.cell?.line }} ext. {{ formData.cell?.ext }} (cell)<br/>
-		<a href="mailto:{{ formData.email }}" style="color: #0077CA;">{{ formData.email }}</a><br/>
 		<a href="http://{{ formData.website }}" style="color: #0077CA;">{{ formData.website }}</a><br/> 
+		<span *ngIf="formData.contact?.phone || formData.contact?.ext">{{ formData.contact.phone }} {{ formData.contact.ext ? 'ext. ' + formData.contact.ext : '' }}<br/></span>
+		<span *ngIf="formData.contact?.mobile">{{ formData.contact.mobile }} (cell)<br/></span>
+		<span *ngIf="formData.contact?.email"><a href="mailto:{{ formData.contact.email }}" style="color: #0077CA;">{{ formData.contact.email }}</a><br/></span>
 	</p>
 	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;">
 		<tr>
