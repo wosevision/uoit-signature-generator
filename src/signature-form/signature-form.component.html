@@ -10,8 +10,9 @@
 			</select>
 		</label>
 	</fieldset>
-	<fieldset class="fieldset" [hidden]="formData.value.expert">
-		<legend>Contact</legend>
+	<accordion>
+		<accordion-panel heading="Contact">
+			<div class="padding-1">
 	  <fieldset class="fieldset" formGroupName="name">
 			<legend>Name</legend>
 			<div class="row">
@@ -65,12 +66,11 @@
 		    </div>
 		  </div>
 		</fieldset>
-	</fieldset>
+			</div>
+		</accordion-panel>
 
-	  <fieldset class="fieldset" formArrayName="social">
-			<legend><h3>Social</h3></legend>
-			<div class="row flex-container">
-
+		<accordion-panel heading="Social">
+			<div class="row flex-container padding-1" formArrayName="social">
       	<div class="column flex-child-auto" *ngFor="let network of formData.controls.social.controls; let i=index">
       		<div class="callout secondary">
 	          <h4 class="flex-container align-justify">
@@ -108,32 +108,33 @@
 	          </div>
           </div>
       	</div>
-
       	<div class="column flex-child-auto">
       		<div class="callout flex-container align-middle align-center">
 	      		<button class="hollow button" (click)="addSocial()">+ Add social network</button>
       		</div>
       	</div>
       </div>
-	  </fieldset>
+		</accordion-panel>
 
-	<div class="row">
-	  <div class="small-6 columns">
-	    <label>Description:
-	        <input type="text" placeholder="Enter description here">
-	      </label>
-	  </div>
-	  <div class="small-6 columns">
-	    <label>Call-to-action:
-	        <input type="text" placeholder="e.g. Learn more &raquo;">
-	      </label>
-	  </div>
-
-	  <div class="small-12 columns">
-	    <label>Link URL:
-	      <input type="text" placeholder="http://">
-	    </label>
-	  </div>
-  </div>
+		<accordion-panel heading="Event">
+			<div class="row padding-1">
+			  <div class="small-6 columns">
+			    <label>Description:
+		        <input type="text" placeholder="Enter description here">
+		      </label>
+			  </div>
+			  <div class="small-6 columns">
+			    <label>Call-to-action:
+			        <input type="text" placeholder="e.g. Learn more &raquo;">
+			      </label>
+			  </div>
+			  <div class="small-12 columns">
+			    <label>Link URL:
+			      <input type="text" placeholder="http://">
+			    </label>
+			  </div>
+		  </div>
+		</accordion-panel>
+	</accordion>
   <button class="button" type="submit" [disabled]="formData.invalid">Submit stuff</button>
 </form>
