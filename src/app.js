@@ -14,14 +14,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 /* Feature modules */
-import { AccordionModule } from './accordion/accordion';
 import { SignatureFormModule } from './signature-form/signature-form';
 import { SignaturePreviewModule } from './signature-preview/signature-preview';
 
 @NgModule({
   imports: [
   	BrowserModule,
-  	AccordionModule,
   	SignatureFormModule,
   	SignaturePreviewModule,
   ],
