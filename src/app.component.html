@@ -1,19 +1,5 @@
 <div class="page-content">
 
-<!-- 	<div class="container">
-	  <div>
-	    <select name="templates" ng-model="template" ng-change="loadTemplate()">
-	      <option value="" selected>None</option>
-	      <option value="template.html">Template 1</option>
-	    </select>
-	    <input type="text" id="loading" placeholder="Loading..." />
-	    <input type="text" name="title" ng-model="title" update-view value="" placeholder="The Title For This Page" />
-	    <textarea name="content" ng-model="textarea" update-view placeholder="Content for this page"></textarea>
-	  </div>
-	</div> -->
-
-	<br/>
-
 	<div class="row panel">
 	  <h1>UOIT Event
 	  <small>Email Signature Generator</small></h1>
@@ -21,10 +7,18 @@
 		  <signature-form (formChange)="onFormChange($event)"></signature-form>
 	  </div>
 	  <div class="small-5 columns">
-	  <fieldset class="fieldset">
-			<legend><strong>Preview</strong></legend>
-	  	<signature-preview [data]="formData"></signature-preview>
-		</fieldset>
+		  <fieldset class="fieldset">
+				<legend><strong>Preview</strong></legend>
+		  	<signature-preview [data]="formData"></signature-preview>
+			</fieldset>
+			
+	  	<accordion>
+	  		<accordion-panel heading="Fun times">
+	  			<p>Were had by all</p>
+	  		</accordion-panel>
+	  		<accordion-panel heading="Fun times">
+	  			<p>Were had by all</p>
+	  		</accordion-panel>
 	  </div>
 	</div>
 
