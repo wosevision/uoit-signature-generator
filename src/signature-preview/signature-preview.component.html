@@ -9,11 +9,32 @@
 		<span *ngIf="formData.contact?.email"><a href="mailto:{{ formData.contact.email }}" style="color: #0077CA;">{{ formData.contact.email }}</a><br/></span>
 	</p>
 	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;">
-		<tr>
-			<td *ngFor="let network of formData.social;">
-				<a style="border: 0; outline: none;" title="Follow {{ network.type.value === 'tw' ? '@' : '' }}{{ network.username }} on {{ network.type.name }}" href="#"><img [src]="network.type.src" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/></a> 
+
+		<tr *ngIf="formData.social?.style === 'button'">
+			<td *ngFor="let network of formData.social?.networks;" style="text-align: center;padding: 0;">
+				<a style="border: 0; outline: none;" title="{{ [network.type.cta, network.type.value === 'tw' ? '@' + network.username : network.username, 'on', network.type.name].join(' ') }}" [href]="network.type.href + (network.username || network.type.default)">
+					<img [src]="network.type.src" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/>
+				</a> 
 			</td>
 		</tr>
+
+		<tr *ngIf="formData.social?.style === 'both'">
+			<td style="padding: 0;">
+				<a style="border: 0; outline: none;" [href]="network.type.href + (network.username || network.type.default)" *ngFor="let network of formData.social?.networks;">
+					<img [src]="network.type.src" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/>
+					{{ [network.type.cta, network.type.value === 'tw' ? '@' + network.username : network.username, 'on', network.type.name].join(' ') }}<br/>
+				</a> 
+			</td>
+		</tr>
+
+		<tr *ngIf="formData.social?.style === 'link'">
+			<td style="padding: 0;">
+				<a style="border: 0; outline: none;" [href]="network.type.href + (network.username || network.type.default)" *ngFor="let network of formData.social?.networks;">
+					{{ [network.type.cta, network.type.value === 'tw' ? '@' + network.username : network.username, 'on', network.type.name].join(' ') }}<br/>
+				</a> 
+			</td>
+		</tr>
+
 		<tr>
 			<td colspan="4">
 				<a style="border: 0; outline: none;" title="UOIT website" href="http://uoit.ca"><img style="border: 0; width: 150px; height: 56px;" src="http://shared.uoit.ca/site-images/layout/header_UOITlogo.gif" alt="UOIT logo" width="150" height="56" /></a>

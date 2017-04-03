@@ -56,15 +56,12 @@ export class SignatureFormComponent {
       	title: '',
       	dept: '',
       }),
-      phone: this.fb.group({
-      	area: '',
-      	office: '',
-      	line: '',
-      	ext: '',
-      }),
-      social: this.fb.array([
-      	this.initSocial()
-      ]),
+      social: this.fb.group({
+	      style: '',
+      	networks: this.fb.array([
+	      	this.initSocial()
+	      ]),
+      })
     });
  
     this.formData.controls['name'].valueChanges
@@ -78,17 +75,15 @@ export class SignatureFormComponent {
   	return this.fb.group({
     	type: '',
     	username: [ '', Validators.required ],
-    	url: '',
-    	style: '',
     });
   }
 
   addSocial() {
-  	this.formData.controls['social'].push(this.initSocial());
+  	this.formData.controls['social'].controls['networks'].push(this.initSocial());
   }
 
   removeSocial(i) {
-  	this.formData.controls['social'].removeAt(i);
+  	this.formData.controls['social'].controls['networks'].removeAt(i);
   }
 
   onValueChanged(data) {
