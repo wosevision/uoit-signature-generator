@@ -3,12 +3,12 @@
   <small>Email Signature</small></h1>
 	<div class="row panel">
 	  <div class="small-7 columns">
-		  <signature-form (formChange)="onFormChange($event)"></signature-form>
+		  <signature-form #signatureForm></signature-form>
 	  </div>
 	  <div class="small-5 columns">
 		  <fieldset class="fieldset">
 				<legend><strong>Preview</strong></legend>
-		  	<signature-preview [data]="formData"></signature-preview>
+		  	<signature-preview [data]="signatureForm.formData.value"></signature-preview>
 			</fieldset>
 	  </div>
 	</div>

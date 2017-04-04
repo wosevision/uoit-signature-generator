@@ -7,7 +7,10 @@ import template from './signature-form.component.html';
 
 const DIGIT = /\d/,
 			DIGIT_1TO9 = /[1-9]/;
-
+/**
+ * @example
+ * <signature-form (formChange)="onFormChange($event)"></signature-form> 
+ */
 @Component({
   selector: 'signature-form',
   styleUrls: [ './signature-form/signature-form.component.scss' ],
