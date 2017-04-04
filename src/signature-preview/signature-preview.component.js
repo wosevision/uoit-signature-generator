@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
 
 import { SocialNetworks } from '../common/social-networks.constant';
 import template from './signature-preview.component.html';
@@ -8,6 +8,12 @@ import template from './signature-preview.component.html';
   template
 })
 export class SignaturePreviewComponent {
+	static get parameters() {
+	  return [
+	  	[ElementRef],
+	  ];
+	}
+
 	@Input()
   get data() {
     return this.formData;
@@ -18,7 +24,12 @@ export class SignaturePreviewComponent {
 
 	socialNetworks = SocialNetworks;
 
-	constructor() {
+	constructor(ElementRef) {
+		this.el = ElementRef;
 		this.formData = {};
+	}
+
+	getTemplate() {
+		console.log(this.el)
 	}
 };

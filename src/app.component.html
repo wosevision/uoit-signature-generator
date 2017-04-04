@@ -8,8 +8,9 @@
 	  <div class="small-5 columns">
 		  <fieldset class="fieldset">
 				<legend><strong>Preview</strong></legend>
-		  	<signature-preview [data]="signatureForm.formData.value"></signature-preview>
+		  	<signature-preview [data]="signatureForm.formData.value" #signaturePreview></signature-preview>
 			</fieldset>
+			<button class="buttonWhite" (click)="signaturePreview.getTemplate()">Get template</button>
 	  </div>
 	</div>
 
