@@ -16,4 +16,8 @@ export class AppComponent {
   	console.log('Form changes; outside', event);
   	this.formData = event;
   }
+
+  onFormSubmit(template) {
+  	console.log('Form submit; outside', template);
+  }
 };

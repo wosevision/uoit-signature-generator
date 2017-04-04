@@ -25,6 +25,7 @@ export class SignatureFormComponent {
 	}
 
 	@Output() formChange = new EventEmitter();
+	@Output() formSubmit = new EventEmitter();
 
   signature = {};
   socialNetworks = SocialNetworks;
@@ -115,5 +116,6 @@ export class SignatureFormComponent {
 	onSubmit(event, formData) {
 		console.log('Form submit:', formData);
 		event.preventDefault();
+    this.formSubmit.emit(formData);
 	}
 };

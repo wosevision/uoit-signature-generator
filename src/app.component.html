@@ -6,7 +6,7 @@
   </div>
 	<div class="row">
 	  <div class="small-7 columns">
-		  <signature-form #signatureForm></signature-form>
+		  <signature-form #signatureForm (formChange)="onFormChange($event)"></signature-form>
 	  </div>
 	  <div class="small-5 columns">
 		  <fieldset class="fieldset">
