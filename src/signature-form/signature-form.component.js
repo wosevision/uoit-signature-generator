@@ -81,10 +81,10 @@ export class SignatureFormComponent {
     });
  
     this.formData.controls['name'].valueChanges
-    	.subscribe(({ first, last }) => this.onValueChanged({ first, last }));
+    	.subscribe(({ first, last }) => this.onValueChange({ first, last }));
 
     this.formData.valueChanges
-    	.subscribe(data => this.onFormChanged(data));
+    	.subscribe(data => this.onFormChange(data));
   }
 
   initSocial() {
@@ -102,11 +102,11 @@ export class SignatureFormComponent {
   	this.formData.controls['social'].controls['networks'].removeAt(i);
   }
 
-  onValueChanged(data) {
+  onValueChange(data) {
     console.log('Form value change:', data);
   }
 
-  onFormChanged(data) {
+  onFormChange(data) {
     console.log('Form change:', data);
 		this.signature = data;
     this.formChange.emit(data);
