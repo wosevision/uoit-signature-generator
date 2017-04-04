@@ -22,14 +22,14 @@ export class SignaturePreviewComponent {
   	this.formData = data || 'No data entered!';
   }
 
+  get template() {
+    return this.el.nativeElement.innerHTML;
+  }
+
 	socialNetworks = SocialNetworks;
 
 	constructor(ElementRef) {
 		this.el = ElementRef;
 		this.formData = {};
-	}
-
-	getTemplate() {
-		console.log(this.el)
 	}
 };

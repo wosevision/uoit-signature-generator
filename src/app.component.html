@@ -10,27 +10,20 @@
 				<legend><strong>Preview</strong></legend>
 		  	<signature-preview [data]="signatureForm.formData.value" #signaturePreview></signature-preview>
 			</fieldset>
-			<button class="buttonWhite" (click)="signaturePreview.getTemplate()">Get template</button>
 	  </div>
 	</div>
 
-	<div class="row">
+	<div class="row align-right">
 	  <div class="small-12 columns">
-	    <p class="right text-right">To copy this signature, <strong>click inside the blue box to highlight it</strong>, and press <kbd>CTRL+A</kbd> (or <kbd>&#8984;+A</kbd>) to <strong>Select All</strong> before copying.<br/>
+	    <p class="text-right">To copy this signature, <strong>click inside the blue box to highlight it</strong>, and press <kbd>CTRL+A</kbd> (or <kbd>&#8984;+A</kbd>) to <strong>Select All</strong> before copying.<br/>
 	    ...Or, email this signature to:</p>
-		  <div class="row">
-		    <div class="small-6 columns right">
-		      <div class="row collapse">
-		        <div class="xxsmall-10 columns">
-		          <input type="text" placeholder="jane.doe@uoit.ca" name="sendTo" />
-		        </div>
-		        <div class="xxsmall-2 columns">
-		          <button href="#" class="button postfix" ng-click="sendMail()">Go</button>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
 	  </div>
+		<div class="input-group small-6 columns">
+		  <input class="input-group-field" placeholder="jane.doe@uoit.ca" type="email">
+		  <div class="input-group-button">
+		    <button class="button" (click)="onFormSubmit(signaturePreview.template)">Submit</button>
+		  </div>
+		</div>
 	</div>
 
 </div>
