@@ -120,14 +120,14 @@
       </div>
 		</accordion-panel>
 
-		<accordion-panel heading="Event">
+		<accordion-panel heading="Event" formGroupName="event">
 			<div class="row padding-1">
 	      <div class="small-6 columns">
 	      	<div class="row">
 		      	<div class="small-4 columns">
 			        <label>Icon:
-		            <select ng-model="formData.eventIcon" update-view name="eventIcon">
-		            	<option value="" selected="true" disabled="disabled">Please select...</option>
+		            <select formControlName="icon">
+		            	<option value="" disabled="disabled">Please select...</option>
 		            	<option value="calendar">Calendar</option>
 		            	<option value="chat">Chat</option>
 		            	<option value="compass">Compass</option>
@@ -137,10 +137,177 @@
 		            	<option value="question">Question</option>
 		            	<option value="uoitbook">UOIT book</option>
 		            </select>
+		            <!-- <select formControlName="icon">
+									<option>apple</option>
+									<option>arrow</option>
+									<option>arrow_down</option>
+									<option>arrow_left</option>
+									<option>arrow_right</option>
+									<option>arrow_up</option>
+									<option>atom</option>
+									<option>audience</option>
+									<option>award</option>
+									<option>bargraph</option>
+									<option>batterylevel</option>
+									<option>blackboard</option>
+									<option>blocks</option>
+									<option>books</option>
+									<option>bookuoit</option>
+									<option>brain</option>
+									<option>brainoutline</option>
+									<option>bricks</option>
+									<option>bunsenburner</option>
+									<option>bus</option>
+									<option>calculator</option>
+									<option>calendar</option>
+									<option>cancel</option>
+									<option>canceloutline</option>
+									<option>car</option>
+									<option>carside</option>
+									<option>chat</option>
+									<option>chattyping</option>
+									<option>check</option>
+									<option>checkbox</option>
+									<option>checkoutline</option>
+									<option>clipboard</option>
+									<option>clock</option>
+									<option>clock2</option>
+									<option>codingbrackets</option>
+									<option>coins</option>
+									<option>compass</option>
+									<option>compass2</option>
+									<option>computerchip</option>
+									<option>construction</option>
+									<option>constructionworkers</option>
+									<option>curling</option>
+									<option>cursor</option>
+									<option>dancer</option>
+									<option>dashboard</option>
+									<option>diploma</option>
+									<option>directionalarrows</option>
+									<option>directory</option>
+									<option>dna</option>
+									<option>dropper</option>
+									<option>emergency</option>
+									<option>energy</option>
+									<option>engine</option>
+									<option>envelope</option>
+									<option>flowchart</option>
+									<option>folder</option>
+									<option>folderwithprofilegear</option>
+									<option>friends</option>
+									<option>gamecontroller</option>
+									<option>gasmask</option>
+									<option>gavel</option>
+									<option>gear</option>
+									<option>gears</option>
+									<option>glasses</option>
+									<option>globe</option>
+									<option>golf</option>
+									<option>gradcap</option>
+									<option>graduate</option>
+									<option>greenlightbulb</option>
+									<option>handcuffs</option>
+									<option>handshake</option>
+									<option>hazard</option>
+									<option>health</option>
+									<option>heart</option>
+									<option>hockey</option>
+									<option>home</option>
+									<option>idandlaptop</option>
+									<option>idlock</option>
+									<option>key</option>
+									<option>laptop</option>
+									<option>laptopcheckboxes</option>
+									<option>laptopgear</option>
+									<option>laptopsound</option>
+									<option>laptoptablet</option>
+									<option>laptoptools</option>
+									<option>leaf</option>
+									<option>letters</option>
+									<option>lightbulb</option>
+									<option>linechart</option>
+									<option>linegraph</option>
+									<option>lockeddrive</option>
+									<option>locker</option>
+									<option>magnifyingglass</option>
+									<option>mail</option>
+									<option>mailoutline</option>
+									<option>map</option>
+									<option>mapmarker</option>
+									<option>mathsymbols</option>
+									<option>measuringtape</option>
+									<option>mechanicalarm</option>
+									<option>megaphone</option>
+									<option>menu</option>
+									<option>microscope</option>
+									<option>molecules</option>
+									<option>mouse</option>
+									<option>needle</option>
+									<option>oars</option>
+									<option>paper</option>
+									<option>paper2</option>
+									<option>paperclip</option>
+									<option>pause</option>
+									<option>pen</option>
+									<option>pencil</option>
+									<option>pencilholder</option>
+									<option>penwriting</option>
+									<option>person</option>
+									<option>phone</option>
+									<option>piggybank</option>
+									<option>pill</option>
+									<option>play</option>
+									<option>plug</option>
+									<option>points</option>
+									<option>printer</option>
+									<option>professor</option>
+									<option>profilesettings</option>
+									<option>qa</option>
+									<option>question</option>
+									<option>quicklinks</option>
+									<option>readers</option>
+									<option>relativity</option>
+									<option>ruler</option>
+									<option>ruler2</option>
+									<option>runner</option>
+									<option>runners</option>
+									<option>scales</option>
+									<option>search</option>
+									<option>sharelink</option>
+									<option>skeletalhand</option>
+									<option>sling</option>
+									<option>smartphone</option>
+									<option>soccer</option>
+									<option>social_facebook</option>
+									<option>social_instagram</option>
+									<option>social_linkedin</option>
+									<option>social_twitter</option>
+									<option>social_youtube</option>
+									<option>solarpanels</option>
+									<option>stein</option>
+									<option>stopwatch</option>
+									<option>sunflowers</option>
+									<option>tablet</option>
+									<option>teacher</option>
+									<option>tennisball</option>
+									<option>testtube</option>
+									<option>testtubes</option>
+									<option>ticket</option>
+									<option>tie</option>
+									<option>tools</option>
+									<option>train</option>
+									<option>trophy</option>
+									<option>usbkey</option>
+									<option>walking</option>
+									<option>watch</option>
+									<option>wifi</option>
+									<option>windmill</option>    
+								</select> -->
 		          </label>
 			        <label>Icon size:
-		            <select ng-model="formData.eventIconLrg" update-view name="eventIconLrg">
-		            	<option value="" selected="true" disabled="disabled">Please select...</option>
+		            <select formControlName="size">
+		            	<option value="" disabled="disabled">Please select...</option>
 		            	<option value="0">Small</option>
 		            	<option value="1">Large</option>
 		            </select>
@@ -148,28 +315,48 @@
 		        </div>
 		      	<div class="small-8 columns">
 			        <label>Event name:
-		            <input type="text" ng-model="formData.eventName" update-view value="" name="eventName" placeholder="Enter a name here">
+		            <input type="text" formControlName="name" placeholder="Enter a name here">
 		          </label>
 			        <label>Date:
-		            <input type="text" ng-model="formData.eventDate" update-view value="" name="eventDate" placeholder="Enter date[s]">
+		            <input type="text" formControlName="date" placeholder="Enter date[s]">
 		          </label>
 		        </div>
 	        </div>
 	      </div>
 			  <div class="small-6 columns">
 			    <label>Description:
-		        <input type="text" placeholder="Enter description here">
+		        <input type="text" formControlName="desc" placeholder="Enter description here">
 		      </label>
 			    <label>Call-to-action:
-			        <input type="text" placeholder="e.g. Learn more &raquo;">
-			      </label>
+		        <input type="text" formControlName="cta" placeholder="e.g. Learn more &raquo;">
+		      </label>
 			  </div>
 			  <div class="small-12 columns">
 			    <label>Link URL:
-			      <input type="text" placeholder="http://">
+			      <input type="text" formControlName="url" placeholder="http://">
 			    </label>
 			  </div>
 		  </div>
+		</accordion-panel>
+
+		<accordion-panel heading="Message" formGroupName="message">
+			<div class="row padding-1">
+	      <div class="small-2 columns">
+	        <label>Style:
+            <select formControlName="style">
+            	<option value="" disabled="disabled">Please select...</option>
+            	<option value="0">Normal</option>
+            	<option value="1">Disclaimer</option>
+          	</select>
+        	</label>
+	      </div>
+	      <div class="small-10 columns">
+			    <label>Content:
+			      <textarea formControlName="content" placeholder="Enter full message text here..." style="min-height: 150px;">
+			      </textarea>
+			    </label>
+	      </div>
+      </div>
 		</accordion-panel>
 	</accordion>
   <button class="button" type="submit" [disabled]="formData.invalid">Submit stuff</button>

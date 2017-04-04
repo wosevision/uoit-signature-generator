@@ -61,7 +61,16 @@ export class SignatureFormComponent {
       	networks: this.fb.array([
 	      	this.initSocial()
 	      ]),
-      })
+      }),
+      event: this.fb.group({
+	      icon: '',
+	      size: '',
+	      name: '',
+	      date: '',
+	      desc: '',
+	      cta: '',
+	      url: '',
+      }),
     });
  
     this.formData.controls['name'].valueChanges
