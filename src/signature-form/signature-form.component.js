@@ -71,6 +71,10 @@ export class SignatureFormComponent {
 	      cta: '',
 	      url: '',
       }),
+      message: this.fb.group({
+      	style: '',
+      	content: '',
+      }),
     });
  
     this.formData.controls['name'].valueChanges
