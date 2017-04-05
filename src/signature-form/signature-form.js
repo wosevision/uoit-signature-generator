@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { TextMaskModule } from 'angular2-text-mask';
@@ -12,7 +11,6 @@ import { SignatureFormComponent } from './signature-form.component';
   imports: [
   	CommonModule,
   	ReactiveFormsModule,
-  	HttpModule,
   	TextMaskModule,
   	AccordionModule,
   ],

@@ -1,4 +1,14 @@
 import { Component } from '@angular/core';
+import {
+	Http,
+	Response,
+	Headers,
+	RequestOptions,
+} from '@angular/http';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 import template from './app.component.html';
 
@@ -8,8 +18,13 @@ import template from './app.component.html';
   template
 })
 export class AppComponent {
-  constructor() {
-    this.what = "a good time!";
+	static get parameters() {
+	  return [
+	  	[Http],
+	  ];
+	}
+  constructor(Http) {
+  	this.http = Http;
   }
 
   onFormChange(event) {

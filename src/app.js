@@ -9,6 +9,7 @@ if (!/localhost/.test(document.location.host)) {
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 /* App root */
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { SignaturePreviewModule } from './signature-preview/signature-preview';
   	BrowserModule,
   	SignatureFormModule,
   	SignaturePreviewModule,
+  	HttpModule,
   ],
   declarations: [
     AppComponent,

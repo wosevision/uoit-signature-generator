@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import { Headers, Http } from '@angular/http';
 
 import { SocialNetworks } from '../common/social-networks.constant';
 import template from './signature-form.component.html';
@@ -20,7 +19,6 @@ export class SignatureFormComponent {
 	static get parameters() {
 	  return [
 	  	[FormBuilder],
-	  	[Http],
 	  ];
 	}
 
@@ -35,9 +33,8 @@ export class SignatureFormComponent {
   	'.', DIGIT, DIGIT, DIGIT, DIGIT
   ];
 
-  constructor(FormBuilder, Http) {
+  constructor(FormBuilder) {
   	this.fb = FormBuilder;
-  	this.http = Http;
   }
 
   ngOnInit() {
