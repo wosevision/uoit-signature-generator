@@ -2,7 +2,10 @@
 
 //SMTP needs accurate times, and the PHP time zone MUST be set
 //This should be done in your php.ini, but this is how to do it if you don't have access to that
-date_default_timezone_set('EST/UTC');
+date_default_timezone_set('Canada/Eastern');
+header('Access-Control-Allow-Origin: http://localhost:8080', false);
+header('Access-Control-Allow-Headers: origin, x-requested-with, content-type, x-xsrf-token');
+header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// echo 'fun!';
 	$req = json_decode(file_get_contents('php://input'),true);

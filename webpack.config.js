@@ -21,9 +21,10 @@ const config = {
 			{ test: /\.scss$/, loader: "raw-loader!css-loader!resolve-url-loader!sass-loader" },
       { test: /\.css$/, loader: "raw-loader!css-loader!resolve-url-loader"},
 
-      // load JSON files and HTML
+      // load JSON files and HTML/PHP
       { test: /\.json$/, loader: "json" },
       { test: /\.html$/, exclude: /node_modules/, loader:"raw-loader" },
+      { test: /\.php$/, loader: "file-loader" },
 
       // load fonts(inline base64 URLs for <=8k)
       { test: /\.(ttf|eot|svg|otf)$/, loader: "file-loader" },

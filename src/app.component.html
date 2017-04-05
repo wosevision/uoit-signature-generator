@@ -15,16 +15,16 @@
 			</fieldset>
 	  </div>
 	</div>
-
 	<div class="row align-right">
 	  <div class="small-12 columns">
+			<hr/>
 	    <p class="text-right">To copy this signature, <strong>click inside the blue box to highlight it</strong>, and press <kbd>CTRL+A</kbd> (or <kbd>&#8984;+A</kbd>) to <strong>Select All</strong> before copying.<br/>
 	    ...Or, email this signature to:</p>
 	  </div>
 		<div class="input-group small-6 columns">
-		  <input class="input-group-field" placeholder="jane.doe@uoit.ca" type="email">
+		  <input class="input-group-field" placeholder="jane.doe@uoit.ca" type="email" #addressee>
 		  <div class="input-group-button">
-		    <button class="button" (click)="onFormSubmit(signaturePreview.template)">Submit</button>
+		    <button class="button" (click)="onFormSubmit(signaturePreview.template, addressee)">Submit</button>
 		  </div>
 		</div>
 	</div>
