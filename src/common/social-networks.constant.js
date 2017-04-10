@@ -3,29 +3,36 @@ const ICONS_ROOT = 'https://shared.uoit.ca/site-images/socialicons/';
 export const SocialNetworks = [{
 	name: 'Facebook',
 	href: 'https://facebook.com/',
-	default: 'myuoit',
 	cta: 'Like',
 	value: 'fb',
 	src: `${ ICONS_ROOT }socialicon_facebook.jpg`
 },{
 	name: 'Twitter',
 	href: 'https://twitter.com/',
-	default: 'uoit',
 	cta: 'Follow',
 	value: 'tw',
 	src: `${ ICONS_ROOT }socialicon_twitter.jpg`
 },{
 	name: 'YouTube',
 	href: 'https://youtube.com/user/',
-	default: 'universityofontario',
 	cta: 'Subscribe to',
 	value: 'yt',
 	src: `${ ICONS_ROOT }socialicon_youtube.jpg`
 },{
 	name: 'LinkedIn',
 	href: 'https://linkedin.com/in/',
-	default: '',
 	cta: 'Connect with',
 	value: 'li',
 	src: `${ ICONS_ROOT }socialicon_linkedin.jpg`
+}];
+
+export const ButtonStyles = [{ 
+	value: 'button',
+	name: 'Button only'
+}, { 
+	value: 'both',
+	name: 'Button and link'
+}, { 
+	value: 'link',
+	name: 'Link only'
 }];

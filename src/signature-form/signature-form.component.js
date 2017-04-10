@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 
-import { SocialNetworks } from '../common/social-networks.constant';
+import { SocialNetworks, ButtonStyles } from '../common/social-networks.constant';
 import template from './signature-form.component.html';
 
 const DIGIT = /\d/,
@@ -27,6 +27,7 @@ export class SignatureFormComponent {
 
   signature = {};
   socialNetworks = SocialNetworks;
+  buttonStyles = ButtonStyles;
   phoneMask = [
   	'(', DIGIT_1TO9, DIGIT, DIGIT, ')',
   	' ', DIGIT, DIGIT, DIGIT,
@@ -49,7 +50,7 @@ export class SignatureFormComponent {
       	last: [ '', Validators.required ],
       }),
       contact: this.fb.group({
-	      phone: [ '', Validators.required ],
+	      phone: [ '(905) 721.8668', Validators.required ],
 	      ext: [ '', Validators.required ],
 	      email: [ '', Validators.required ],
       }),
@@ -58,9 +59,12 @@ export class SignatureFormComponent {
       	dept: '',
       }),
       social: this.fb.group({
-	      style: '',
+	      style: this.buttonStyles[0],
       	networks: this.fb.array([
-	      	this.initSocial()
+	      	this.initSocial({ type: 'fb', username: 'myuoit'}),
+	      	this.initSocial({ type: 'tw', username: 'uoit'}),
+	      	this.initSocial({ type: 'li', username: 'uoit'}),
+	      	this.initSocial({ type: 'yt', username: 'universityofontario'})
 	      ]),
       }),
       event: this.fb.group({
@@ -83,12 +87,14 @@ export class SignatureFormComponent {
 
     this.formData.valueChanges
     	.subscribe(data => this.onFormChange(data));
+
+  	this.onFormChange(this.formData.value);
   }
 
-  initSocial() {
+  initSocial({ type = '', username = '' }) {
   	return this.fb.group({
-    	type: '',
-    	username: [ '', Validators.required ],
+    	type: this.socialNetworks.find(network => network.value === type),
+    	username: [ username, Validators.required ],
     });
   }
 

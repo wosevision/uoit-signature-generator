@@ -68,9 +68,7 @@
 			<div class="padding-1">
 				<label>Social link style
 					<select formControlName="style">
-						<option value="button">Button only</option>
-						<option value="both">Button and link</option>
-						<option value="link">Link only</option>
+          	<option *ngFor="let style of buttonStyles;" [ngValue]="style">{{style.name}}</option>
 					</select>
 				</label>
 			</div>
