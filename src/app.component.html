@@ -27,6 +27,12 @@
 		    <button class="button" (click)="onFormSubmit(signaturePreview.template, addressee)">Submit</button>
 		  </div>
 		</div>
+		<div class="success callout" *ngIf="resultSuccess">
+		  {{ resultSuccess }}
+		</div>
+		<div class="alert callout" *ngIf="resultError">
+		  {{ resultError }}
+		</div>
 	</div>
 
 </div>

@@ -1,6 +1,7 @@
-const HtmlWebpackPlugin 		= require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const CleanPlugin       		= require('clean-webpack-plugin');
+const HtmlWebpackPlugin     = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const CleanWebpackPlugin    = require('clean-webpack-plugin');
+const CopyWebpackPlugin     = require('copy-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 const config = {
@@ -40,13 +41,15 @@ const config = {
   // inject js bundle to index.html
   plugins: [
 
+	  new CopyWebpackPlugin([{ context: './src/lib', from: '**/*.php', to: 'lib'}]),
+
 	  new HtmlWebpackPlugin({
 	    template: './src/index.html',
 	    inject: 'body',
 	    minify: false
 	  }),
 
-	  new FaviconsWebpackPlugin('./src/assets/favicon.png')
+	  new FaviconsWebpackPlugin('./src/assets/favicon.png'),
   ],
 
   // webpack dev server configuration
@@ -64,7 +67,7 @@ if (NODE_ENV === 'development') {
 if (NODE_ENV === 'production') {
   config.plugins.push(
     // Remove build related folders
-    new CleanPlugin(['dist'])
+    new CleanWebpackPlugin(['dist'])
   );
 }
 

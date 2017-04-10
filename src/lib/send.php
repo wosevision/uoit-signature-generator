@@ -6,6 +6,7 @@ date_default_timezone_set('Canada/Eastern');
 header('Access-Control-Allow-Origin: http://localhost:8080', false);
 header('Access-Control-Allow-Headers: origin, x-requested-with, content-type, x-xsrf-token');
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
+header('Content-type: application/json; charset=utf-8');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	// echo 'fun!';
 	$req = json_decode(file_get_contents('php://input'),true);
@@ -66,9 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	//send the message, check for errors
 	if ($error) {
-	    echo '<br/><div data-alert class="alert-box alert"><strong style="font-family:franklin_gothic_fsdemi;">Mailer error: </strong>'.$error.'<a href="#" class="close">&times;</a></div><br/><p>DEBUG: '.$debug ;
+		$result = array('success' => false, 'data' => $error);
+		echo json_encode($result, true);
+		exit();
 	} else {
-	    echo '<br/><div data-alert class="alert-box success"><strong style="font-family:franklin_gothic_fsdemi;">Success!</strong> Message sent.<a href="#" class="close">&times;</a></div>';
+		$result = array('success' => true, 'data' => 'Message sent successfully!');
+		echo json_encode($result, true);
+		exit();
 	}
 	
 }

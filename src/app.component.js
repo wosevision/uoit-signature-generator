@@ -37,14 +37,17 @@ export class AppComponent {
   	console.log('Form submit; outside', html);
   	this.sendFormData({ html, addressee })
 			.subscribe(
-				result => this.resultSuccess = result,
-				error =>  this.resultError = error);
+				result => this.resultSuccess = result.data,
+				error =>  this.resultError = error.data);
   }
 
   sendFormData({ html, addressee }) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-  	return this.http.post('http://localhost:8888/ro_signature_generator/send.php', {
+    console.log({
+			html, addressee
+		});
+  	return this.http.post('/lib/send.php', {
 			html, addressee
 		}, options)
       .map(this.extractData)

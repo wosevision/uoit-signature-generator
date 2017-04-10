@@ -23,7 +23,7 @@ export class SignaturePreviewComponent {
   }
 
   get template() {
-    return this.el.nativeElement.innerHTML;
+    return JSON.parse(JSON.stringify(this.el.nativeElement.innerHTML));
   }
 
   logoUrl = require('../assets/logos/uoit_logo-gs-horizontal.gif');
