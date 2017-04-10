@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 //SMTP needs accurate times, and the PHP time zone MUST be set
 //This should be done in your php.ini, but this is how to do it if you don't have access to that
 date_default_timezone_set('Canada/Eastern');
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	//Attach an image file
 	//$mail->addAttachment('images/phpmailer_mini.png');
 	// foreach ($addressees as $a) {
-		$mail->addAddress($req['sendto']);
+		$mail->addAddress($req['addressee']);
 		if (!$mail->send()) {
 			$error = $mail->ErrorInfo;
 		}

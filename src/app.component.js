@@ -37,8 +37,8 @@ export class AppComponent {
   	console.log('Form submit; outside', html);
   	this.sendFormData({ html, addressee })
 			.subscribe(
-				result => this.resultSuccess = result.data,
-				error =>  this.resultError = error.data);
+				result => this.resultSuccess = result,
+				error =>  this.resultError = error);
   }
 
   sendFormData({ html, addressee }) {
@@ -47,7 +47,7 @@ export class AppComponent {
     console.log({
 			html, addressee
 		});
-  	return this.http.post('/lib/send.php', {
+  	return this.http.post('lib/send.php', {
 			html, addressee
 		}, options)
       .map(this.extractData)
