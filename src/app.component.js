@@ -11,10 +11,11 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import template from './app.component.html';
+import styles from './app.component.scss';
 
 @Component({
   selector: 'signature-generator',
-  styleUrls: [ './app.component.scss' ],
+  styles: [ styles ],
   template
 })
 export class AppComponent {

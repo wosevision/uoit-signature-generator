@@ -26,6 +26,7 @@ export class SignaturePreviewComponent {
     return this.el.nativeElement.innerHTML;
   }
 
+  logoUrl = require('../assets/logos/uoit_logo-gs-horizontal.gif');
 	socialNetworks = SocialNetworks;
 
 	constructor(ElementRef) {

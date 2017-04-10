@@ -11,10 +11,11 @@ import {
 } from '@angular/animations';
 
 import template from './accordion-panel.component.html';
+import styles from './accordion.component.scss';
 
 @Component({
   selector: 'accordion-panel',
-  styleUrls: [ './accordion/accordion.component.scss' ],
+  styles: [ styles ],
   animations: [
     trigger('panelState', [
       state('open', style({height: '*'})),

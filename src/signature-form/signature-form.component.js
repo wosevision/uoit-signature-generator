@@ -2,7 +2,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 
 import { SocialNetworks, ButtonStyles } from '../common/social-networks.constant';
+
 import template from './signature-form.component.html';
+import styles from './signature-form.component.scss';
 
 const DIGIT = /\d/,
 			DIGIT_1TO9 = /[1-9]/;
@@ -12,7 +14,7 @@ const DIGIT = /\d/,
  */
 @Component({
   selector: 'signature-form',
-  styleUrls: [ './signature-form/signature-form.component.scss' ],
+  styles: [ styles ],
   template
 })
 export class SignatureFormComponent {

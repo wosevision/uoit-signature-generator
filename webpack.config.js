@@ -8,7 +8,8 @@ const config = {
   entry: './src/app.js',
   output: {
     path: __dirname + '/dist',
-    filename: "bundle.js"
+    publicPath: 'http://localhost:8888/uoit-signature-generator/dist/',
+    filename: "[name].[hash].[ext]"
   },
 
   module: {
@@ -18,8 +19,8 @@ const config = {
       { test: /\.js$/, exclude: /node_modules/, loader:"babel-loader" },
       
       // load and compile sass assets and css leftovers
-			{ test: /\.scss$/, loader: "raw-loader!css-loader!resolve-url-loader!sass-loader" },
-      { test: /\.css$/, loader: "raw-loader!css-loader!resolve-url-loader"},
+			{ test: /\.scss$/, loader: "raw-loader!sass-loader" },
+      { test: /\.css$/, loader: "raw-loader"},
 
       // load JSON files and HTML/PHP
       { test: /\.json$/, loader: "json" },
@@ -31,7 +32,8 @@ const config = {
       { test: /\.woff(2)?$/, loader: "url-loader?limit=8192&minetype=application/font-woff"},
 
       // load images (inline base64 URLs for <=8k images)
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
+      // { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=8192'}
+      { test: /\.(png|jpg|gif)$/, loader: 'file-loader?name=assets/[name].[hash].[ext]'}
     ]
   },
 
