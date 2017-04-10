@@ -53,6 +53,7 @@ export class SignatureFormComponent {
 	      phone: [ '(905) 721.8668', Validators.required ],
 	      ext: [ '', Validators.required ],
 	      email: [ '', Validators.required ],
+	      website: [ 'uoit.ca', Validators.required ],
       }),
       credentials: this.fb.group({
       	title: '',
