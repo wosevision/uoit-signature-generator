@@ -64,25 +64,23 @@
 		    </td>
 		    <td width="390" valign="middle">
 					<font size="2" color="#666666" face="Helvetica, Arial, sans-serif">
-			    	{{formData.event?.desc }}&nbsp;<a [href]="formData.event?.url" style="word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" title="{{formData.event?.cta }} – {{formData.event?.name }}">
-						<strong>
-						  {{formData.event?.cta }}
-						</strong>
-						</a>
+			    	{{formData.event.data?.desc }}&nbsp;<a [href]="formData.event.data?.url" style="word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" title="{{formData.event.data?.cta }} – {{formData.event.data?.name }}"><strong>{{formData.event.data?.cta }}</strong></a>
 					</font>
 				</td>
 		  </tr>
 		</tbody>
 	</table>
 
-	<table width="600" cellpadding="0" cellspacing="0">
+	<table width="600" cellpadding="0" cellspacing="0" *ngIf="formData.message?.content">
 		<tr>
 			<td>
 				<font [size]="formData.message?.style == 1 ? 1 : 2" color="#666666" face="Helvetica, Arial, sans-serif">
-					{{ formData.message?.content }}
+					{{ formData.message.content }}
 				</font>
 			</td>
 		</tr>
 	</table>
+
+	<!-- <iframe src="" [frameLocals]="formData"></iframe> -->
 
 </div>

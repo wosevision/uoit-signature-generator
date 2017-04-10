@@ -69,13 +69,16 @@ export class SignatureFormComponent {
 	      ]),
       }),
       event: this.fb.group({
-	      icon: '',
-	      size: '',
-	      name: '',
-	      date: '',
-	      desc: '',
-	      cta: '',
-	      url: '',
+      	use: false,
+      	data: this.fb.group({
+		      icon: '',
+		      size: '',
+		      name: '',
+		      date: '',
+		      desc: '',
+		      cta: '',
+		      url: '',
+		    })
       }),
       message: this.fb.group({
       	style: '',
