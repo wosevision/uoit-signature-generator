@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 
 import { SocialNetworks, ButtonStyles } from '../common/social-networks.constant';
+import { EventIcons } from '../common/event-icons.constant';
 
 import template from './signature-form.component.html';
 import styles from './signature-form.component.scss';
@@ -30,6 +31,7 @@ export class SignatureFormComponent {
   signature = {};
   socialNetworks = SocialNetworks;
   buttonStyles = ButtonStyles;
+  eventIcons = EventIcons;
   phoneMask = [
   	'(', DIGIT_1TO9, DIGIT, DIGIT, ')',
   	' ', DIGIT, DIGIT, DIGIT,

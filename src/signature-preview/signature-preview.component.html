@@ -11,7 +11,7 @@
 
 	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;">
 		<tr *ngIf="formData.social?.style.value === 'button'">
-			<td *ngFor="let network of formData.social?.networks;" style="text-align: center;padding: 0;">
+			<td *ngFor="let network of formData.social?.networks;" style="padding: 0;">
 				<a style="border: 0; outline: none;" title="{{ [network.type.cta, network.type.value === 'tw' ? '@' + network.username : network.username, 'on', network.type.name].join(' ') }}" [href]="network.type.href + (network.username || network.type.default)">
 					<img [src]="network.type.src" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/>
 				</a> 
@@ -52,7 +52,7 @@
 		    	<table>
 		    		<tr>
 		    			<td [width]="formData.event.data?.size == 1 ? 36 : 24" valign="middle">
-		    				<img align="none" src="assets/event_icons/{{ formData.event.data?.icon }}_64x64.jpg" [width]="formData.event.data?.size == 1 ? 24 : 16" [height]="formData.event.data?.size == 1 ? 24 : 16">
+		    				<img align="none" [src]="formData.event.data?.icon.src" [width]="formData.event.data?.size == 1 ? 24 : 16" [height]="formData.event.data?.size == 1 ? 24 : 16">
 		    			</td>
 		    			<td valign="middle">
 								<font size="2" color="#666666" face="Helvetica, Arial, sans-serif">

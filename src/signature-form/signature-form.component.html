@@ -140,14 +140,7 @@
 					        <label>Icon:
 				            <select formControlName="icon">
 				            	<option value="" disabled="disabled">Please select...</option>
-				            	<option value="calendar">Calendar</option>
-				            	<option value="chat">Chat</option>
-				            	<option value="compass">Compass</option>
-				            	<option value="cursor">Cursor</option>
-				            	<option value="link">Link</option>
-				            	<option value="location">Location</option>
-				            	<option value="question">Question</option>
-				            	<option value="uoitbook">UOIT book</option>
+			              	<option *ngFor="let icon of eventIcons;" [ngValue]="icon">{{icon.name}}</option>
 				            </select>
 				            <!-- <select formControlName="icon">
 											<option>apple</option>
