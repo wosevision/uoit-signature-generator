@@ -32,3 +32,6 @@ node_modules
 
 # PHP linting metadata
 .phpintel
+
+# build and bundled assets
+dist
