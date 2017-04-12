@@ -7,11 +7,8 @@ import {
 } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/concatMap';
-import 'rxjs/add/operator/reduce';
-import { X2JS } from 'x2js';
+import 'rxjs/add/operator/distinct';
 
 import { DirectoryColumns } from './directory.constant';
 
@@ -32,12 +29,7 @@ export class DirectoryService {
   getDepartments() {
   	return this.getDirectoryBase()
 	  	.concatMap(this.mapDepartments)
-	  	.reduce((reduced, item) => {
-	  		if (!reduced.includes(item)) {
-	  			reduced.push(item);
-	  		}
-	  		return reduced;
-	  	}, []);
+	  	.distinct()
   }
 
   getDirectoryBase() {

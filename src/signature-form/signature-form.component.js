@@ -54,7 +54,7 @@ export class SignatureFormComponent {
   	this.directory.getDepartments()
   		.subscribe(
   			departments => console.log(departments),
-  			error => console.log(error));
+  			error => console.error(error));
   }
 
   buildForm() {
