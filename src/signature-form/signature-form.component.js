@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 
 import { SocialNetworks, ButtonStyles } from '../common/social-networks.constant';
 import { EventIcons } from '../common/event-icons.constant';
+import { DirectoryService } from '../common/directory.service';
 
 import template from './signature-form.component.html';
 import styles from './signature-form.component.scss';
@@ -22,6 +23,7 @@ export class SignatureFormComponent {
 	static get parameters() {
 	  return [
 	  	[FormBuilder],
+	  	[DirectoryService]
 	  ];
 	}
 
@@ -38,12 +40,21 @@ export class SignatureFormComponent {
   	'.', DIGIT, DIGIT, DIGIT, DIGIT
   ];
 
-  constructor(FormBuilder) {
+  constructor(FormBuilder, DirectoryService) {
   	this.fb = FormBuilder;
+  	this.directory = DirectoryService;
   }
 
   ngOnInit() {
   	this.buildForm();
+  	this.getDepartments()
+  }
+
+  getDepartments() {
+  	this.directory.getDepartments()
+  		.subscribe(
+  			departments => console.log(departments),
+  			error => console.log(error));
   }
 
   buildForm() {
