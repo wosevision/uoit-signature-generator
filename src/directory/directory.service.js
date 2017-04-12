@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/distinct';
 
-import { DirectoryColumns } from '../constants/directory-columns.constant';
+import { DirectoryColumns } from './directory-columns.constant';
 
 @Injectable()
 export class DirectoryService {
