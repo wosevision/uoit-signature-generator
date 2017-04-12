@@ -1,8 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 
+import { CompleterService } from 'ng2-completer';
+
 import { SocialNetworks, ButtonStyles } from '../common/social-networks.constant';
 import { EventIcons } from '../common/event-icons.constant';
+import { DirectoryColumns } from '../common/directory.constant';
 import { DirectoryService } from '../common/directory.service';
 
 import template from './signature-form.component.html';
@@ -23,7 +26,8 @@ export class SignatureFormComponent {
 	static get parameters() {
 	  return [
 	  	[FormBuilder],
-	  	[DirectoryService]
+	  	[DirectoryService],
+	  	[CompleterService],
 	  ];
 	}
 
@@ -40,21 +44,27 @@ export class SignatureFormComponent {
   	'.', DIGIT, DIGIT, DIGIT, DIGIT
   ];
 
-  constructor(FormBuilder, DirectoryService) {
+  constructor(FormBuilder, DirectoryService, CompleterService) {
   	this.fb = FormBuilder;
   	this.directory = DirectoryService;
+  	this.completer = CompleterService;
   }
 
   ngOnInit() {
   	this.buildForm();
-  	this.getDepartments()
-  }
-
-  getDepartments() {
-  	this.directory.getDepartments()
-  		.subscribe(
-  			departments => console.log(departments),
-  			error => console.error(error));
+  	const directory = this.directory.getAll(),
+  				firstNameColumn = DirectoryColumns.NAME_FIRST,
+  				lastNameColumn = DirectoryColumns.NAME_LAST,
+  				titleColumn = DirectoryColumns.TITLE,
+  				emailColumn = DirectoryColumns.EMAIL,
+  				departmentColumn = DirectoryColumns.DEPARTMENT;
+  	this.directory = {
+  		firstNames: this.completer.local(directory, firstNameColumn, firstNameColumn),
+  		lastNames: this.completer.local(directory, lastNameColumn, lastNameColumn),
+  		titles: this.completer.local(directory, titleColumn, titleColumn),
+  		emails: this.completer.local(directory, emailColumn, emailColumn),
+  		departments: this.completer.local(directory, departmentColumn, departmentColumn),
+  	};
   }
 
   buildForm() {

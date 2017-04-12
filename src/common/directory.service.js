@@ -8,6 +8,8 @@ import {
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/concatMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/distinct';
 
 import { DirectoryColumns } from './directory.constant';
@@ -26,10 +28,8 @@ export class DirectoryService {
   	this.http = Http;
   }
 
-  getDepartments() {
-  	return this.getDirectoryBase()
-	  	.concatMap(this.mapDepartments)
-	  	.distinct()
+  buildMapFunction(column) {
+  	return res => res.json().data.map(item => item[column]);
   }
 
   getDirectoryBase() {
@@ -38,8 +38,24 @@ export class DirectoryService {
     return this.http.get(this.directoryUrl, options);
   }
 
-  mapDepartments(res) {
-  	return res.json().data.map(item => item[DirectoryColumns.DEPARTMENT]);
+  getAll() {
+  	return this.getDirectoryBase()
+  		.map(res => res.json().data)
+  		.catch(this.handleError)
+  }
+
+  getDepartments() {
+  	return this.getDirectoryBase()
+	  	.concatMap(this.buildMapFunction(DirectoryColumns.DEPARTMENT))
+	  	.distinct()
+	  	.catch(this.handleError)
+  }
+
+  getTitles() {
+  	return this.getDirectoryBase()
+	  	.concatMap(this.buildMapFunction(DirectoryColumns.TITLE))
+	  	.distinct()
+	  	.catch(this.handleError)
   }
 
   handleError (error) {
