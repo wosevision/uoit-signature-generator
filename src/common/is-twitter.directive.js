@@ -21,7 +21,7 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
  * - `<template [myUnless]="condition"><div>...</div></template>`
  *
  */
-@Directive({ selector: '[myUnless]'})
+@Directive({ selector: '[isTwitter]'})
 export class TwitterDirective {
   hasView = false;
   constructor(
