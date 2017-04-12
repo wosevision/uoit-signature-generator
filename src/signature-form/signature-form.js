@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { TextMaskModule } from 'angular2-text-mask';
+import { Ng2CompleterModule } from 'ng2-completer';
 
 import { AccordionModule } from '../accordion/accordion';
 import { SignatureFormComponent } from './signature-form.component';
@@ -12,6 +13,7 @@ import { SignatureFormComponent } from './signature-form.component';
   	CommonModule,
   	ReactiveFormsModule,
   	TextMaskModule,
+		Ng2CompleterModule,
   	AccordionModule,
   ],
   declarations: [
