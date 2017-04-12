@@ -9,29 +9,38 @@
 		<span *ngIf="formData.contact?.website"><a href="http://{{ formData.contact.website }}" style="color: #0077CA;">{{ formData.contact.website }}</a></span>
 	</p>
 
-	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;">
-		<tr *ngIf="formData.social?.style.value === 'button'">
+	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;" *ngIf="formData.social?.style.value === 'button'">
+		<tr>
 			<td *ngFor="let network of formData.social?.networks;" style="padding: 0;">
 				<a style="border: 0; outline: none;" title="{{ [network.type.cta, network.type.value === 'tw' ? '@' + network.username : network.username, 'on', network.type.name].join(' ') }}" [href]="network.type.href + (network.username || network.type.default)">
-					<img [src]="network.type.src" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/>
+					<img [src]="network.type.src" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px; margin-right: 4px;"/>
 				</a> 
 			</td>
 		</tr>
-		<tr *ngIf="formData.social?.style.value === 'both'">
+	</table>
+
+	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;" *ngIf="formData.social?.style.value === 'both'">
+		<tr *ngFor="let network of formData.social?.networks;">
 			<td style="padding: 0;">
-				<a style="border: 0; outline: none;" [href]="network.type.href + (network.username || network.type.default)" *ngFor="let network of formData.social?.networks;">
-					<img [src]="network.type.src" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px;"/>
+				<a style="border: 0; outline: none;" [href]="network.type.href + (network.username || network.type.default)">
+					<img [src]="network.type.src" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px; margin-right: 4px;"/>
 					{{ network.type.cta }} <strong>{{ network.type.value === 'tw' ? '@' + network.username : network.username }}</strong> on {{ network.type.name }}<br/>
 				</a> 
 			</td>
 		</tr>
-		<tr *ngIf="formData.social?.style.value === 'link'">
+	</table>
+	
+	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px;" *ngIf="formData.social?.style.value === 'link'">
+		<tr *ngFor="let network of formData.social?.networks;">
 			<td style="padding: 0;">
-				<a style="border: 0; outline: none;" [href]="network.type.href + (network.username || network.type.default)" *ngFor="let network of formData.social?.networks;">
+				<a style="border: 0; outline: none;" [href]="network.type.href + (network.username || network.type.default)">
 					{{ network.type.cta }} <strong>{{ network.type.value === 'tw' ? '@' + network.username : network.username }}</strong> on {{ network.type.name }}<br/>
 				</a> 
 			</td>
 		</tr>
+	</table>
+
+	<table>
 		<tr>
 			<td colspan="4">
 				<a style="border: 0; outline: none;" title="UOIT website" href="http://uoit.ca"><img style="border: 0; width: 324px; height: 56px;" [src]="logoUrl" alt="UOIT logo" width="324" height="56" /></a>
