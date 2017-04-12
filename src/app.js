@@ -17,22 +17,18 @@ import { AppComponent } from './app.component';
 /* Feature modules */
 import { SignatureFormModule } from './signature-form/signature-form';
 import { SignaturePreviewModule } from './signature-preview/signature-preview';
-
-/* Common providers */
-import { DirectoryService } from './common/directory.service';
+import { DirectoryModule } from './directory/directory';
 
 @NgModule({
   imports: [
   	BrowserModule,
+  	HttpModule,
   	SignatureFormModule,
   	SignaturePreviewModule,
-  	HttpModule,
+  	DirectoryModule,
   ],
   declarations: [
     AppComponent,
-  ],
-  providers: [
-  	DirectoryService,
   ],
   bootstrap: [ AppComponent ]
 })

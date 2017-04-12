@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/distinct';
 
-import { DirectoryColumns } from './directory.constant';
+import { DirectoryColumns } from '../constants/directory-columns.constant';
 
 @Injectable()
 export class DirectoryService {
@@ -22,7 +22,7 @@ export class DirectoryService {
 	  ];
 	}
 
-  directoryUrl = 'lib/directory.php';
+  directoryUrl = 'http://localhost:8888/uoit-signature-generator/dist/lib/directory.php';
 
   constructor(Http) {
   	this.http = Http;

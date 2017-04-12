@@ -3,10 +3,10 @@ import { FormBuilder, Validators } from "@angular/forms";
 
 import { CompleterService } from 'ng2-completer';
 
-import { SocialNetworks, ButtonStyles } from '../common/social-networks.constant';
-import { EventIcons } from '../common/event-icons.constant';
-import { DirectoryColumns } from '../common/directory.constant';
-import { DirectoryService } from '../common/directory.service';
+import { SocialNetworks, ButtonStyles } from '../constants/social-networks.constant';
+import { EventIcons } from '../constants/event-icons.constant';
+import { DirectoryColumns } from '../constants/directory-columns.constant';
+import { DirectoryService } from '../directory/directory.service';
 
 import template from './signature-form.component.html';
 import styles from './signature-form.component.scss';
