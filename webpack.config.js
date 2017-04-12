@@ -10,7 +10,7 @@ const config = {
   output: {
     path: __dirname + '/dist',
     publicPath: NODE_ENV === 'production' ? 'http://localhost:8888/uoit-signature-generator/dist/' : '',
-    filename: "[name].[hash].[ext]"
+    filename: "[name].[hash].js"
   },
 
   module: {
