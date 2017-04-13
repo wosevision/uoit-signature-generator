@@ -5,7 +5,7 @@ import { CompleterService } from 'ng2-completer';
 
 import { SocialNetworks, ButtonStyles } from '../constants/social-networks.constant';
 import { EventIcons } from '../constants/event-icons.constant';
-import { DirectoryColumns } from '../directory/directory-columns.constant';
+import { DirectoryColumns } from '../constants/directory-columns.constant';
 import { DirectoryService } from '../directory/directory.service';
 
 import template from './signature-form.component.html';

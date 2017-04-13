@@ -13,7 +13,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/distinct';
 
 import { LocalPrefix } from '../constants/local-prefix.constant.js';
-import { DirectoryColumns } from './directory-columns.constant';
+import { DirectoryColumns } from '../constants/directory-columns.constant';
 
 @Injectable()
 export class DirectoryService {
