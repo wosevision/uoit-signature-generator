@@ -13,7 +13,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/distinct';
 
 import { LocalPrefix } from '../constants/local-prefix.constant.js';
-import { DirectoryColumns } from '../constants/directory-columns.constant';
+import { LdapColumns } from '../constants/ldap-columns.constant';
 
 @Injectable()
 export class DirectoryService {
@@ -47,14 +47,14 @@ export class DirectoryService {
 
   getDepartments() {
   	return this.getDirectoryBase()
-	  	.concatMap(this.buildMapFunction(DirectoryColumns.DEPARTMENT))
+	  	.concatMap(this.buildMapFunction(LdapColumns.DEPARTMENT))
 	  	.distinct()
 	  	.catch(this.handleError)
   }
 
   getTitles() {
   	return this.getDirectoryBase()
-	  	.concatMap(this.buildMapFunction(DirectoryColumns.TITLE))
+	  	.concatMap(this.buildMapFunction(LdapColumns.TITLE))
 	  	.distinct()
 	  	.catch(this.handleError)
   }

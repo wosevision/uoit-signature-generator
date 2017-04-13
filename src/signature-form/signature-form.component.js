@@ -5,7 +5,7 @@ import { CompleterService } from 'ng2-completer';
 
 import { SocialNetworks, ButtonStyles } from '../constants/social-networks.constant';
 import { EventIcons } from '../constants/event-icons.constant';
-import { DirectoryColumns } from '../constants/directory-columns.constant';
+import { LdapColumns } from '../constants/ldap-columns.constant';
 import { DirectoryService } from '../directory/directory.service';
 
 import template from './signature-form.component.html';
@@ -53,11 +53,11 @@ export class SignatureFormComponent {
   ngOnInit() {
   	this.buildForm();
   	const directory = this.directory.getAll(),
-  				firstNameColumn = DirectoryColumns.NAME_FIRST,
-  				lastNameColumn = DirectoryColumns.NAME_LAST,
-  				titleColumn = DirectoryColumns.TITLE,
-  				emailColumn = DirectoryColumns.EMAIL,
-  				departmentColumn = DirectoryColumns.DEPARTMENT;
+  				firstNameColumn = LdapColumns.NAME_FIRST,
+  				lastNameColumn = LdapColumns.NAME_LAST,
+  				titleColumn = LdapColumns.TITLE,
+  				emailColumn = LdapColumns.EMAIL,
+  				departmentColumn = LdapColumns.DEPARTMENT;
   	this.directory = {
   		firstNames: this.completer.local(directory, firstNameColumn, firstNameColumn),
   		lastNames: this.completer.local(directory, lastNameColumn, lastNameColumn),
