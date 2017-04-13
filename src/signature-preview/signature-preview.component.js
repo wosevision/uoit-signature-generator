@@ -2,10 +2,12 @@ import { Component, Input, ElementRef } from '@angular/core';
 
 import { SocialNetworks } from '../constants/social-networks.constant';
 import template from './signature-preview.component.html';
+import styles from './signature-preview.component.scss';
 
 @Component({
   selector: 'signature-preview',
-  template
+  template,
+  styles: [ styles ]
 })
 export class SignaturePreviewComponent {
 	static get parameters() {

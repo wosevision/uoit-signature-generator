@@ -1,0 +1,17 @@
+table thead, table tbody, table tfoot {
+  border: none;
+  background-color: transparent;
+}
+
+table tbody th, table tbody td {
+	padding: 0;
+}
+
+table td {
+  border: none;
+}
+
+p a, ul a, table a {
+  border-bottom: none !important;
+  background-image: none !important;
+}
