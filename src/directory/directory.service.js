@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/distinct';
 
+import { LocalPrefix } from '../constants/local-prefix.constant.js';
 import { DirectoryColumns } from './directory-columns.constant';
 
 @Injectable()
@@ -22,7 +23,7 @@ export class DirectoryService {
 	  ];
 	}
 
-  directoryUrl = 'lib/directory.php';
+  directoryUrl =  `${ LocalPrefix }lib/directory.php`;
 
   constructor(Http) {
   	this.http = Http;
