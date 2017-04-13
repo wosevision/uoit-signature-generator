@@ -24,6 +24,9 @@ export class AppComponent {
 	  	[Http],
 	  ];
 	}
+
+  sendUrl = 'lib/send.php';
+
   constructor(Http) {
   	this.http = Http;
   }
@@ -47,7 +50,7 @@ export class AppComponent {
     console.log({
 			html, addressee
 		});
-  	return this.http.post('lib/send.php', {
+  	return this.http.post(this.sendUrl, {
 			html, addressee
 		}, options)
       .map(this.extractData)

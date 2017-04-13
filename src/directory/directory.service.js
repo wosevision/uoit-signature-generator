@@ -22,7 +22,7 @@ export class DirectoryService {
 	  ];
 	}
 
-  directoryUrl = 'http://localhost:8888/uoit-signature-generator/dist/lib/directory.php';
+  directoryUrl = 'lib/directory.php';
 
   constructor(Http) {
   	this.http = Http;

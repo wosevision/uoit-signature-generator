@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SignaturePreviewComponent } from './signature-preview.component';
+import { AbsoluteUrlPipe } from './absolute-url.pipe';
 
 @NgModule({
   imports: [
@@ -9,6 +10,7 @@ import { SignaturePreviewComponent } from './signature-preview.component';
   ],
   declarations: [
     SignaturePreviewComponent,
+    AbsoluteUrlPipe,
   ],
   exports: [ SignaturePreviewComponent ]
 })
