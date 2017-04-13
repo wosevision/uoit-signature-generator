@@ -1,5 +1,5 @@
 <form [formGroup]="formData" (ngSubmit)="onSubmit($event, formData.value)" class="row flex-dir-column">
-	<label class="disabled">Use a linked Expert Centre profile?
+<!-- 	<label class="disabled">Use a linked Expert Centre profile?
 		<input type="checkbox" formControlName="expert">
 	</label>
 	<fieldset class="fieldset" [hidden]="!formData.value.expert">
@@ -9,7 +9,7 @@
 				<option></option>
 			</select>
 		</label>
-	</fieldset>
+	</fieldset> -->
 	<accordion>
 		<accordion-panel heading="Personal">
 			<div class="padding-1">
@@ -190,8 +190,8 @@
 	        <label>Style:
             <select formControlName="style">
             	<option value="" disabled="disabled">Please select...</option>
-            	<option value="0">Normal</option>
-            	<option value="1">Disclaimer</option>
+            	<option value="14">Normal</option>
+            	<option value="11">Disclaimer</option>
           	</select>
         	</label>
 	      </div>
