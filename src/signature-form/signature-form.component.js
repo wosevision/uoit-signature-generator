@@ -6,6 +6,7 @@ import { CompleterService } from 'ng2-completer';
 import { SocialNetworks, ButtonStyles } from '../constants/social-networks.constant';
 import { EventIcons } from '../constants/event-icons.constant';
 import { LdapColumns } from '../constants/ldap-columns.constant';
+import { BrandLogos } from '../constants/brand-logos.constant';
 import { DirectoryService } from '../directory/directory.service';
 
 import template from './signature-form.component.html';
@@ -38,6 +39,7 @@ export class SignatureFormComponent {
   socialNetworks = SocialNetworks;
   buttonStyles = ButtonStyles;
   eventIcons = EventIcons;
+  brandLogos = BrandLogos;
   phoneMask = [
   	'(', DIGIT_1TO9, DIGIT, DIGIT, ')',
   	' ', DIGIT, DIGIT, DIGIT,
@@ -93,6 +95,7 @@ export class SignatureFormComponent {
 	      	this.initSocial({ type: 'yt', username: 'universityofontario'})
 	      ]),
       }),
+      logo: this.brandLogos[0],
       event: this.fb.group({
       	use: false,
       	data: this.fb.group({

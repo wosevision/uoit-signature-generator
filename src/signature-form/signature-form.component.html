@@ -129,6 +129,16 @@
       </div>
 		</accordion-panel>
 
+		<accordion-panel heading="Logo">
+			<div class="padding-1">
+	      <label>Logo wordmark
+	        <select formControlName="logo">
+	        	<option *ngFor="let logo of brandLogos;" [ngValue]="logo">{{logo.name}}</option>
+	        </select>
+	      </label>
+			</div>
+		</accordion-panel>
+
 		<accordion-panel heading="Event" formGroupName="event">
 			<div class="padding-1">
 
