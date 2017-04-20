@@ -11,6 +11,10 @@ table td {
   border: none;
 }
 
+table tbody tr:nth-child(even) {
+	background-color: transparent;
+}
+
 p a, ul a, table a {
   border-bottom: none !important;
   background-image: none !important;

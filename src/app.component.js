@@ -33,12 +33,10 @@ export class AppComponent {
   }
 
   onFormChange(event) {
-  	console.log('Form changes; outside', event);
   	this.formData = event;
   }
 
   onFormSubmit(html, addressee) {
-  	console.log('Form submit; outside', html);
   	this.sendFormData({ html, addressee })
 			.subscribe(
 				result => this.resultSuccess = result,
@@ -48,9 +46,6 @@ export class AppComponent {
   sendFormData({ html, addressee }) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    console.log({
-			html, addressee
-		});
   	return this.http.post(this.sendUrl, {
 			html, addressee
 		}, options)
@@ -64,7 +59,6 @@ export class AppComponent {
   }
 
   handleError (error) {
-    // In a real world app, you might use a remote logging infrastructure
     let errMsg;
     if (error instanceof Response) {
       const body = error.json() || '';

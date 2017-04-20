@@ -12,7 +12,7 @@
 	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px; margin-bottom:16px;" *ngIf="formData.social?.style.value === 'button'">
 		<tr>
 			<td *ngFor="let network of formData.social?.networks;" style="padding: 0;">
-				<a style="border: 0; outline: none;" title="{{ [network.type.cta, network.type.value === 'tw' ? '@' + network.username : network.username, 'on', network.type.name].join(' ') }}" [href]="network.type.href + (network.username || network.type.default)">
+				<a style="border: 0; outline: none;" title="{{ [network.type.cta, network.type.value === 'tw' ? '@' + network.username : network.username, 'on', network.type.name].join(' ') }}" [href]="network.type.href + (network.username || network.type.default)" *ngIf="network.type">
 					<img [src]="network.type.src | absoluteUrl" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px; margin-right: 4px;"/>
 				</a> 
 			</td>
@@ -22,7 +22,7 @@
 	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px; margin-bottom:16px;" *ngIf="formData.social?.style.value === 'both'">
 		<tr *ngFor="let network of formData.social?.networks;">
 			<td style="padding: 0; font-size: 12px; vertical-align: middle;" valign="middle">
-				<a style="border: 0; outline: none; vertical-align: middle; word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" valign="middle" [href]="network.type.href + (network.username || network.type.default)">
+				<a style="border: 0; outline: none; vertical-align: middle; word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" valign="middle" [href]="network.type.href + (network.username || network.type.default)" *ngIf="network.type">
 					<img [src]="network.type.src | absoluteUrl" alt="{{ network.type.name }} icon" width="28" height="28" style="border: 0; width: 28px; height: 28px; margin-right: 4px; vertical-align: middle;" valign="middle"/>
 					{{ network.type.cta }} <strong>{{ network.type.value === 'tw' ? '@' + network.username : network.username }}</strong> on {{ network.type.name }}<br/>
 				</a> 
@@ -33,7 +33,7 @@
 	<table border="0" cellpadding="3" cellspacing="0" style="padding: 3px; margin-bottom:16px;" *ngIf="formData.social?.style.value === 'link'">
 		<tr *ngFor="let network of formData.social?.networks;">
 			<td style="padding: 0; font-size: 12px; vertical-align: middle;" valign="middle">
-				<a style="border: 0; outline: none; vertical-align: middle; word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" valign="middle" [href]="network.type.href + (network.username || network.type.default)">
+				<a style="border: 0; outline: none; vertical-align: middle; word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" valign="middle" [href]="network.type.href + (network.username || network.type.default)" *ngIf="network.type">
 					{{ network.type.cta }} <strong>{{ network.type.value === 'tw' ? '@' + network.username : network.username }}</strong> on {{ network.type.name }}<br/>
 				</a> 
 			</td>
@@ -44,7 +44,7 @@
 		<tr>
 			<td>
 				<a style="border: 0; outline: none;" title="UOIT website" href="http://uoit.ca">
-					<img style="border: 0; width: 324px; height: 56px;" [src]="logoUrl | absoluteUrl" alt="UOIT logo" width="324" height="56" />
+					<img style="border: 0; width: 324px; height: 56px;" [src]="formData.logo?.src | absoluteUrl" alt="{{ formData.logo?.name }} logo" width="324" height="56" />
 				</a>
 			</td>
 		</tr>
@@ -60,17 +60,17 @@
 		    				<img align="none" [src]="formData.event.data?.icon.src | absoluteUrl" [width]="formData.event.data?.size == 1 ? 24 : 16" [height]="formData.event.data?.size == 1 ? 24 : 16">
 		    			</td>
 		    			<td valign="middle" style="font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
-								<!-- <font size="2" color="#666666" face="Helvetica, Arial, sans-serif"> -->
-			    				<a [href]="formData.event.data?.url" style="word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" title="Visit the {{formData.event.data?.name }} webpage"><strong>{{formData.event.data?.name }}</strong></a><br>{{formData.event.data?.date }}
-		    				<!-- </font> -->
+			    			<a [href]="formData.event.data?.url" style="word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" title="Visit the {{formData.event.data?.name }} webpage">
+			    				<strong>{{formData.event.data?.name }}</strong>
+			    			</a><br>
+			    			{{formData.event.data?.date }}
 		    			</td>
 		    		</tr>
 		    	</table>
 		    </td>
 		    <td width="390" valign="middle" style="font-size: 12px; font-family: Arial, Helvetica, sans-serif;">
-					<!-- <font size="2" color="#666666" face="Helvetica, Arial, sans-serif"> -->
-			    	{{formData.event.data?.desc }}&nbsp;<a [href]="formData.event.data?.url" style="word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" title="{{formData.event.data?.cta }} – {{formData.event.data?.name }}"><strong>{{formData.event.data?.cta }}</strong></a>
-					<!-- </font> -->
+			    {{formData.event.data?.desc }}
+			    <a [href]="formData.event.data?.url" style="word-wrap: break-word; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #0077ca; font-weight: normal; text-decoration: none;" title="{{formData.event.data?.cta }} – {{formData.event.data?.name }}"><strong>{{formData.event.data?.cta }}</strong></a>
 				</td>
 		  </tr>
 		</tbody>
@@ -85,13 +85,9 @@
 	<table width="600" cellpadding="0" cellspacing="0" *ngIf="formData.message?.content">
 		<tr>
 			<td style="font-family: Arial, Helvetica, sans-serif; color: #666666;" [ngStyle]="{ 'font-size.px': formData.message?.style }">
-				<!-- <font [size]="formData.message?.style == 1 ? 1 : 2" color="#666666" face="Helvetica, Arial, sans-serif"> -->
-					{{ formData.message.content }}
-				<!-- </font> -->
+				{{ formData.message.content }}
 			</td>
 		</tr>
 	</table>
-
-	<!-- <iframe src="" [frameLocals]="formData"></iframe> -->
 
 </div>

@@ -35,14 +35,13 @@ export class SignatureFormComponent {
 	@Output() formChange = new EventEmitter();
 	@Output() formSubmit = new EventEmitter();
 
-  signature = {};
   socialNetworks = SocialNetworks;
   buttonStyles = ButtonStyles;
   eventIcons = EventIcons;
   brandLogos = BrandLogos;
   phoneMask = [
-  	'(', DIGIT_1TO9, DIGIT, DIGIT, ')',
-  	' ', DIGIT, DIGIT, DIGIT,
+  	DIGIT_1TO9, DIGIT, DIGIT,
+  	'.', DIGIT, DIGIT, DIGIT,
   	'.', DIGIT, DIGIT, DIGIT, DIGIT
   ];
 
@@ -71,13 +70,12 @@ export class SignatureFormComponent {
 
   buildForm() {
     this.formData = this.fb.group({
-    	expert: { value: false, disabled: true },
       name: this.fb.group({
       	first: [ '', Validators.required ],
       	last: [ '', Validators.required ],
       }),
       contact: this.fb.group({
-	      phone: [ '(905) 721.8668', Validators.required ],
+	      phone: [ '905.721.8668', Validators.required ],
 	      ext: [ '', Validators.required ],
 	      email: [ '', Validators.required ],
 	      website: [ 'uoit.ca', Validators.required ],
@@ -99,7 +97,7 @@ export class SignatureFormComponent {
       event: this.fb.group({
       	use: false,
       	data: this.fb.group({
-		      icon: '',
+		      icon: this.eventIcons[0],
 		      size: '',
 		      name: '',
 		      date: '',
@@ -113,9 +111,6 @@ export class SignatureFormComponent {
       	content: '',
       }),
     });
- 
-    this.formData.controls['name'].valueChanges
-    	.subscribe(({ first, last }) => this.onValueChange({ first, last }));
 
     this.formData.valueChanges
     	.subscribe(data => this.onFormChange(data));
@@ -123,7 +118,7 @@ export class SignatureFormComponent {
   	this.onFormChange(this.formData.value);
   }
 
-  initSocial({ type = '', username = '' }) {
+  initSocial({ type = '', username = '' } = {}) {
   	return this.fb.group({
     	type: this.socialNetworks.find(network => network.value === type),
     	username: [ username, Validators.required ],
@@ -138,18 +133,11 @@ export class SignatureFormComponent {
   	this.formData.controls['social'].controls['networks'].removeAt(i);
   }
 
-  onValueChange(data) {
-    console.log('Form value change:', data);
-  }
-
   onFormChange(data) {
-    console.log('Form change:', data);
-		this.signature = data;
     this.formChange.emit(data);
   }
 
 	onSubmit(event, formData) {
-		console.log('Form submit:', formData);
 		event.preventDefault();
     this.formSubmit.emit(formData);
 	}
