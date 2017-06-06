@@ -76,7 +76,10 @@ export class SignatureFormComponent {
       }),
       contact: this.fb.group({
 	      phone: [ '905.721.8668', Validators.required ],
-	      ext: [ '', Validators.required ],
+	      ext: '',
+	      mobile: '',
+	      fax: '',
+	      faxext: '',
 	      email: [ '', Validators.required ],
 	      website: [ 'uoit.ca', Validators.required ],
       }),
@@ -84,6 +87,11 @@ export class SignatureFormComponent {
       	title: '',
       	dept: '',
       }),
+      // hours: this.fb.group({
+      // 	title: '',
+      // 	dept: '',
+      // }),
+      hours: '',
       social: this.fb.group({
 	      style: this.buttonStyles[0],
       	networks: this.fb.array([

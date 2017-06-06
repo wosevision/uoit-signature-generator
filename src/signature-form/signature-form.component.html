@@ -45,16 +45,41 @@
 				      </label>
 				    </div>
 				  </div>
-			    <label>Email
-			    	<!-- <input type="email" placeholder="jane.doe@uoit.ca" formControlName="email"> -->
-			      <ng2-completer [datasource]="directory.emails" [minSearchLength]="0" formControlName="email"></ng2-completer>
-			  	</label>
-			    <label>Website
-				    <div class="input-group">
-						  <span class="input-group-label">http<small>[s]</small>://</span>
-				    	<input type="url" placeholder="uoit.ca" formControlName="website" class="input-group-field">
-			    	</div>
-			  	</label>
+				  <div class="row">
+				    <div class="small-12 columns">
+						  <label>Mobile
+					      <input type="tel" formControlName="mobile" autocomplete="tel" [textMask]="{ mask: phoneMask }">
+				      </label>
+				    </div>
+				  </div>
+				  <div class="row">
+				    <div class="small-9 columns">
+						  <label>Fax number
+					      <input type="tel" formControlName="fax" autocomplete="tel" [textMask]="{ mask: phoneMask }">
+				      </label>
+				    </div>
+				    <div class="small-3 columns">
+						  <label>Fax extension
+					      <input type="text" formControlName="faxext">
+				      </label>
+				    </div>
+				  </div>
+				  <div class="row">
+				    <div class="small-6 columns">
+					    <label>Email
+					    	<!-- <input type="email" placeholder="jane.doe@uoit.ca" formControlName="email"> -->
+					      <ng2-completer [datasource]="directory.emails" [minSearchLength]="0" formControlName="email"></ng2-completer>
+					  	</label>
+				    </div>
+				    <div class="small-6 columns">
+					    <label>Website
+						    <div class="input-group">
+								  <span class="input-group-label">http<small>[s]</small>://</span>
+						    	<input type="url" placeholder="uoit.ca" formControlName="website" class="input-group-field">
+					    	</div>
+					  	</label>
+				    </div>
+				  </div>
 		  	</fieldset>
 				<fieldset class="fieldset" formGroupName="credentials">
 					<legend>Credentials</legend>
@@ -73,6 +98,31 @@
 				    </div>
 				  </div>
 				</fieldset>
+			</div>
+		</accordion-panel>
+
+		<accordion-panel heading="Business">
+			<div class="padding-1">
+			  <label>Hours
+		      <input type="text" formControlName="hours">
+	      </label>
+			<!--
+				<fieldset class="fieldset" formGroupName="hours">
+					<legend>Business hours</legend>
+				  <div class="row">
+				    <div class="small-6 columns">
+				      <label>Open
+					      <input type="text" formControlName="open">
+				      </label>
+				    </div>
+				    <div class="small-6 columns">
+				      <label>Close
+					      <input type="text" formControlName="close">
+				      </label>
+				    </div>
+				  </div>
+			  </fieldset>
+			-->
 			</div>
 		</accordion-panel>
 
