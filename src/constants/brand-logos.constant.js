@@ -1,10 +1,14 @@
+import UOIT_LOGO from '../assets/logos/uoit_logo-basic.gif';
+import GPDS_LOGO from '../assets/logos/uoit_logo-gpds-horizontal.gif';
+import UOITDC_LOGO from '../assets/logos/uoit-dc_logo-joint-horizontal.gif';
+
 export const BrandLogos = [{
 	name: 'UOIT',
-	src: require('../assets/logos/uoit_logo-basic.gif')
+	src: UOIT_LOGO
 },{
-	name: 'Grad Studies',
-	src: require('../assets/logos/uoit_logo-gs-horizontal.gif')
+	name: 'Grad / Postdoc',
+	src: GPDS_LOGO
 },{
 	name: 'UOIT-DC',
-	src: require('../assets/logos/uoit-dc_logo-joint-horizontal.gif')
+	src: UOITDC_LOGO
 }]
