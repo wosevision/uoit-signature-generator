@@ -6,9 +6,9 @@ export const BrandLogos = [{
 	name: 'UOIT',
 	src: UOIT_LOGO
 },{
-	name: 'Grad / Postdoc',
-	src: GPDS_LOGO
+  name: 'UOIT-DC',
+  src: UOITDC_LOGO
 },{
-	name: 'UOIT-DC',
-	src: UOITDC_LOGO
+	name: 'School of Graduate and Postdoctoral Studies',
+	src: GPDS_LOGO
 }]
