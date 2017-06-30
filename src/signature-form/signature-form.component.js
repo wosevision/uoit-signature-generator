@@ -54,6 +54,7 @@ export class SignatureFormComponent {
   ngOnInit() {
   	this.buildForm();
   	const directory = this.directory.getAll(),
+          departments = this.directory.getDepartments(),
   				firstNameColumn = LdapColumns.NAME_FIRST,
   				lastNameColumn = LdapColumns.NAME_LAST,
   				titleColumn = LdapColumns.TITLE,
@@ -64,7 +65,7 @@ export class SignatureFormComponent {
   		lastNames: this.completer.local(directory, lastNameColumn, lastNameColumn),
   		titles: this.completer.local(directory, titleColumn, titleColumn),
   		emails: this.completer.local(directory, emailColumn, emailColumn),
-  		departments: this.completer.local(directory, departmentColumn, departmentColumn),
+  		departments: this.completer.local(departments),
   	};
   }
 

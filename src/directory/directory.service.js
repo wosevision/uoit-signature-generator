@@ -23,7 +23,7 @@ export class DirectoryService {
 	  ];
 	}
 
-  directoryUrl =  `${ LocalPrefix }lib/directory.php`;
+  directoryUrl =  `https://api.uoit.ca/v2/directory`;
 
   constructor(Http) {
   	this.http = Http;
@@ -33,30 +33,28 @@ export class DirectoryService {
   	return res => res.json().data.map(item => item[column]);
   }
 
-  getDirectoryBase() {
-  	const headers = new Headers({ 'Accept': 'application/json' }),
+  get(endpoint = '') {
+  	const headers = new Headers({ 'Accept': 'application/json', 'X-XSRF-TOKEN': null }),
   				options = new RequestOptions({ headers });
-    return this.http.get(this.directoryUrl, options);
+    return this.http.get(`${ this.directoryUrl }${ endpoint }`, options)
+        .map(res => res.json().data)
+        .catch(this.handleError)
   }
 
   getAll() {
-  	return this.getDirectoryBase()
-  		.map(res => res.json().data)
-  		.catch(this.handleError)
+  	return this.get()
   }
 
   getDepartments() {
-  	return this.getDirectoryBase()
-	  	.concatMap(this.buildMapFunction(LdapColumns.DEPARTMENT))
-	  	.distinct()
-	  	.catch(this.handleError)
+  	return this.get('/departments')
   }
 
   getTitles() {
-  	return this.getDirectoryBase()
-	  	.concatMap(this.buildMapFunction(LdapColumns.TITLE))
+  	return this.get()
+      .concatMap(
+        data => data.map(item => item[LdapColumns.TITLE])
+      )
 	  	.distinct()
-	  	.catch(this.handleError)
   }
 
   handleError (error) {
