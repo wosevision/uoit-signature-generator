@@ -172,7 +172,7 @@
 	          </div>
           </div>
       	</div>
-      	<div class="column flex-child-auto" *ngIf="formData.controls['social'].controls['networks'].controls.length < 4">
+      	<div class="column flex-child-auto" *ngIf="formData.controls['social'].controls['networks'].controls.length < socialNetworks.length">
       		<div class="callout flex-container align-middle align-center">
 	      		<button class="hollow button" (click)="addSocial()">+ Add social network</button>
       		</div>

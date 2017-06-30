@@ -98,7 +98,8 @@ export class SignatureFormComponent {
 	      	this.initSocial({ type: 'fb', username: 'myuoit'}),
 	      	this.initSocial({ type: 'tw', username: 'uoit'}),
 	      	this.initSocial({ type: 'li', username: 'uoit'}),
-	      	this.initSocial({ type: 'yt', username: 'universityofontario'})
+	      	this.initSocial({ type: 'yt', username: 'universityofontario'}),
+          this.initSocial({ type: 'in', username: 'uoit'})
 	      ]),
       }),
       logo: this.brandLogos[0],
