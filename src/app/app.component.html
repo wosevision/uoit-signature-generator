@@ -1,20 +1,41 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io//">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="page-content">
+	<div class="row">
+	  <h1>Email Signature <small>UOIT Brand Resources</small></h1>
+  </div>
+	<div class="row">
+	  <div class="small-7 columns">
+		  <signature-form #signatureForm (formChange)="onFormChange($event)"></signature-form>
+	  </div>
+	  <div class="small-5 columns">
+		  <fieldset class="fieldset">
+				<legend><strong>Preview</strong></legend>
+		  	<signature-preview [data]="signatureForm.formData.value" #signaturePreview></signature-preview>
+			</fieldset>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-12 columns">
+			<hr/>
+	    <p><strong>Using this signature:</strong><br/>
+	    Enter your email in the box below and click <strong>SUBMIT</strong>; the signature will be sent directly to the email address entered here.</p>
+	    <p><span class="label secondary">NOTE</span> <small>Certain elements in the signature <em>preview</em> may contain layout flaws not present in the emailed version due to the nature of designing for email clients.<br/>Such flaws should <strong>not</strong> be present in the final copy; always test your signature to ensure it fits your needs, and <a href="mailto:webteam@uoit.ca">contact the webteam</a> if there is a problem with your signature after emailing.</small></p>
+	  </div>
+		<div class="small-6 columns" *ngIf="resultSuccess || resultError">
+			<div class="success callout" *ngIf="resultSuccess">
+			  {{ resultSuccess }}
+			</div>
+			<div class="alert callout" *ngIf="resultError">
+			  {{ resultError }}
+			</div>
+		</div>
+		<div class="small-6 columns">
+			<div class="input-group">
+			  <input class="input-group-field" placeholder="jane.doe@uoit.ca" type="email" name="email" #addressee>
+			  <div class="input-group-button">
+			    <button class="button" (click)="onFormSubmit(signaturePreview.template, addressee.value)">Submit</button>
+			  </div>
+			</div>
+		</div>
+	</div>
 
+</div>
