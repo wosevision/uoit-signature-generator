@@ -3,9 +3,9 @@ export const BrandLogos = [{
   src: '../../assets/logos/uoit_logo-basic.gif'
 }, {
   name: 'UOIT-DC',
-  src: '../../assets/logos/uoit_logo-gpds-horizontal.gif'
+  src: '../../assets/logos/uoit-dc_logo-joint-horizontal.gif'
 }, {
   name: 'School of Graduate and Postdoctoral Studies',
-  src: '../../assets/logos/uoit-dc_logo-joint-horizontal.gif'
+  src: '../../assets/logos/uoit_logo-gpds-horizontal.gif'
 }];
 
