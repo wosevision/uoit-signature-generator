@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef } from '@angular/core';
 
-import { SocialNetworks } from '../models';
+import { SocialNetworks, FormData } from '../models';
 
 @Component({
   selector: 'signature-preview',
@@ -9,7 +9,7 @@ import { SocialNetworks } from '../models';
 })
 export class SignaturePreviewComponent {
 
-  @Input() data: {} | FormData = {};
+  @Input() data: Partial<FormData> = {};
 
   get template() {
     return this.el.nativeElement.innerHTML;
