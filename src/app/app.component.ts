@@ -18,19 +18,16 @@ import { LocalPrefix } from './constants/local-prefix';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  static get parameters() {
-    return [
-      [Http],
-    ];
-  }
+
+  formData: {} | FormData = {};
+  resultSuccess;
+  resultError; 
 
   sendUrl = `${ LocalPrefix }lib/send.php`;
 
-  constructor(Http) {
-    this.http = Http;
-  }
+  constructor(private http: Http) {}
 
-  onFormChange(event) {
+  onFormChange(event: FormData) {
     this.formData = event;
   }
 
@@ -42,18 +39,13 @@ export class AppComponent {
   }
 
   sendFormData({ html, addressee }) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
     return this.http.post(this.sendUrl, {
       html, addressee
     }, options)
-      .map(this.extractData)
+      .map(res => res.json())
       .catch(this.handleError);
-  }
-
-  extractData(res) {
-    let body = res.json();
-    return body.data || {};
   }
 
   handleError (error) {

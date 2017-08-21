@@ -15,7 +15,7 @@ import {
   templateUrl: './accordion-panel.component.html',
   styleUrls: ['./accordion.component.scss'],
   animations: [
-    trigger('panelState', [
+    trigger('state', [
       state('open', style({height: '*'})),
       transition('* => void', [
         style({height: '*'}),
@@ -29,13 +29,11 @@ import {
   ],
 })
 export class AccordionPanelComponent {
-  @Input() set heading(data) {
-    this.panelHeading = data;
-  }
+  @Input() heading;
 
-  panelActive = false;
+  active = false;
 
   toggle() {
-    this.panelActive = !this.panelActive;
+    this.active = !this.active;
   }
 }

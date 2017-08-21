@@ -8,19 +8,8 @@ import { SocialNetworks } from '../constants/social-networks';
   styleUrls: ['./signature-preview.component.scss']
 })
 export class SignaturePreviewComponent {
-  static get parameters() {
-    return [
-      [ElementRef],
-    ];
-  }
 
-  @Input()
-  get data() {
-    return this.formData;
-  }
-  set data(data) {
-    this.formData = data || 'No data entered!';
-  }
+  @Input() data: {} | FormData = {};
 
   get template() {
     return this.el.nativeElement.innerHTML;
@@ -29,8 +18,5 @@ export class SignaturePreviewComponent {
   logoUrl = '../assets/logos/uoit_logo-gs-horizontal.gif';
   socialNetworks = SocialNetworks;
 
-  constructor(ElementRef) {
-    this.el = ElementRef;
-    this.formData = {};
-  }
+  constructor(private el: ElementRef) {}
 }

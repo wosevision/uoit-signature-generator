@@ -1,7 +1,18 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  FormArray,
+  Validators
+} from '@angular/forms';
 
-import { CompleterService } from 'ng2-completer';
+import { CompleterService, LocalData } from 'ng2-completer';
 
 import { SocialNetworks, ButtonStyles } from '../constants/social-networks';
 import { EventIcons } from '../constants/event-icons';
@@ -20,16 +31,8 @@ const DIGIT_1TO9 = /[1-9]/;
   styleUrls: ['./signature-form.component.scss'],
   templateUrl: './signature-form.component.html'
 })
-export class SignatureFormComponent {
-  static get parameters() {
-    return [
-      [FormBuilder],
-      [DirectoryService],
-      [CompleterService],
-    ];
-  }
-
-  @Output() formChange = new EventEmitter();
+export class SignatureFormComponent implements OnInit {
+  @Output() formChange = new EventEmitter<FormData>();
   @Output() formSubmit = new EventEmitter();
 
   socialNetworks = SocialNetworks;
@@ -41,12 +44,20 @@ export class SignatureFormComponent {
     '.', DIGIT, DIGIT, DIGIT,
     '.', DIGIT, DIGIT, DIGIT, DIGIT
   ];
+  directoryData: {
+    firstNames: LocalData,
+    lastNames: LocalData,
+    titles: LocalData,
+    emails: LocalData,
+    departments: LocalData,
+  };
+  formData: FormGroup;
 
-  constructor(FormBuilder, DirectoryService, CompleterService) {
-    this.fb = FormBuilder;
-    this.directory = DirectoryService;
-    this.completer = CompleterService;
-  }
+  constructor(
+    private fb: FormBuilder,
+    private directory: DirectoryService,
+    private completer: CompleterService
+  ) { }
 
   ngOnInit() {
     this.buildForm();
@@ -57,7 +68,7 @@ export class SignatureFormComponent {
           titleColumn = LdapColumns.TITLE,
           emailColumn = LdapColumns.EMAIL,
           departmentColumn = LdapColumns.DEPARTMENT;
-    this.directory = {
+    this.directoryData = {
       firstNames: this.completer.local(directory, firstNameColumn, firstNameColumn),
       lastNames: this.completer.local(directory, lastNameColumn, lastNameColumn),
       titles: this.completer.local(directory, titleColumn, titleColumn),
@@ -133,14 +144,14 @@ export class SignatureFormComponent {
   }
 
   addSocial() {
-    this.formData.controls['social'].controls['networks'].push(this.initSocial());
+    (<FormArray>(<FormGroup>this.formData.controls['social']).controls['networks']).push(this.initSocial());
   }
 
   removeSocial(i) {
-    this.formData.controls['social'].controls['networks'].removeAt(i);
+    (<FormArray>(<FormGroup>this.formData.controls['social']).controls['networks']).removeAt(i);
   }
 
-  onFormChange(data) {
+  onFormChange(data: FormData) {
     this.formChange.emit(data);
   }
 

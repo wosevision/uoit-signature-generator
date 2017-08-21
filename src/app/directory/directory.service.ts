@@ -17,28 +17,21 @@ import { LdapColumns } from '../constants/ldap-columns';
 
 @Injectable()
 export class DirectoryService {
-  static get parameters() {
-    return [
-      [Http],
-    ];
-  }
 
   directoryUrl =  `https://api.uoit.ca/v2/directory`;
 
-  constructor(Http) {
-    this.http = Http;
-  }
+  constructor(private http: Http) { }
 
   buildMapFunction(column) {
     return res => res.json().data.map(item => item[column]);
   }
 
   get(endpoint = '') {
-    const headers = new Headers({ 'Accept': 'application/json', 'X-XSRF-TOKEN': null }),
-          options = new RequestOptions({ headers });
+    const headers = new Headers({ 'Accept': 'application/json', 'X-XSRF-TOKEN': null });
+    const options = new RequestOptions({ headers });
     return this.http.get(`${ this.directoryUrl }${ endpoint }`, options)
-        .map(res => res.json().data)
-        .catch(this.handleError)
+      .map(res => res.json().data)
+      .catch(this.handleError);
   }
 
   getAll() {
