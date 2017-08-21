@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 import { LocalPrefix } from './constants/local-prefix';
 
 @Component({
-  selector: 'signature-generator',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -21,7 +21,7 @@ export class AppComponent {
 
   formData: {} | FormData = {};
   resultSuccess;
-  resultError; 
+  resultError;
 
   sendUrl = `${ LocalPrefix }lib/send.php`;
 
