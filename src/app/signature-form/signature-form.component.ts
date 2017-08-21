@@ -14,11 +14,14 @@ import {
 
 import { CompleterService, LocalData } from 'ng2-completer';
 
-import { SocialNetworks, ButtonStyles } from '../constants/social-networks';
-import { EventIcons } from '../constants/event-icons';
-import { LdapColumns } from '../constants/ldap-columns';
-import { BrandLogos } from '../constants/brand-logos';
-import { DirectoryService } from '../directory/directory.service';
+import {
+  SocialNetworks,
+  ButtonStyles,
+  EventIcons,
+  BrandLogos
+} from '../models';
+import { LdapColumns } from '../constants';
+import { DirectoryService } from '../directory';
 
 const DIGIT = /\d/;
 const DIGIT_1TO9 = /[1-9]/;

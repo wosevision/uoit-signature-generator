@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef } from '@angular/core';
 
-import { SocialNetworks } from '../constants/social-networks';
+import { SocialNetworks } from '../models';
 
 @Component({
   selector: 'signature-preview',

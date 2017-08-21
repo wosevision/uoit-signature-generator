@@ -6,7 +6,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { Ng2CompleterModule } from 'ng2-completer';
 
 import { AccordionModule } from '../accordion/accordion.module';
-import { SignatureFormComponent } from './signature-form.component';
+import { SignatureFormComponent } from '.';
 
 @NgModule({
   imports: [

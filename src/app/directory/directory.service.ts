@@ -12,8 +12,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/distinct';
 
-import { LocalPrefix } from '../constants/local-prefix';
-import { LdapColumns } from '../constants/ldap-columns';
+import {
+  LocalPrefix,
+  LdapColumns
+} from '../constants';
 
 @Injectable()
 export class DirectoryService {

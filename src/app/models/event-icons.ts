@@ -1,4 +1,6 @@
-export const EventIcons = [{
+import { FormControlOption } from '.';
+
+export const EventIcons: FormControlOption[] = [{
   value: 'calendar',
   name: 'Calendar',
   src: '../../assets/event_icons/calendar_64x64.jpg'
