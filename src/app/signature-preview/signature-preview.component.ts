@@ -1,13 +1,11 @@
 import { Component, Input, ElementRef } from '@angular/core';
 
-import { SocialNetworks } from '../constants/social-networks.constant';
-import template from './signature-preview.component.html';
-import styles from './signature-preview.component.scss';
+import { SocialNetworks } from '../constants/social-networks';
 
 @Component({
   selector: 'signature-preview',
-  template,
-  styles: [ styles ]
+  templateUrl: './signature-preview.component.html',
+  styleUrls: ['./signature-preview.component.scss']
 })
 export class SignaturePreviewComponent {
   static get parameters() {
@@ -28,7 +26,7 @@ export class SignaturePreviewComponent {
     return this.el.nativeElement.innerHTML;
   }
 
-  logoUrl = require('../assets/logos/uoit_logo-gs-horizontal.gif');
+  logoUrl = '../assets/logos/uoit_logo-gs-horizontal.gif';
   socialNetworks = SocialNetworks;
 
   constructor(ElementRef) {

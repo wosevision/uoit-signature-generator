@@ -10,14 +10,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { LocalPrefix } from './constants/local-prefix.constant.js';
-import template from './app.component.html';
-import styles from './app.component.scss';
+import { LocalPrefix } from './constants/local-prefix';
 
 @Component({
   selector: 'signature-generator',
-  styles: [ styles ],
-  template
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   static get parameters() {
@@ -26,7 +24,7 @@ export class AppComponent {
     ];
   }
 
-  sendUrl = `${ LocalPrefix }lib/send.php`;;
+  sendUrl = `${ LocalPrefix }lib/send.php`;
 
   constructor(Http) {
     this.http = Http;

@@ -10,12 +10,10 @@ import {
   transition
 } from '@angular/animations';
 
-import template from './accordion-panel.component.html';
-import styles from './accordion.component.scss';
-
 @Component({
   selector: 'accordion-panel',
-  styles: [ styles ],
+  templateUrl: './accordion-panel.component.html',
+  styleUrls: ['./accordion.component.scss'],
   animations: [
     trigger('panelState', [
       state('open', style({height: '*'})),
@@ -29,7 +27,6 @@ import styles from './accordion.component.scss';
       ]),
     ])
   ],
-  template
 })
 export class AccordionPanelComponent {
   @Input() set heading(data) {

@@ -6,9 +6,9 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 /* Feature modules */
-import { SignatureFormModule } from './signature-form/signature-form';
-import { SignaturePreviewModule } from './signature-preview/signature-preview';
-import { DirectoryModule } from './directory/directory';
+import { SignatureFormModule } from './signature-form/signature-form.module';
+import { SignaturePreviewModule } from './signature-preview/signature-preview.module';
+import { DirectoryModule } from './directory/directory.module';
 
 @NgModule({
   imports: [

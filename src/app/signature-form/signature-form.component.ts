@@ -1,16 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { CompleterService } from 'ng2-completer';
 
-import { SocialNetworks, ButtonStyles } from '../constants/social-networks.constant';
-import { EventIcons } from '../constants/event-icons.constant';
-import { LdapColumns } from '../constants/ldap-columns.constant';
-import { BrandLogos } from '../constants/brand-logos.constant';
+import { SocialNetworks, ButtonStyles } from '../constants/social-networks';
+import { EventIcons } from '../constants/event-icons';
+import { LdapColumns } from '../constants/ldap-columns';
+import { BrandLogos } from '../constants/brand-logos';
 import { DirectoryService } from '../directory/directory.service';
-
-import template from './signature-form.component.html';
-import styles from './signature-form.component.scss';
 
 const DIGIT = /\d/;
 const DIGIT_1TO9 = /[1-9]/;
@@ -20,8 +17,8 @@ const DIGIT_1TO9 = /[1-9]/;
  */
 @Component({
   selector: 'signature-form',
-  styles: [ styles ],
-  template
+  styleUrls: ['./signature-form.component.scss'],
+  templateUrl: './signature-form.component.html'
 })
 export class SignatureFormComponent {
   static get parameters() {
