@@ -135,14 +135,14 @@
 				</label>
 			</div>
 			<div class="row flex-container padding-1" formArrayName="networks">
-      	<div class="column flex-child-auto" *ngFor="let network of formData.controls['social'].controls['networks'].controls; let i=index">
+      	<div class="column flex-child-auto" *ngFor="let network of socialNetworksControls.controls; let i=index">
       		<div class="callout secondary">
 	          <h4 class="flex-container align-justify">
 	          	<span>
 	          		<small class="subheader">Network {{i + 1}}:</small>
 	          		{{ formData.value.social.networks[i].type?.name || '(Select)' }}
 	          	</span>
-	          	<button *ngIf="formData.controls['social'].controls['networks'].length > 1"
+	          	<button *ngIf="socialNetworksControls.length > 1"
 	          					(click)="removeSocial(i)"
 	          					[attr.aria-label]="'Remove social network: ' + (formData.value.social.networks[i].type?.name || '(Select)')"
 	          					class="button hollow alert icon_cancel">
@@ -155,7 +155,7 @@
 	              	<option *ngFor="let type of socialNetworks;" [ngValue]="type">{{type.name}}</option>
 	              </select>
 	              <span class="form-error"
-	              			[class.is-visible]="formData.controls['social'].controls['networks'].controls[i].controls.type.invalid &amp;&amp; formData.controls['social'].controls['networks'].controls[i].controls.type.dirty">
+	              			[class.is-visible]="socialNetworksControls.controls[i].controls.type.invalid &amp;&amp; socialNetworksControls.controls[i].controls.type.dirty">
 	                  Type is required
 	              </span>
 	            </label>
@@ -165,14 +165,14 @@
 	                <input type="text" class="input-group-field" formControlName="username">
 								</div>
 	              <span class="form-error"
-	              			[class.is-visible]="formData.controls['social'].controls['networks'].controls[i].controls.username.invalid &amp;&amp; formData.controls['social'].controls['networks'].controls[i].controls.username.dirty">
+	              			[class.is-visible]="socialNetworksControls.controls[i].controls.username.invalid &amp;&amp; socialNetworksControls.controls[i].controls.username.dirty">
 	                  Username is required
 	              </span>
 	            </label>
 	          </div>
           </div>
       	</div>
-      	<div class="column flex-child-auto" *ngIf="formData.controls['social'].controls['networks'].controls.length < socialNetworks.length">
+      	<div class="column flex-child-auto" *ngIf="socialNetworksControls.controls.length < socialNetworks.length">
       		<div class="callout flex-container align-middle align-center">
 	      		<button class="hollow button" (click)="addSocial()">+ Add social network</button>
       		</div>

@@ -146,12 +146,20 @@ export class SignatureFormComponent implements OnInit {
     });
   }
 
+  get socialControls() {
+    return <FormGroup>this.formData.controls['social'];
+  }
+
+  get socialNetworksControls() {
+    return <FormArray>this.socialControls.controls['networks'];
+  }
+
   addSocial() {
-    (<FormArray>(<FormGroup>this.formData.controls['social']).controls['networks']).push(this.initSocial());
+    this.socialNetworksControls.push(this.initSocial());
   }
 
   removeSocial(i) {
-    (<FormArray>(<FormGroup>this.formData.controls['social']).controls['networks']).removeAt(i);
+    this.socialNetworksControls.removeAt(i);
   }
 
   onFormChange(data: FormData) {
