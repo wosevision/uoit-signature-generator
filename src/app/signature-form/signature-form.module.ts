@@ -10,11 +10,11 @@ import { SignatureFormComponent } from './signature-form.component';
 
 @NgModule({
   imports: [
-  	CommonModule,
-  	ReactiveFormsModule,
-  	TextMaskModule,
-		Ng2CompleterModule,
-  	AccordionModule,
+    CommonModule,
+    ReactiveFormsModule,
+    TextMaskModule,
+    Ng2CompleterModule,
+    AccordionModule,
   ],
   declarations: [
     SignatureFormComponent,

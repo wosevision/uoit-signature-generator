@@ -6,7 +6,7 @@ import { AbsoluteUrlPipe } from './absolute-url.pipe';
 
 @NgModule({
   imports: [
-  	CommonModule,
+    CommonModule,
   ],
   declarations: [
     SignaturePreviewComponent,

@@ -5,7 +5,7 @@ import { DirectoryService } from './directory.service';
 
 @NgModule({
   providers: [
-  	DirectoryService,
+    DirectoryService,
   ]
 })
 export class DirectoryModule { }

@@ -1,6 +1,6 @@
 import {
-	Component,
-	Input,
+  Component,
+  Input,
 } from '@angular/core';
 import {
   trigger,
@@ -32,13 +32,13 @@ import styles from './accordion.component.scss';
   template
 })
 export class AccordionPanelComponent {
-	@Input() set heading(data) {
-  	this.panelHeading = data;
+  @Input() set heading(data) {
+    this.panelHeading = data;
   }
 
-	panelActive = false;
+  panelActive = false;
 
-	toggle() {
-		this.panelActive = !this.panelActive;
-	}
+  toggle() {
+    this.panelActive = !this.panelActive;
+  }
 }

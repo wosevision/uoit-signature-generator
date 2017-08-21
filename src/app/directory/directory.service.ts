@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
-	Http,
-	Headers,
-	RequestOptions,
-	Response,
+  Http,
+  Headers,
+  RequestOptions,
+  Response,
 } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -17,44 +17,44 @@ import { LdapColumns } from '../constants/ldap-columns.constant';
 
 @Injectable()
 export class DirectoryService {
-	static get parameters() {
-	  return [
-	  	[Http],
-	  ];
-	}
+  static get parameters() {
+    return [
+      [Http],
+    ];
+  }
 
   directoryUrl =  `https://api.uoit.ca/v2/directory`;
 
   constructor(Http) {
-  	this.http = Http;
+    this.http = Http;
   }
 
   buildMapFunction(column) {
-  	return res => res.json().data.map(item => item[column]);
+    return res => res.json().data.map(item => item[column]);
   }
 
   get(endpoint = '') {
-  	const headers = new Headers({ 'Accept': 'application/json', 'X-XSRF-TOKEN': null }),
-  				options = new RequestOptions({ headers });
+    const headers = new Headers({ 'Accept': 'application/json', 'X-XSRF-TOKEN': null }),
+          options = new RequestOptions({ headers });
     return this.http.get(`${ this.directoryUrl }${ endpoint }`, options)
         .map(res => res.json().data)
         .catch(this.handleError)
   }
 
   getAll() {
-  	return this.get()
+    return this.get();
   }
 
   getDepartments() {
-  	return this.get('/departments')
+    return this.get('/departments');
   }
 
   getTitles() {
-  	return this.get()
+    return this.get()
       .concatMap(
         data => data.map(item => item[LdapColumns.TITLE])
       )
-	  	.distinct()
+      .distinct();
   }
 
   handleError (error) {

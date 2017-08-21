@@ -10,18 +10,18 @@ import styles from './signature-preview.component.scss';
   styles: [ styles ]
 })
 export class SignaturePreviewComponent {
-	static get parameters() {
-	  return [
-	  	[ElementRef],
-	  ];
-	}
+  static get parameters() {
+    return [
+      [ElementRef],
+    ];
+  }
 
-	@Input()
+  @Input()
   get data() {
     return this.formData;
   }
   set data(data) {
-  	this.formData = data || 'No data entered!';
+    this.formData = data || 'No data entered!';
   }
 
   get template() {
@@ -29,10 +29,10 @@ export class SignaturePreviewComponent {
   }
 
   logoUrl = require('../assets/logos/uoit_logo-gs-horizontal.gif');
-	socialNetworks = SocialNetworks;
+  socialNetworks = SocialNetworks;
 
-	constructor(ElementRef) {
-		this.el = ElementRef;
-		this.formData = {};
-	}
-};
+  constructor(ElementRef) {
+    this.el = ElementRef;
+    this.formData = {};
+  }
+}

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {
-	Http,
-	Response,
-	Headers,
-	RequestOptions,
+  Http,
+  Response,
+  Headers,
+  RequestOptions,
 } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
@@ -20,35 +20,35 @@ import styles from './app.component.scss';
   template
 })
 export class AppComponent {
-	static get parameters() {
-	  return [
-	  	[Http],
-	  ];
-	}
+  static get parameters() {
+    return [
+      [Http],
+    ];
+  }
 
   sendUrl = `${ LocalPrefix }lib/send.php`;;
 
   constructor(Http) {
-  	this.http = Http;
+    this.http = Http;
   }
 
   onFormChange(event) {
-  	this.formData = event;
+    this.formData = event;
   }
 
   onFormSubmit(html, addressee) {
-  	this.sendFormData({ html, addressee })
-			.subscribe(
-				result => this.resultSuccess = result,
-				error =>  this.resultError = error);
+    this.sendFormData({ html, addressee })
+      .subscribe(
+        result => this.resultSuccess = result,
+        error =>  this.resultError = error);
   }
 
   sendFormData({ html, addressee }) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-  	return this.http.post(this.sendUrl, {
-			html, addressee
-		}, options)
+    return this.http.post(this.sendUrl, {
+      html, addressee
+    }, options)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -70,4 +70,4 @@ export class AppComponent {
     console.error(errMsg);
     return Observable.throw(errMsg);
   }
-};
+}
