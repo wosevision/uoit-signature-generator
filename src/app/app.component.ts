@@ -44,7 +44,7 @@ export class AppComponent {
     return this.http.post(this.sendUrl, {
       html, addressee
     }, options)
-      .map(res => res.json())
+      .map(res => res.json().data)
       .catch(this.handleError);
   }
 
@@ -52,7 +52,7 @@ export class AppComponent {
     let errMsg;
     if (error instanceof Response) {
       const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
+      const err = body.error || body.data || JSON.stringify(body);
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
     } else {
       errMsg = error.message ? error.message : error.toString();
