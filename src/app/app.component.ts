@@ -23,7 +23,7 @@ export class AppComponent {
   resultSuccess;
   resultError;
 
-  sendUrl = `${ LocalPrefix }lib/send.php`;
+  sendUrl = `${ LocalPrefix }vendor/send.php`;
 
   constructor(private http: Http) {}
 

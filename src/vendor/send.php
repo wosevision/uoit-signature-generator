@@ -56,10 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	//send the message, check for errors
 	if ($error) {
 		$result = array('success' => false, 'data' => $error);
+		http_response_code(400);
 		echo json_encode($result, true);
 		exit();
 	} else {
 		$result = array('success' => true, 'data' => 'Message sent successfully!');
+		http_response_code(200);
 		echo json_encode($result, true);
 		exit();
 	}

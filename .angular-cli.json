@@ -8,6 +8,8 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
+        "vendor/PHPMailer",
+        "vendor/send.php",
         "assets",
         "favicon.ico"
       ],
@@ -22,7 +24,7 @@
         "styles.css"
       ],
       "scripts": [
-        "app/lib/iframeResizer.contentWindow.min.js"
+        "vendor/iframeResizer.contentWindow.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
