@@ -49,7 +49,7 @@
 	<table border="0" cellpadding="0" cellspacing="0" style="padding: 0; margin-bottom:16px;" >
 		<tr>
 			<td>
-				<a style="border: 0; outline: none;" title="UOIT website" href="http://uoit.ca">
+				<a style="border: 0; outline: none;" title="Visit the {{ data.logo?.name }} website" [href]="data.logo?.href">
 					<img style="border: 0; width: 324px; height: 56px;" [src]="data.logo?.src | absoluteUrl" alt="{{ data.logo?.name }} logo" width="324" height="56" />
 				</a>
 			</td>
