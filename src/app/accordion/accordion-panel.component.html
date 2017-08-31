@@ -1,0 +1,6 @@
+<li class="accordion-item" [class.is-active]="active">
+  <a class="accordion-title" (click)="toggle()">{{ heading }}</a>
+  <div class="accordion-content" *ngIf="active" [@state]="'open'">
+    <ng-content></ng-content>
+  </div>
+</li>
