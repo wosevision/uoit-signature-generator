@@ -31,4 +31,12 @@ export interface FormControlOption {
    * @memberof FormControlOption
    */
   src?: string;
+  /**
+   * Optional: if the form control has an associated `<a>`,
+   * the URL given here will make the `href="..."`.
+   *
+   * @type {string}
+   * @memberof FormControlOption
+   */
+  href?: string;
 }
