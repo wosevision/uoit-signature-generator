@@ -20,20 +20,22 @@
 				<strong>Directly editing the signature in your email client (i.e. Outlook) is not recommended</strong> due to the nature of designing layouts for email clients. Please contact us if you require additional fields or modifications outside what is possible here.</small>
 			</p>
 	  </div>
+		<div class="small-6 columns">
+			<form novalidate (submit)="onFormSubmit($event, signaturePreview.template, addressee.value)">
+				<div class="input-group">
+					<input class="input-group-field" placeholder="jane.doe@uoit.ca" type="email" name="email" #addressee>
+					<div class="input-group-button">
+						<button class="button" type="submit">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
 		<div class="small-6 columns" *ngIf="resultSuccess || resultError">
 			<div class="success callout" *ngIf="resultSuccess">
 			  {{ resultSuccess }}
 			</div>
 			<div class="alert callout" *ngIf="resultError">
 			  {{ resultError }}
-			</div>
-		</div>
-		<div class="small-6 columns">
-			<div class="input-group">
-			  <input class="input-group-field" placeholder="jane.doe@uoit.ca" type="email" name="email" #addressee>
-			  <div class="input-group-button">
-			    <button class="button" (click)="onFormSubmit(signaturePreview.template, addressee.value)">Submit</button>
-			  </div>
 			</div>
 		</div>
 	</div>

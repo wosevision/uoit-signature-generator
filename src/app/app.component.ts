@@ -31,7 +31,8 @@ export class AppComponent {
     this.formData = event;
   }
 
-  onFormSubmit(html, addressee) {
+  onFormSubmit(event, html, addressee) {
+    event.preventDefault();
     this.sendFormData({ html, addressee })
       .subscribe(
         result => this.resultSuccess = result,
