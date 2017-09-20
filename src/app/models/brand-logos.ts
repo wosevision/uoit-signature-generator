@@ -6,10 +6,15 @@ export const BrandLogos: FormControlOption[] = [{
   src: '/assets/logos/uoit_logo-basic.gif',
   href: 'https://uoit.ca'
 }, {
-  name: 'UOIT-DC',
+  name: 'UOIT | DC',
   value: 'uoitdc',
   src: '/assets/logos/uoit-dc_logo-joint-horizontal.gif',
   href: 'http://dc-uoit.ca'
+}, {
+  name: 'UOIT Oshawa | Canada',
+  value: 'uoitca',
+  src: '/assets/logos/uoit_logo-canadian.gif',
+  href: 'http://uoit.ca'
 }, {
   name: 'Faculty of Business and Information Technology',
   value: 'fbit',

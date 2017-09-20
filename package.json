@@ -7,7 +7,7 @@
     "start": "ng serve",
     "hmr": "ng serve --hmr -e=hmr",
     "build": "ng build --base-href /uoit-signature-generator/dist/",
-    "prod": "ng build --prod --base-href /apps/signature-generator/ --environment prod",
+    "prod": "ng build --prod --build-optimizer --base-href /apps/signature-generator/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
