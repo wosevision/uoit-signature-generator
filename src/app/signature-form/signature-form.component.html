@@ -161,7 +161,7 @@
               <fieldset *ngIf="getSocialNetwork(formData.value.social.networks[i].type?.value)?.options as options">
                 <legend>Account type</legend>
                 <ng-container *ngFor="let option of options">
-                  <input type="radio" formControlName="account" [value]="option.value" id="account-{{i}}_{{option.value}}" />
+                  <input type="radio" formControlName="account" [value]="option" id="account-{{i}}_{{option.value}}" />
                   <label for="account-{{i}}_{{option.value}}">{{option.label}}</label>
                 </ng-container>
               </fieldset>

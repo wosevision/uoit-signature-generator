@@ -97,7 +97,7 @@ export class SignatureFormComponent implements OnInit {
         networks: this.fb.array([
           this.initSocial({ type: 'fb', username: 'myuoit' }),
           this.initSocial({ type: 'tw', username: 'uoit' }),
-          this.initSocial({ type: 'li', username: 'uoit', account: 'company' }),
+          this.initSocial({ type: 'li', username: 'uoit', account: 'school' }),
           this.initSocial({ type: 'yt', username: 'universityofontario' }),
           this.initSocial({ type: 'in', username: 'uoit' })
         ])
