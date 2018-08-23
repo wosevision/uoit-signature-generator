@@ -3,12 +3,26 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 import { CompleterService, LocalData } from 'ng2-completer';
 
-import { SocialNetworks, ButtonStyles, EventIcons, BrandLogos, FormData } from '../shared/models';
+import {
+  SocialNetworks,
+  SocialNetworkOption,
+  ButtonStyles,
+  EventIcons,
+  BrandLogos,
+  FormData,
+  SocialNetwork
+} from '../shared/models';
 import { LdapColumns } from '../shared';
 import { DirectoryService } from '../core/directory.service';
 
 const DIGIT = /\d/;
 const DIGIT_1TO9 = /[1-9]/;
+
+export interface SocialNetworkFormGroup {
+  type: SocialNetwork;
+  account?: SocialNetworkOption;
+  username: any;
+}
 
 /**
  * @example
@@ -83,7 +97,7 @@ export class SignatureFormComponent implements OnInit {
         networks: this.fb.array([
           this.initSocial({ type: 'fb', username: 'myuoit' }),
           this.initSocial({ type: 'tw', username: 'uoit' }),
-          this.initSocial({ type: 'li', username: 'uoit' }),
+          this.initSocial({ type: 'li', username: 'uoit', account: 'company' }),
           this.initSocial({ type: 'yt', username: 'universityofontario' }),
           this.initSocial({ type: 'in', username: 'uoit' })
         ])
@@ -112,11 +126,16 @@ export class SignatureFormComponent implements OnInit {
     this.onFormChange(this.formData.value);
   }
 
-  initSocial({ type = '', username = '' } = {}) {
-    return this.fb.group({
-      type: this.socialNetworks.find(network => network.value === type),
+  initSocial({ type = '', username = '', account = null } = {}) {
+    const socialNetwork = this.socialNetworks.find(network => network.value === type);
+    const formGroup: SocialNetworkFormGroup = {
+      type: socialNetwork,
       username: [username, Validators.required]
-    });
+    };
+    if (socialNetwork.options && account) {
+      formGroup.account = socialNetwork.options.find(option => option.value === account);
+    }
+    return this.fb.group(formGroup);
   }
 
   get socialControls() {
@@ -125,6 +144,10 @@ export class SignatureFormComponent implements OnInit {
 
   get socialNetworksControls() {
     return <FormArray>this.socialControls.controls['networks'];
+  }
+
+  getSocialNetworkOptions(type: string) {
+    return this.socialNetworks.find(network => network.value === type).options;
   }
 
   addSocial() {
