@@ -9,6 +9,7 @@ import { DirectoryService } from '../core/directory.service';
 
 const DIGIT = /\d/;
 const DIGIT_1TO9 = /[1-9]/;
+
 /**
  * @example
  * <signature-form (formChange)="onFormChange($event)"></signature-form>
@@ -46,19 +47,14 @@ export class SignatureFormComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    const directory = this.directory.getAll(),
-      departments = this.directory.getDepartments(),
-      firstNameColumn = LdapColumns.NAME_FIRST,
-      lastNameColumn = LdapColumns.NAME_LAST,
-      titleColumn = LdapColumns.TITLE,
-      emailColumn = LdapColumns.EMAIL,
-      departmentColumn = LdapColumns.DEPARTMENT;
+    const directory$ = this.directory.getAll();
+    const departments$ = this.directory.getDepartments();
     this.directoryData = {
-      firstNames: this.completer.local(directory, firstNameColumn, firstNameColumn),
-      lastNames: this.completer.local(directory, lastNameColumn, lastNameColumn),
-      titles: this.completer.local(directory, titleColumn, titleColumn),
-      emails: this.completer.local(directory, emailColumn, emailColumn),
-      departments: this.completer.local(departments)
+      firstNames: this.completer.local(directory$, LdapColumns.NAME_FIRST, LdapColumns.NAME_FIRST),
+      lastNames: this.completer.local(directory$, LdapColumns.NAME_LAST, LdapColumns.NAME_LAST),
+      titles: this.completer.local(directory$, LdapColumns.TITLE, LdapColumns.TITLE),
+      emails: this.completer.local(directory$, LdapColumns.EMAIL, LdapColumns.EMAIL),
+      departments: this.completer.local(departments$)
     };
   }
 
@@ -81,10 +77,6 @@ export class SignatureFormComponent implements OnInit {
         title: '',
         dept: ''
       }),
-      // hours: this.fb.group({
-      // 	title: '',
-      // 	dept: '',
-      // }),
       hours: '',
       social: this.fb.group({
         style: this.buttonStyles[0],
