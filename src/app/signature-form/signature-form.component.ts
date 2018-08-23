@@ -20,7 +20,7 @@ const DIGIT_1TO9 = /[1-9]/;
 
 export interface SocialNetworkFormGroup {
   type: SocialNetwork;
-  account?: SocialNetworkOption;
+  account: SocialNetworkOption;
   username: any;
 }
 
@@ -130,9 +130,10 @@ export class SignatureFormComponent implements OnInit {
     const socialNetwork = this.getSocialNetwork(type);
     const formGroup: SocialNetworkFormGroup = {
       type: socialNetwork,
-      username: [username, Validators.required]
+      username: [username, Validators.required],
+      account: null
     };
-    if (socialNetwork.options && account) {
+    if (socialNetwork && socialNetwork.options && account) {
       formGroup.account = socialNetwork.options.find(option => option.value === account);
     }
     return this.fb.group(formGroup);

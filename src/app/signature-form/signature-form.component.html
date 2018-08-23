@@ -158,7 +158,7 @@
                   Type is required
                 </span>
               </label>
-              <fieldset *ngIf="getSocialNetwork(formData.value.social.networks[i].type?.value).options as options">
+              <fieldset *ngIf="getSocialNetwork(formData.value.social.networks[i].type?.value)?.options as options">
                 <legend>Account type</legend>
                 <ng-container *ngFor="let option of options">
                   <input type="radio" formControlName="account" [value]="option.value" id="account-{{i}}_{{option.value}}" />
