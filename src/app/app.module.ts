@@ -11,7 +11,13 @@ import { SignaturePreviewModule } from './signature-preview/signature-preview.mo
 import { CoreModule } from './core/core.module';
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, SignatureFormModule, SignaturePreviewModule, CoreModule],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    SignatureFormModule,
+    SignaturePreviewModule,
+    CoreModule.forRoot({ url: 'https://api.uoit.ca/v2/directory' })
+  ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
 })

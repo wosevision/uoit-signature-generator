@@ -1,10 +1,5 @@
-import { Injectable } from '@angular/core';
-import {
-  Http,
-  Headers,
-  RequestOptions,
-  Response,
-} from '@angular/http';
+import { Injectable, InjectionToken, Inject } from '@angular/core';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/concatMap';
@@ -12,28 +7,41 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/distinct';
 
-import {
-  LocalPrefix,
-  LdapColumns
-} from '../shared';
+import { LdapColumns } from '../shared';
+
+export interface DirectoryServiceConfig {
+  url: string;
+}
+
+export const DirectoryServiceConfigToken = new InjectionToken<DirectoryServiceConfig>(
+  'DirectoryServiceConfig'
+);
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DirectoryService {
-
-  directoryUrl =  `https://api.uoit.ca/v2/directory`;
-
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    @Inject(DirectoryServiceConfigToken) private config: DirectoryServiceConfig
+  ) {
+    if (!config) {
+      throw new Error('no DirectoryServiceConfig was provided');
+    }
+    if (!config.url) {
+      throw new Error('no `url` provided in DirectoryServiceConfig');
+    }
+  }
 
   buildMapFunction(column) {
     return res => res.json().data.map(item => item[column]);
   }
 
   get(endpoint = '') {
-    const headers = new Headers({ 'Accept': 'application/json', 'X-XSRF-TOKEN': null });
+    const headers = new Headers({ Accept: 'application/json', 'X-XSRF-TOKEN': null });
     const options = new RequestOptions({ headers });
-    return this.http.get(`${ this.directoryUrl }${ endpoint }`, options)
+    return this.http
+      .get(`${this.config.url}${endpoint}`, options)
       .map(res => res.json().data)
       .catch(this.handleError);
   }
@@ -48,13 +56,11 @@ export class DirectoryService {
 
   getTitles() {
     return this.get()
-      .concatMap(
-        data => data.map(item => item[LdapColumns.TITLE])
-      )
+      .concatMap(data => data.map(item => item[LdapColumns.TITLE]))
       .distinct();
   }
 
-  handleError (error) {
+  handleError(error) {
     let errMsg;
     if (error instanceof Response) {
       const body = error.json() || '';
