@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import {
-  Http,
-  Response,
-  Headers,
-  RequestOptions,
-} from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
+import { throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 import { LocalPrefix } from './shared';
 
@@ -18,12 +12,11 @@ import { LocalPrefix } from './shared';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   formData: {} | FormData = {};
   resultSuccess;
   resultError;
 
-  sendUrl = `${ LocalPrefix }vendor/send.php`;
+  sendUrl = `${LocalPrefix}vendor/send.php`;
 
   constructor(private http: Http) {}
 
@@ -33,23 +26,31 @@ export class AppComponent {
 
   onFormSubmit(event, html, addressee) {
     event.preventDefault();
-    this.sendFormData({ html, addressee })
-      .subscribe(
-        result => this.resultSuccess = result,
-        error =>  this.resultError = error);
+    this.sendFormData({ html, addressee }).subscribe(
+      result => (this.resultSuccess = result),
+      error => (this.resultError = error)
+    );
   }
 
   sendFormData({ html, addressee }) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.post(this.sendUrl, {
-      html, addressee
-    }, options)
-      .map(res => res.json().data)
-      .catch(this.handleError);
+    return this.http
+      .post(
+        this.sendUrl,
+        {
+          html,
+          addressee
+        },
+        options
+      )
+      .pipe(
+        map(res => res.json().data),
+        catchError(this.handleError)
+      );
   }
 
-  handleError (error) {
+  handleError(error) {
     let errMsg;
     if (error instanceof Response) {
       const body = error.json() || '';
@@ -59,6 +60,6 @@ export class AppComponent {
       errMsg = error.message ? error.message : error.toString();
     }
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return throwError(errMsg);
   }
 }

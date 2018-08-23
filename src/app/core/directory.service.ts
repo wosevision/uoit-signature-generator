@@ -1,11 +1,8 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/concatMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/distinct';
+import { Observable, throwError } from 'rxjs';
+import { map, concatMap, catchError, distinct } from 'rxjs/operators';
 
 import { LdapColumns } from '../shared';
 
@@ -40,10 +37,10 @@ export class DirectoryService {
   get(endpoint = '') {
     const headers = new Headers({ Accept: 'application/json', 'X-XSRF-TOKEN': null });
     const options = new RequestOptions({ headers });
-    return this.http
-      .get(`${this.config.url}${endpoint}`, options)
-      .map(res => res.json().data)
-      .catch(this.handleError);
+    return this.http.get(`${this.config.url}${endpoint}`, options).pipe(
+      map(res => res.json().data),
+      catchError(this.handleError)
+    );
   }
 
   getAll() {
@@ -55,9 +52,10 @@ export class DirectoryService {
   }
 
   getTitles() {
-    return this.get()
-      .concatMap(data => data.map(item => item[LdapColumns.TITLE]))
-      .distinct();
+    return this.get().pipe(
+      concatMap(data => data.map(item => item[LdapColumns.TITLE])),
+      distinct()
+    );
   }
 
   handleError(error) {
@@ -70,6 +68,6 @@ export class DirectoryService {
       errMsg = error.message ? error.message : error.toString();
     }
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return throwError(errMsg);
   }
 }
