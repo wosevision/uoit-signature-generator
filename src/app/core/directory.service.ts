@@ -15,9 +15,11 @@ import 'rxjs/add/operator/distinct';
 import {
   LocalPrefix,
   LdapColumns
-} from '../constants';
+} from '../shared';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class DirectoryService {
 
   directoryUrl =  `https://api.uoit.ca/v2/directory`;

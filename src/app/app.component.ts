@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { LocalPrefix } from './constants';
+import { LocalPrefix } from './shared';
 
 @Component({
   selector: 'app-root',

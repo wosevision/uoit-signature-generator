@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { Ng2CompleterModule } from 'ng2-completer';
 
-import { AccordionModule } from '../accordion/accordion.module';
+import { SharedModule } from '../shared/shared.module';
 import { SignatureFormComponent } from '.';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { SignatureFormComponent } from '.';
     ReactiveFormsModule,
     TextMaskModule,
     Ng2CompleterModule,
-    AccordionModule,
+    SharedModule,
   ],
   declarations: [
     SignatureFormComponent,
