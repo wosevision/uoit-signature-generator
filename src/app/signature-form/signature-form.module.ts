@@ -9,16 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 import { SignatureFormComponent } from '.';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    TextMaskModule,
-    Ng2CompleterModule,
-    SharedModule,
-  ],
-  declarations: [
-    SignatureFormComponent,
-  ],
-  exports: [ SignatureFormComponent ]
+  imports: [CommonModule, ReactiveFormsModule, TextMaskModule, Ng2CompleterModule, SharedModule],
+  declarations: [SignatureFormComponent],
+  exports: [SignatureFormComponent]
 })
-export class SignatureFormModule { }
+export class SignatureFormModule {}

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 import { LocalPrefix } from './shared';
 
@@ -18,7 +18,7 @@ export class AppComponent {
 
   sendUrl = `${LocalPrefix}vendor/send.php`;
 
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   onFormChange(event: FormData) {
     this.formData = event;
@@ -33,8 +33,7 @@ export class AppComponent {
   }
 
   sendFormData({ html, addressee }) {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: headers });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http
       .post(
         this.sendUrl,
@@ -42,19 +41,16 @@ export class AppComponent {
           html,
           addressee
         },
-        options
+        { headers }
       )
-      .pipe(
-        map(res => res.json().data),
-        catchError(this.handleError)
-      );
+      .pipe(catchError(this.handleError));
   }
 
   handleError(error) {
     let errMsg;
     if (error instanceof Response) {
       const body = error.json() || '';
-      const err = body.error || body.data || JSON.stringify(body);
+      const err = JSON.stringify(body);
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
     } else {
       errMsg = error.message ? error.message : error.toString();

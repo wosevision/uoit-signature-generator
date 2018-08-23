@@ -1,5 +1,6 @@
 import { NgModule, Optional, ModuleWithProviders, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import {
   DirectoryService,
@@ -8,7 +9,7 @@ import {
 } from './directory.service';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   providers: [DirectoryService]
 })
 export class CoreModule {

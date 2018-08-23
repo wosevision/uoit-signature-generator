@@ -1,5 +1,5 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { map, concatMap, catchError, distinct } from 'rxjs/operators';
@@ -8,6 +8,22 @@ import { LdapColumns } from '../shared';
 
 export interface DirectoryServiceConfig {
   url: string;
+}
+
+export interface DirectoryEntry {
+  [LdapColumns.NAME_FIRST]: string;
+  [LdapColumns.NAME_LAST]: string;
+  [LdapColumns.DEPARTMENT]: string;
+  [LdapColumns.TITLE]: string;
+  [LdapColumns.EXTENSION]: string;
+  [LdapColumns.OFFICE]: string;
+  [LdapColumns.BUILDING]: string;
+  [LdapColumns.EMAIL]: string;
+}
+
+export interface ApiResponse<T> {
+  success: boolean;
+  data: T | T[];
 }
 
 export const DirectoryServiceConfigToken = new InjectionToken<DirectoryServiceConfig>(
@@ -19,7 +35,7 @@ export const DirectoryServiceConfigToken = new InjectionToken<DirectoryServiceCo
 })
 export class DirectoryService {
   constructor(
-    private http: Http,
+    private http: HttpClient,
     @Inject(DirectoryServiceConfigToken) private config: DirectoryServiceConfig
   ) {
     if (!config) {
@@ -35,12 +51,19 @@ export class DirectoryService {
   }
 
   get(endpoint = '') {
-    const headers = new Headers({ Accept: 'application/json', 'X-XSRF-TOKEN': null });
-    const options = new RequestOptions({ headers });
-    return this.http.get(`${this.config.url}${endpoint}`, options).pipe(
-      map(res => res.json().data),
-      catchError(this.handleError)
-    );
+    const headers = new HttpHeaders({ Accept: 'application/json', 'X-XSRF-TOKEN': [null] });
+    return this.http
+      .get<ApiResponse<DirectoryEntry>>(`${this.config.url}${endpoint}`, { headers })
+      .pipe(
+        map(res => {
+          if (res.success) {
+            return res.data;
+          } else {
+            throwError(res);
+          }
+        }),
+        catchError(this.handleError)
+      );
   }
 
   getAll() {
@@ -53,7 +76,7 @@ export class DirectoryService {
 
   getTitles() {
     return this.get().pipe(
-      concatMap(data => data.map(item => item[LdapColumns.TITLE])),
+      concatMap(data => (Array.isArray(data) ? data : [data]).map(item => item[LdapColumns.TITLE])),
       distinct()
     );
   }
@@ -62,7 +85,7 @@ export class DirectoryService {
     let errMsg;
     if (error instanceof Response) {
       const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
+      const err = JSON.stringify(body);
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
     } else {
       errMsg = error.message ? error.message : error.toString();
