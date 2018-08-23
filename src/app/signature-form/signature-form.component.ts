@@ -5,24 +5,17 @@ import { CompleterService, LocalData } from 'ng2-completer';
 
 import {
   SocialNetworks,
-  SocialNetworkOption,
+  SocialNetworkData,
   ButtonStyles,
   EventIcons,
   BrandLogos,
-  FormData,
-  SocialNetwork
+  FormData
 } from '../shared/models';
 import { LdapColumns } from '../shared';
 import { DirectoryService } from '../core/directory.service';
 
 const DIGIT = /\d/;
 const DIGIT_1TO9 = /[1-9]/;
-
-export interface SocialNetworkFormGroup {
-  type: SocialNetwork;
-  account: SocialNetworkOption;
-  username: any;
-}
 
 /**
  * @example
@@ -129,7 +122,7 @@ export class SignatureFormComponent implements OnInit {
 
   initSocial({ type = '', username = '', account = null } = {}) {
     const socialNetwork = this.getSocialNetwork(type);
-    const formGroup: SocialNetworkFormGroup = {
+    const formGroup: SocialNetworkData = {
       type: socialNetwork,
       username: [username, Validators.required],
       account: null

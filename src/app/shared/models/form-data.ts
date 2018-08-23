@@ -1,8 +1,9 @@
-import { FormControlOption, SocialNetwork } from '.';
+import { FormControlOption, SocialNetwork, SocialNetworkOption } from '.';
 
 export interface SocialNetworkData {
   type: SocialNetwork;
-  username: string;
+  account: SocialNetworkOption;
+  username: any;
 }
 
 export interface EventData {
@@ -39,16 +40,17 @@ export interface FormData {
   // };
   hours: string;
   social: {
-    style: FormControlOption,
-    networks: SocialNetworkData[],
+    style: FormControlOption;
+    networks: SocialNetworkData[];
   };
   logo: FormControlOption;
   event: {
     use: boolean;
-    data: EventData
+    data: EventData;
   };
   message: {
     style: string;
     content: string;
+    acknowledgement: boolean;
   };
 }
