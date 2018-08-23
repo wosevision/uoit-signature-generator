@@ -1,8 +1,8 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
-import { map, concatMap, catchError, distinct } from 'rxjs/operators';
+import { throwError, of } from 'rxjs';
+import { map, concatMap, catchError, distinct, tap } from 'rxjs/operators';
 
 import { LdapColumns } from '../shared';
 
@@ -23,7 +23,7 @@ export interface DirectoryEntry {
 
 export interface ApiResponse<T> {
   success: boolean;
-  data: T | T[];
+  data: T[];
 }
 
 export const DirectoryServiceConfigToken = new InjectionToken<DirectoryServiceConfig>(
@@ -34,6 +34,10 @@ export const DirectoryServiceConfigToken = new InjectionToken<DirectoryServiceCo
   providedIn: 'root'
 })
 export class DirectoryService {
+  private directoryCache: DirectoryEntry[];
+  private departmentsCache: DirectoryEntry[];
+  private titlesCache: string[];
+
   constructor(
     private http: HttpClient,
     @Inject(DirectoryServiceConfigToken) private config: DirectoryServiceConfig
@@ -51,9 +55,10 @@ export class DirectoryService {
   }
 
   get(endpoint = '') {
-    const headers = new HttpHeaders({ Accept: 'application/json', 'X-XSRF-TOKEN': [null] });
     return this.http
-      .get<ApiResponse<DirectoryEntry>>(`${this.config.url}${endpoint}`, { headers })
+      .get<ApiResponse<DirectoryEntry>>(`${this.config.url}${endpoint}`, {
+        headers: new HttpHeaders({ Accept: 'application/json', 'X-XSRF-TOKEN': [null] })
+      })
       .pipe(
         map(res => {
           if (res.success) {
@@ -67,18 +72,24 @@ export class DirectoryService {
   }
 
   getAll() {
-    return this.get();
+    return this.directoryCache
+      ? of(this.directoryCache)
+      : this.get().pipe(tap(data => (this.directoryCache = data)));
   }
 
   getDepartments() {
-    return this.get('/departments');
+    return this.departmentsCache
+      ? of(this.departmentsCache)
+      : this.get('/departments').pipe(tap(data => (this.departmentsCache = data)));
   }
 
   getTitles() {
-    return this.get().pipe(
-      concatMap(data => (Array.isArray(data) ? data : [data]).map(item => item[LdapColumns.TITLE])),
-      distinct()
-    );
+    return this.titlesCache
+      ? of(this.titlesCache)
+      : this.getAll().pipe(
+          concatMap(data => data.map(item => item[LdapColumns.TITLE])),
+          distinct()
+        );
   }
 
   handleError(error) {
