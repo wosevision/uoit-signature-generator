@@ -127,7 +127,7 @@ export class SignatureFormComponent implements OnInit {
   }
 
   initSocial({ type = '', username = '', account = null } = {}) {
-    const socialNetwork = this.socialNetworks.find(network => network.value === type);
+    const socialNetwork = this.getSocialNetwork(type);
     const formGroup: SocialNetworkFormGroup = {
       type: socialNetwork,
       username: [username, Validators.required]
@@ -146,8 +146,8 @@ export class SignatureFormComponent implements OnInit {
     return <FormArray>this.socialControls.controls['networks'];
   }
 
-  getSocialNetworkOptions(type: string) {
-    return this.socialNetworks.find(network => network.value === type).options;
+  getSocialNetwork(type: string) {
+    return this.socialNetworks.find(network => network.value === type);
   }
 
   addSocial() {
