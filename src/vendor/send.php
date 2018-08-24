@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 date_default_timezone_set('EST/UTC');
-header('Access-Control-Allow-Origin: http://localhost:8080', false);
+header('Access-Control-Allow-Origin: http://localhost:4200', false);
 header('Access-Control-Allow-Headers: origin, x-requested-with, content-type, x-xsrf-token');
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
 header('Content-type: application/json; charset=utf-8');
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode($result, true);
 		exit();
 	}
-	
+
 }
 
 ?>

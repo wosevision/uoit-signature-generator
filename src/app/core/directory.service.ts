@@ -1,9 +1,11 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { throwError, of } from 'rxjs';
+import { of } from 'rxjs';
 import { map, concatMap, catchError, distinct, tap } from 'rxjs/operators';
 
+import { ApiResponse } from './api-response';
+import { handleError } from './handle-error';
 import { LdapColumns } from '../shared';
 
 export interface DirectoryServiceConfig {
@@ -19,11 +21,6 @@ export interface DirectoryEntry {
   [LdapColumns.OFFICE]: string;
   [LdapColumns.BUILDING]: string;
   [LdapColumns.EMAIL]: string;
-}
-
-export interface ApiResponse<T> {
-  success: boolean;
-  data: T[];
 }
 
 export const DirectoryServiceConfigToken = new InjectionToken<DirectoryServiceConfig>(
@@ -56,7 +53,7 @@ export class DirectoryService {
 
   get(endpoint = '') {
     return this.http
-      .get<ApiResponse<DirectoryEntry>>(`${this.config.url}${endpoint}`, {
+      .get<ApiResponse<DirectoryEntry[]>>(`${this.config.url}${endpoint}`, {
         headers: new HttpHeaders({ Accept: 'application/json', 'X-XSRF-TOKEN': [null] })
       })
       .pipe(
@@ -64,10 +61,10 @@ export class DirectoryService {
           if (res.success) {
             return res.data;
           } else {
-            throwError(res);
+            throw new Error(<any>res.data);
           }
         }),
-        catchError(this.handleError)
+        catchError(handleError)
       );
   }
 
@@ -90,18 +87,5 @@ export class DirectoryService {
           concatMap(data => data.map(item => item[LdapColumns.TITLE])),
           distinct()
         );
-  }
-
-  handleError(error) {
-    let errMsg;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-      errMsg = error.message ? error.message : error.toString();
-    }
-    console.error(errMsg);
-    return throwError(errMsg);
   }
 }
