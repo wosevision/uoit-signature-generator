@@ -8,7 +8,7 @@ export class UploaderService {
   constructor(private http: HttpClient) {}
 
   // file from event.target.files[0]
-  uploadFile(url: string, file: File) {
+  uploadFile(file: File) {
     const formData = new FormData();
     formData.append('upload', file);
     const params = new HttpParams();
@@ -16,7 +16,7 @@ export class UploaderService {
       params: params,
       reportProgress: true
     };
-    const req = new HttpRequest('POST', url, formData, options);
-    return this.http.request<any>(req);
+    const req = new HttpRequest('POST', 'php/upload.php', formData, options);
+    return this.http.request<{ message: string; filename: string }>(req);
   }
 }

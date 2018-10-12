@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 
@@ -47,6 +47,13 @@ export class SignatureFormComponent implements OnInit {
     departments: LocalData;
   };
   formData: FormGroup;
+
+  uploadDragging = false;
+  uploadUploading = false;
+  uploadProgress = 0;
+  uploadSuccess = false;
+  uploadError = false;
+  uploadMessage = '';
 
   constructor(
     private fb: FormBuilder,
@@ -99,6 +106,7 @@ export class SignatureFormComponent implements OnInit {
         ])
       }),
       logo: this.brandLogos[0],
+      image: '',
       event: this.fb.group({
         use: false,
         data: this.fb.group({
@@ -155,57 +163,76 @@ export class SignatureFormComponent implements OnInit {
   removeSocial(i) {
     this.socialNetworksControls.removeAt(i);
   }
-  // At the drag drop area
-  // (drop)="onDropFile($event)"
+
   onDropFile(event: DragEvent) {
     event.preventDefault();
     this.uploadFile(event.dataTransfer.files);
+    this.uploadDragging = false;
   }
 
-  // At the drag drop area
-  // (dragover)="onDragOverFile($event)"
   onDragOverFile(event) {
     event.stopPropagation();
     event.preventDefault();
   }
 
-  // At the file input element
-  // (change)="selectFile($event)"
+  onDragEnterFile() {
+    this.uploadDragging = true;
+  }
+
+  onDragLeaveFile() {
+    this.uploadDragging = false;
+  }
+
   selectFile(event) {
     this.uploadFile(event.target.files);
   }
 
   uploadFile(files: FileList) {
-    if (files.length === 0) {
-      console.log('No file selected!');
-      return;
-    }
-    const file: File = files[0];
+    this.uploadUploading = true;
 
-    this.uploader.uploadFile('php/upload.php', file).subscribe(
-      event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          const percentDone = Math.round((100 * event.loaded) / event.total);
-          console.log(`File is ${percentDone}% loaded.`);
-        } else if (event instanceof HttpResponse) {
-          console.log('File is completely loaded!');
+    if (files && files.length) {
+      const file: File = files[0];
+      this.uploader.uploadFile(file).subscribe(
+        event => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.uploadProgress = Math.round((100 * event.loaded) / event.total);
+          } else if (event instanceof HttpResponse) {
+            const responseBody = event.body;
+            this.uploadSuccess = true;
+            this.uploadMessage = responseBody.message;
+            this.formData.patchValue({
+              image: file.name
+            });
+            this.resetUploadDetails();
+          }
+        },
+        event => {
+          this.uploadError = true;
+          this.uploadMessage = event.error.message;
+          this.resetUploadDetails();
         }
-      },
-      err => {
-        console.log('Upload Error:', err);
-      },
-      () => {
-        console.log('Upload done');
-      }
-    );
+      );
+    }
   }
 
   onFormChange(data: FormData) {
+    console.log('change');
     this.formChange.emit(data);
   }
 
   onSubmit(event, formData) {
     event.preventDefault();
     this.formSubmit.emit(formData);
+  }
+
+  private resetUploadDetails() {
+    setTimeout(() => {
+      this.uploadDragging = false;
+      this.uploadUploading = false;
+      this.uploadProgress = 0;
+      this.uploadSuccess = false;
+      this.uploadError = false;
+      this.uploadMessage = '';
+    }, 3000);
   }
 }

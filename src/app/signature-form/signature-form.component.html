@@ -193,10 +193,32 @@
           </select>
         </label>
         <label>Image
-          <input type="file" (change)="selectFile($event)">
-          <div style="width: 100%; height: 200px; background: yellow;" [style.background]="fileDragging ? 'red' : 'yellow'"
-            (drop)="onDropFile($event)" (dragover)="onDragOverFile($event)" (dragenter)="fileDragging = true"
-            (dragleave)="fileDragging = false"></div>
+          <div class="row">
+            <div class="small-6 columns">
+              <div class="callout text-center text-larger" [ngClass]="{
+                primary: uploadDragging,
+                secondary: !uploadDragging,
+                success: uploadSuccess,
+                alert: uploadError
+              }"
+                (drop)="onDropFile($event)" (dragover)="onDragOverFile($event)" (dragenter)="onDragEnterFile()"
+                (dragleave)="onDragLeaveFile()">
+                <span *ngIf="!uploadUploading">
+                  Drag file to upload<br /><small>or use menu to the right</small>
+                </span>
+                <span *ngIf="uploadUploading && !uploadSuccess && !uploadError">
+                  Uploading... <strong>{{ uploadProgress}}%</strong>
+                </span>
+                <span *ngIf="uploadUploading && (uploadSuccess || uploadError)">
+                  {{ uploadMessage }}
+                </span>
+              </div>
+            </div>
+            <div class="small-6 columns">
+              <input type="file" (change)="selectFile($event)">
+              <input type="hidden" formControlName="image">
+            </div>
+          </div>
         </label>
       </div>
     </accordion-panel>
