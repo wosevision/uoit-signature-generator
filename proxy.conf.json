@@ -1,0 +1,6 @@
+{
+  "/php": {
+    "target": "http://localhost:8888/uoit-signature-generator/dist/",
+    "secure": false
+  }
+}

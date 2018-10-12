@@ -5,6 +5,10 @@
 /tmp
 /out-tsc
 
+# php upload destination
+/src/php/upload/*
+!/src/php/upload/.gitkeep
+
 # dependencies
 /node_modules
 
