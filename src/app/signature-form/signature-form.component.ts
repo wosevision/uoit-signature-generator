@@ -201,7 +201,7 @@ export class SignatureFormComponent implements OnInit {
             this.uploadSuccess = true;
             this.uploadMessage = responseBody.message;
             this.formData.patchValue({
-              image: file.name
+              image: `/uploads/${file.name}`
             });
             this.resetUploadDetails();
           }
