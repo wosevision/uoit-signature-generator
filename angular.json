@@ -17,26 +17,20 @@
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
             "assets": [
-              "src/vendor/PHPMailer",
-              "src/vendor/send.php",
+              "src/php",
               "src/assets",
               "src/favicon.ico"
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "scripts": [
-              "src/vendor/iframeResizer.contentWindow.min.js"
             ]
           },
           "configurations": {
             "hmr": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.hmr.ts"
-                }
-              ]
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.hmr.ts"
+              }]
             },
             "production": {
               "optimization": true,
@@ -48,12 +42,10 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ]
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }]
             }
           }
         },

@@ -6,14 +6,11 @@ header('Access-Control-Allow-Headers: origin, x-requested-with, content-type, x-
 header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
 header('Content-type: application/json; charset=utf-8');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	// echo 'fun!';
-	$req = json_decode(file_get_contents('php://input'),true);
-	// foreach ($req as $k => $v) {
-	// 	echo preg_replace('/\s+/S', " ", $v);
-	// }
-	$error = false;
+  require 'PHPMailer/PHPMailerAutoload.php';
 
-	require 'PHPMailer/PHPMailerAutoload.php';
+  $req = json_decode(file_get_contents('php://input'),true);
+
+	$error = false;
 
   //Create a new PHPMailer instance
   $mail = new PHPMailer;
