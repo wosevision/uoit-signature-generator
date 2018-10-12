@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 import { CompleterService, LocalData } from 'ng2-completer';
 
@@ -13,6 +14,7 @@ import {
 } from '../shared/models';
 import { LdapColumns } from '../shared';
 import { DirectoryService } from '../core/directory.service';
+import { UploaderService } from '../core/uploader.service';
 
 const DIGIT = /\d/;
 const DIGIT_1TO9 = /[1-9]/;
@@ -49,7 +51,8 @@ export class SignatureFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private directory: DirectoryService,
-    private completer: CompleterService
+    private completer: CompleterService,
+    private uploader: UploaderService
   ) {}
 
   ngOnInit() {
@@ -151,6 +154,50 @@ export class SignatureFormComponent implements OnInit {
 
   removeSocial(i) {
     this.socialNetworksControls.removeAt(i);
+  }
+  // At the drag drop area
+  // (drop)="onDropFile($event)"
+  onDropFile(event: DragEvent) {
+    event.preventDefault();
+    this.uploadFile(event.dataTransfer.files);
+  }
+
+  // At the drag drop area
+  // (dragover)="onDragOverFile($event)"
+  onDragOverFile(event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  // At the file input element
+  // (change)="selectFile($event)"
+  selectFile(event) {
+    this.uploadFile(event.target.files);
+  }
+
+  uploadFile(files: FileList) {
+    if (files.length === 0) {
+      console.log('No file selected!');
+      return;
+    }
+    const file: File = files[0];
+
+    this.uploader.uploadFile('php/upload.php', file).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          const percentDone = Math.round((100 * event.loaded) / event.total);
+          console.log(`File is ${percentDone}% loaded.`);
+        } else if (event instanceof HttpResponse) {
+          console.log('File is completely loaded!');
+        }
+      },
+      err => {
+        console.log('Upload Error:', err);
+      },
+      () => {
+        console.log('Upload done');
+      }
+    );
   }
 
   onFormChange(data: FormData) {

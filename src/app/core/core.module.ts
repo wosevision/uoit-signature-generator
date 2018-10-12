@@ -8,10 +8,11 @@ import {
   DirectoryServiceConfigToken
 } from './directory.service';
 import { MailerService } from './mailer.service';
+import { UploaderService } from './uploader.service';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
-  providers: [DirectoryService, MailerService]
+  providers: [DirectoryService, MailerService, UploaderService]
 })
 export class CoreModule {
   constructor(
