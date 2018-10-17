@@ -16,6 +16,8 @@ import { LdapColumns } from '../shared';
 import { DirectoryService } from '../core/directory.service';
 import { UploaderService } from '../core/uploader.service';
 
+import { Logger } from '../shared/logger';
+
 const DIGIT = /\d/;
 const DIGIT_1TO9 = /[1-9]/;
 
@@ -54,6 +56,8 @@ export class SignatureFormComponent implements OnInit {
   uploadSuccess = false;
   uploadError = false;
   uploadMessage = '';
+
+  private logger = new Logger('signature-form.component');
 
   constructor(
     private fb: FormBuilder,
@@ -224,7 +228,7 @@ export class SignatureFormComponent implements OnInit {
   }
 
   onFormChange(data: FormData) {
-    console.log('signature changed', data);
+    this.logger.logGroup('signature change', data);
     this.formChange.emit(data);
   }
 
