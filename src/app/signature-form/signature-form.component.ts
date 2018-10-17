@@ -106,7 +106,11 @@ export class SignatureFormComponent implements OnInit {
         ])
       }),
       logo: this.brandLogos[0],
-      image: '',
+      image: this.fb.group({
+        src: '',
+        alt: '',
+        href: ''
+      }),
       event: this.fb.group({
         use: false,
         data: this.fb.group({
@@ -150,6 +154,10 @@ export class SignatureFormComponent implements OnInit {
 
   get socialNetworksControls() {
     return <FormArray>this.socialControls.controls['networks'];
+  }
+
+  get imageControls() {
+    return <FormGroup>this.formData.controls['image'];
   }
 
   getSocialNetwork(type: string) {
@@ -200,8 +208,8 @@ export class SignatureFormComponent implements OnInit {
             const responseBody = event.body;
             this.uploadSuccess = true;
             this.uploadMessage = responseBody.message;
-            this.formData.patchValue({
-              image: `/uploads/${file.name}`
+            this.imageControls.patchValue({
+              src: `/uploads/${file.name}`
             });
             this.resetUploadDetails();
           }
@@ -216,7 +224,7 @@ export class SignatureFormComponent implements OnInit {
   }
 
   onFormChange(data: FormData) {
-    console.log('change');
+    console.log('signature changed', data);
     this.formChange.emit(data);
   }
 

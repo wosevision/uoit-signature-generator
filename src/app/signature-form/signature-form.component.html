@@ -192,34 +192,55 @@
             <option *ngFor="let logo of brandLogos;" [ngValue]="logo">{{logo.name}}</option>
           </select>
         </label>
-        <label>Image
+        <fieldset class="fieldset" formGroupName="image">
+          <legend>Custom image</legend>
+          <div class="row columns">
+            <label>Upload
+              <div class="row">
+                <div class="small-6 columns">
+                  <div class="callout text-center text-larger" [ngClass]="{
+                      primary: uploadDragging,
+                      secondary: !uploadDragging,
+                      success: uploadSuccess,
+                      alert: uploadError
+                    }"
+                    (drop)="onDropFile($event)" (dragover)="onDragOverFile($event)" (dragenter)="onDragEnterFile()"
+                    (dragleave)="onDragLeaveFile()">
+                    <span *ngIf="!uploadUploading">
+                      Drag file to upload<br /><small>or use menu to the right</small>
+                    </span>
+                    <span *ngIf="uploadUploading && !uploadSuccess && !uploadError">
+                      Uploading... <strong>{{ uploadProgress}}%</strong>
+                    </span>
+                    <span *ngIf="uploadUploading && (uploadSuccess || uploadError)">
+                      {{ uploadMessage }}
+                    </span>
+                  </div>
+                </div>
+                <div class="small-6 columns">
+                  <input type="file" (change)="selectFile($event)">
+                  <input type="hidden" formControlName="src">
+                </div>
+              </div>
+            </label>
+          </div>
           <div class="row">
             <div class="small-6 columns">
-              <div class="callout text-center text-larger" [ngClass]="{
-                primary: uploadDragging,
-                secondary: !uploadDragging,
-                success: uploadSuccess,
-                alert: uploadError
-              }"
-                (drop)="onDropFile($event)" (dragover)="onDragOverFile($event)" (dragenter)="onDragEnterFile()"
-                (dragleave)="onDragLeaveFile()">
-                <span *ngIf="!uploadUploading">
-                  Drag file to upload<br /><small>or use menu to the right</small>
-                </span>
-                <span *ngIf="uploadUploading && !uploadSuccess && !uploadError">
-                  Uploading... <strong>{{ uploadProgress}}%</strong>
-                </span>
-                <span *ngIf="uploadUploading && (uploadSuccess || uploadError)">
-                  {{ uploadMessage }}
-                </span>
-              </div>
+              <label>Alt text <small>(describe the image for screen readers)</small>
+                <input type="text" formControlName="alt">
+              </label>
             </div>
             <div class="small-6 columns">
-              <input type="file" (change)="selectFile($event)">
-              <input type="hidden" formControlName="image">
+              <label>Link URL
+                <div class="input-group">
+                  <span class="input-group-label">http
+                    <small>[s]</small>://</span>
+                  <input type="url" placeholder="uoit.ca" formControlName="href" class="input-group-field">
+                </div>
+              </label>
             </div>
           </div>
-        </label>
+        </fieldset>
       </div>
     </accordion-panel>
 
