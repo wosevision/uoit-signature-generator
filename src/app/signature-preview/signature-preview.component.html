@@ -98,10 +98,18 @@
       <td>
         <a *ngIf="data.image.href; else noHref" style="border: 0; outline: none;" [title]="data.image.alt || data.image.href"
           href="http://{{data.image.href}}">
-          <img [src]="data.image.src | absoluteUrl" [alt]="data.image.alt || data.image.src" />
+          <img [src]="data.image.src | absoluteUrl" [alt]="data.image.alt || data.image.src" [absoluteDimensions]="data.image.width
+            ? data.image.width + 'px'
+            : data.image.scale
+              ? data.image.scale + '%'
+              : null" />
         </a>
         <ng-template #noHref>
-          <img [src]="data.image.src | absoluteUrl" [alt]="data.image.alt || data.image.src" />
+          <img [src]="data.image.src | absoluteUrl" [alt]="data.image.alt || data.image.src" [absoluteDimensions]="data.image.width
+            ? data.image.width + 'px'
+            : data.image.scale
+              ? data.image.scale + '%'
+              : null" />
         </ng-template>
       </td>
     </tr>

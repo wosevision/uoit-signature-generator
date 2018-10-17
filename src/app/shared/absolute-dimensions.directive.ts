@@ -1,13 +1,14 @@
-import { Directive, ElementRef, HostBinding, Input } from '@angular/core';
+import { Directive, ElementRef, HostBinding, Input, OnChanges } from '@angular/core';
 
-import { fromEvent } from 'rxjs';
-import { mapTo, map, take } from 'rxjs/operators';
+import { ReplaySubject, fromEvent } from 'rxjs';
+import { mapTo, map, take, shareReplay } from 'rxjs/operators';
+
 import { Logger } from './logger';
 
 @Directive({
   selector: '[absoluteDimensions]'
 })
-export class AbsoluteDimensionsDirective {
+export class AbsoluteDimensionsDirective implements OnChanges {
   private set width(value: string) {
     this.elWidth = value;
     this.styleWidth = value;
@@ -29,13 +30,24 @@ export class AbsoluteDimensionsDirective {
   @Input()
   absoluteDimensions: string;
 
+  private nativeElement$ = fromEvent(this.el.nativeElement, 'load').pipe(
+    mapTo(this.el.nativeElement),
+    shareReplay(1)
+  );
+
   private logger = new Logger('absolute-dimensions.directive');
 
-  constructor(el: ElementRef<HTMLImageElement>) {
-    const nativeElement = el.nativeElement;
-    fromEvent(nativeElement, 'load')
+  constructor(private el: ElementRef<HTMLImageElement>) {
+    this.updateDimensions();
+  }
+
+  ngOnChanges() {
+    this.updateDimensions();
+  }
+
+  updateDimensions() {
+    this.nativeElement$
       .pipe(
-        mapTo(nativeElement),
         map(({ naturalWidth, naturalHeight }) =>
           this.transformDimensions(naturalWidth, naturalHeight)
         ),
@@ -68,8 +80,8 @@ export class AbsoluteDimensionsDirective {
           );
         }
       }
-      width = naturalWidth * ratio;
-      height = naturalHeight * ratio;
+      width = Math.floor(naturalWidth * ratio);
+      height = Math.floor(naturalHeight * ratio);
       this.logger.logGroup(
         'absoluteDimensions',
         ['ratio', ratio],
