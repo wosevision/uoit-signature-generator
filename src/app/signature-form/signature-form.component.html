@@ -195,7 +195,7 @@
         <fieldset class="fieldset" formGroupName="image">
           <legend>Custom image</legend>
           <div class="row columns">
-            <label>Upload
+            <label>Upload <small>*images are subject to review</small>
               <div class="row">
                 <div class="small-6 columns">
                   <div class="callout text-center text-larger" [ngClass]="{
@@ -220,6 +220,29 @@
                 <div class="small-6 columns">
                   <input type="file" (change)="selectFile($event)">
                   <input type="hidden" formControlName="src">
+                  <fieldset class="fieldset">
+                    <legend>Sizing</legend>
+                    <div class="row">
+                      <div class="columns">
+                        <label>Scale
+                          <div class="input-group">
+                            <input type="range" class="input-group-field" [class.is-invalid-input]="imageControls.get('scale').invalid"
+                              min="0" max="100" formControlName="scale">
+                            &nbsp;{{ imageControls.get('scale').value }}%
+                          </div>
+                        </label>
+                      </div>
+                      <div class="columns">
+                        <label>Set width
+                          <div class="input-group">
+                            <input type="number" class="input-group-field" [class.is-invalid-input]="imageControls.get('width').invalid"
+                              min="0" max="600" formControlName="width">
+                            <span class="input-group-label">px</span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
                 </div>
               </div>
             </label>

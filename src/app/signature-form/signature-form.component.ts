@@ -113,7 +113,9 @@ export class SignatureFormComponent implements OnInit {
       image: this.fb.group({
         src: '',
         alt: '',
-        href: ''
+        href: '',
+        scale: [100, [Validators.min(0), Validators.max(100)]],
+        width: [null, [Validators.min(0), Validators.max(600)]]
       }),
       event: this.fb.group({
         use: false,
