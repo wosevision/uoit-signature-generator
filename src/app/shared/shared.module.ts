@@ -4,11 +4,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AccordionComponent } from './accordion/accordion.component';
 import { AccordionPanelComponent } from './accordion/accordion-panel.component';
+import { AbsoluteDimensionsDirective } from './absolute-dimensions.directive';
 import { AbsoluteUrlPipe } from './absolute-url.pipe';
 
 @NgModule({
   imports: [CommonModule, BrowserAnimationsModule],
-  declarations: [AccordionComponent, AccordionPanelComponent, AbsoluteUrlPipe],
-  exports: [AccordionComponent, AccordionPanelComponent]
+  declarations: [
+    AccordionComponent,
+    AccordionPanelComponent,
+    AbsoluteDimensionsDirective,
+    AbsoluteUrlPipe
+  ],
+  exports: [
+    AccordionComponent,
+    AccordionPanelComponent,
+    AbsoluteDimensionsDirective,
+    AbsoluteUrlPipe
+  ]
 })
 export class SharedModule {}
