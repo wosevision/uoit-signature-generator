@@ -1,0 +1,20 @@
+<div class="reveal-overlay" *ngIf="modalIsOpen">
+  <div class="reveal">
+    <h1>Select an image</h1>
+    <div class="row small-up-2 medium-up-3 large-up-4">
+      <div class="column" *ngFor="let image of images | async">
+        <div class="card">
+          <div class="card-section">
+            <p>{{ image.name }}</p>
+          </div>
+          <img src="uploads/{{image.name}}">
+        </div>
+      </div>
+    </div>
+
+    <button #closeButton class="close-button" aria-label="Close modal" type="button" (click)="toggleModal(false)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+<button class="button icon_folder" (click)="toggleModal(true)">Select uploaded image&nbsp;</button>

@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 
+export interface UploadRecord {
+  name: string;
+  path: string;
+  hash: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,5 +24,9 @@ export class UploaderService {
     };
     const req = new HttpRequest('POST', 'php/upload.php', formData, options);
     return this.http.request<{ message: string; filename: string }>(req);
+  }
+
+  getUploads() {
+    return this.http.get<UploadRecord[]>('uploads/upload-record.json');
   }
 }

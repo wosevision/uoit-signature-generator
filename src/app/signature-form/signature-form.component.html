@@ -194,58 +194,61 @@
         </label>
         <fieldset class="fieldset" formGroupName="image">
           <legend>Custom image</legend>
-          <div class="row columns">
-            <label>Upload <small>*images are subject to review</small>
-              <div class="row">
-                <div class="small-6 columns">
-                  <div class="callout text-center text-larger" [ngClass]="{
-                      primary: uploadDragging,
-                      secondary: !uploadDragging,
-                      success: uploadSuccess,
-                      alert: uploadError
-                    }"
-                    (drop)="onDropFile($event)" (dragover)="onDragOverFile($event)" (dragenter)="onDragEnterFile()"
-                    (dragleave)="onDragLeaveFile()">
-                    <span *ngIf="!uploadUploading">
-                      Drag file to upload<br /><small>or use menu to the right</small>
-                    </span>
-                    <span *ngIf="uploadUploading && !uploadSuccess && !uploadError">
-                      Uploading... <strong>{{ uploadProgress}}%</strong>
-                    </span>
-                    <span *ngIf="uploadUploading && (uploadSuccess || uploadError)">
-                      {{ uploadMessage }}
-                    </span>
+          <div class="row">
+            <div class="small-6 columns">
+              <label>Upload <small>*images are subject to review</small>
+                <div class="callout text-center text-larger upload-container" [ngClass]="{
+                    primary: uploadDragging,
+                    secondary: !uploadDragging,
+                    success: uploadSuccess,
+                    alert: uploadError
+                  }"
+                  (drop)="onDropFile($event)" (dragover)="onDragOverFile($event)" (dragenter)="onDragEnterFile()"
+                  (dragleave)="onDragLeaveFile()">
+                  <span *ngIf="!uploadUploading">
+                    Drag a file here or click to upload<br /><small>or use menu to the right to select one</small>
+                  </span>
+                  <span *ngIf="uploadUploading && !uploadSuccess && !uploadError">
+                    Uploading... <strong>{{ uploadProgress}}%</strong>
+                  </span>
+                  <span *ngIf="uploadUploading && (uploadSuccess || uploadError)">
+                    {{ uploadMessage }}
+                  </span>
+                </div>
+                <input type="file" (change)="selectFile($event)" hidden>
+                <input type="hidden" formControlName="src">
+              </label>
+            </div>
+            <div class="small-6 columns">
+              <upload-browser></upload-browser>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <fieldset class="fieldset">
+                <legend>Sizing</legend>
+                <div class="row">
+                  <div class="columns">
+                    <label>Scale
+                      <div class="input-group">
+                        <input type="range" class="input-group-field" [class.is-invalid-input]="imageControls.get('scale').invalid"
+                          min="0" max="100" formControlName="scale">
+                        &nbsp;{{ imageControls.get('scale').value }}%
+                      </div>
+                    </label>
+                  </div>
+                  <div class="columns">
+                    <label>Set width
+                      <div class="input-group">
+                        <input type="number" class="input-group-field" [class.is-invalid-input]="imageControls.get('width').invalid"
+                          min="0" max="600" formControlName="width">
+                        <span class="input-group-label">px</span>
+                      </div>
+                    </label>
                   </div>
                 </div>
-                <div class="small-6 columns">
-                  <input type="file" (change)="selectFile($event)">
-                  <input type="hidden" formControlName="src">
-                  <fieldset class="fieldset">
-                    <legend>Sizing</legend>
-                    <div class="row">
-                      <div class="columns">
-                        <label>Scale
-                          <div class="input-group">
-                            <input type="range" class="input-group-field" [class.is-invalid-input]="imageControls.get('scale').invalid"
-                              min="0" max="100" formControlName="scale">
-                            &nbsp;{{ imageControls.get('scale').value }}%
-                          </div>
-                        </label>
-                      </div>
-                      <div class="columns">
-                        <label>Set width
-                          <div class="input-group">
-                            <input type="number" class="input-group-field" [class.is-invalid-input]="imageControls.get('width').invalid"
-                              min="0" max="600" formControlName="width">
-                            <span class="input-group-label">px</span>
-                          </div>
-                        </label>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </div>
-            </label>
+              </fieldset>
+            </div>
           </div>
           <div class="row">
             <div class="small-6 columns">
@@ -346,8 +349,10 @@
             <input type="checkbox" formControlName="acknowledgement">
           </label>
           <small *ngIf="formData.value.message.acknowledgement">
-            "The university is proud to acknowledge the lands and people of the Mississaugas of Scugog Island First Nation which is covered
-            under the Williams Treaties. We are situated on the Traditional Territory of the Mississaugas, a branch of the
+            "The university is proud to acknowledge the lands and people of the Mississaugas of Scugog Island First
+            Nation which is covered
+            under the Williams Treaties. We are situated on the Traditional Territory of the Mississaugas, a branch of
+            the
             greater Anishinaabeg Nation which includes Algonquin, Ojibway, Odawa and Pottawatomi."
           </small>
         </div>
