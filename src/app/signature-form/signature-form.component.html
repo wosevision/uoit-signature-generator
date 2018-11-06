@@ -215,12 +215,12 @@
                     {{ uploadMessage }}
                   </span>
                 </div>
-                <input type="file" (change)="selectFile($event)" hidden>
+                <input type="file" (change)="uploadFile($event.target.files)" hidden>
                 <input type="hidden" formControlName="src">
               </label>
             </div>
             <div class="small-6 columns">
-              <upload-browser></upload-browser>
+              <upload-browser (select)="selectFile($event)"></upload-browser>
             </div>
           </div>
           <div class="row">

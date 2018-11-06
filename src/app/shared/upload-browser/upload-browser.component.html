@@ -2,7 +2,7 @@
   <div class="reveal">
     <h1>Select an image</h1>
     <div class="row small-up-2 medium-up-3 large-up-4">
-      <div class="column" *ngFor="let image of images | async">
+      <div class="column" *ngFor="let image of images | async" (click)="selectUpload(image)">
         <div class="card">
           <div class="card-section">
             <p>{{ image.name }}</p>

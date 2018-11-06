@@ -14,7 +14,7 @@ import {
 } from '../shared/models';
 import { LdapColumns } from '../shared';
 import { DirectoryService } from '../core/directory.service';
-import { UploaderService } from '../core/uploader.service';
+import { UploaderService, UploadRecord } from '../core/uploader.service';
 
 import { Logger } from '../shared/logger';
 
@@ -197,8 +197,10 @@ export class SignatureFormComponent implements OnInit {
     this.uploadDragging = false;
   }
 
-  selectFile(event) {
-    this.uploadFile(event.target.files);
+  selectFile(file: File | UploadRecord) {
+    this.imageControls.patchValue({
+      src: `/uploads/${file.name}`
+    });
   }
 
   uploadFile(files: FileList) {
@@ -214,9 +216,7 @@ export class SignatureFormComponent implements OnInit {
             const responseBody = event.body;
             this.uploadSuccess = true;
             this.uploadMessage = responseBody.message;
-            this.imageControls.patchValue({
-              src: `/uploads/${file.name}`
-            });
+            this.selectFile(file);
             this.resetUploadDetails();
           }
         },

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
@@ -15,6 +15,9 @@ export class UploadBrowserComponent implements OnInit {
 
   images: Observable<UploadRecord[]>;
 
+  @Output()
+  select = new EventEmitter<UploadRecord>();
+
   constructor(private uploader: UploaderService) {}
 
   ngOnInit() {}
@@ -26,5 +29,10 @@ export class UploadBrowserComponent implements OnInit {
 
   getUploads() {
     this.images = this.uploader.getUploads().pipe(tap(result => console.log(result)));
+  }
+
+  selectUpload(image: UploadRecord) {
+    this.select.emit(image);
+    this.toggleModal(false);
   }
 }
