@@ -1,9 +1,37 @@
 import { FormControlOption, SocialNetwork, SocialNetworkOption } from '.';
 
+export interface NameData {
+  first: string;
+  last: string;
+}
+
+export interface ContactData {
+  phone: string;
+  ext: string;
+  mobile: string;
+  fax: string;
+  faxext: string;
+  email: string;
+  website: string;
+}
+
+export interface CredentialsData {
+  title: string;
+  dept: string;
+}
+
 export interface SocialNetworkData {
   type: SocialNetwork;
   account: SocialNetworkOption;
   username: any;
+}
+
+export interface ImageData {
+  src: string;
+  alt: string;
+  href: string;
+  scale: number;
+  width: number;
 }
 
 export interface EventData {
@@ -16,41 +44,26 @@ export interface EventData {
   url: string;
 }
 
+export interface MessageData {
+  style: string;
+  content: string;
+  acknowledgement: boolean;
+}
+
 export interface FormData {
-  name: {
-    first: string;
-    last: string;
-  };
-  contact: {
-    phone: string;
-    ext: string;
-    mobile: string;
-    fax: string;
-    faxext: string;
-    email: string;
-    website: string;
-  };
-  credentials: {
-    title: string;
-    dept: string;
-  };
-  // hours: {
-  // 	title: '',
-  // 	dept: '',
-  // };
+  name: NameData;
+  contact: ContactData;
+  credentials: CredentialsData;
   hours: string;
   social: {
     style: FormControlOption;
     networks: SocialNetworkData[];
   };
   logo: FormControlOption;
+  image: ImageData;
   event: {
     use: boolean;
     data: EventData;
   };
-  message: {
-    style: string;
-    content: string;
-    acknowledgement: boolean;
-  };
+  message: MessageData;
 }
