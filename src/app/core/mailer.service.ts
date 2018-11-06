@@ -11,7 +11,7 @@ import { LocalPrefix } from '../shared';
   providedIn: 'root'
 })
 export class MailerService {
-  sendUrl = `${LocalPrefix}vendor/send.php`;
+  sendUrl = `${LocalPrefix}php/send.php`;
 
   constructor(private http: HttpClient) {}
 

@@ -154,7 +154,7 @@
                 <select formControlName="type">
                   <option *ngFor="let type of socialNetworks;" [ngValue]="type">{{type.name}}</option>
                 </select>
-                <span class="form-error" [class.is-visible]="socialNetworksControls.controls[i].controls.type.invalid &amp;&amp; socialNetworksControls.controls[i].controls.type.dirty">
+                <span class="form-error" [class.is-visible]="socialNetworksControls.controls[i].controls.type.invalid && socialNetworksControls.controls[i].controls.type.dirty">
                   Type is required
                 </span>
               </label>
@@ -170,7 +170,7 @@
                   <span class="input-group-label" [hidden]="formData.value.social.networks[i].type?.value !== 'tw'">@</span>
                   <input type="text" class="input-group-field" formControlName="username">
                 </div>
-                <span class="form-error" [class.is-visible]="socialNetworksControls.controls[i].controls.username.invalid &amp;&amp; socialNetworksControls.controls[i].controls.username.dirty">
+                <span class="form-error" [class.is-visible]="socialNetworksControls.controls[i].controls.username.invalid && socialNetworksControls.controls[i].controls.username.dirty">
                   Username is required
                 </span>
               </label>
