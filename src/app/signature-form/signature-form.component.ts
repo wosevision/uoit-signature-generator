@@ -109,7 +109,7 @@ export class SignatureFormComponent implements OnInit {
           this.initSocial({ type: 'in', username: 'uoit' })
         ])
       }),
-      logo: this.brandLogos[0],
+      logo: this.brandLogos[0].options[0],
       image: this.fb.group({
         src: '',
         alt: '',

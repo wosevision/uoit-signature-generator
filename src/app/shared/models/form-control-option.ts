@@ -40,3 +40,8 @@ export interface FormControlOption {
    */
   href?: string;
 }
+
+export interface FormControlOptGroup {
+  name: string;
+  options: FormControlOption[];
+}
