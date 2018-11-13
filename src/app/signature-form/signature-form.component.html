@@ -194,7 +194,7 @@
             </optgroup>
           </select>
         </label>
-        <fieldset class="fieldset" formGroupName="image">
+        <fieldset class="fieldset" formGroupName="image" *ngIf="showUploader$ | async">
           <legend>Custom image</legend>
           <div class="row">
             <div class="small-6 columns">

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 /* App root */
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     SignatureFormModule,
     SignaturePreviewModule,
+    RouterModule.forRoot([]),
     CoreModule.forRoot({ url: 'https://api.uoit.ca/v2/directory' })
   ],
   declarations: [AppComponent],

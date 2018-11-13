@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-
+import { ActivatedRoute } from '@angular/router';
 import { CompleterService, LocalData } from 'ng2-completer';
+
+import { map } from 'rxjs/operators';
 
 import {
   SocialNetworks,
@@ -50,6 +52,7 @@ export class SignatureFormComponent implements OnInit {
   };
   formData: FormGroup;
 
+  showUploader$ = this.route.queryParams.pipe(map(params => !!params.hasOwnProperty('uploader')));
   uploadDragging = false;
   uploadUploading = false;
   uploadProgress = 0;
@@ -61,6 +64,7 @@ export class SignatureFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private directory: DirectoryService,
     private completer: CompleterService,
     private uploader: UploaderService
