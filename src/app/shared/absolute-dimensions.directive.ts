@@ -11,11 +11,11 @@ import { Logger } from './logger';
 export class AbsoluteDimensionsDirective implements OnChanges {
   private set width(value: string) {
     this.elWidth = value;
-    this.styleWidth = value;
+    this.styleWidth = `${value}px`;
   }
   private set height(value: string) {
     this.elHeight = value;
-    this.styleHeight = value;
+    this.styleHeight = `${value}px`;
   }
 
   @HostBinding('attr.width')
@@ -54,8 +54,8 @@ export class AbsoluteDimensionsDirective implements OnChanges {
         take(1)
       )
       .subscribe(([width, height]) => {
-        this.width = `${width}px`;
-        this.height = `${height}px`;
+        this.width = width;
+        this.height = height;
       });
   }
 
