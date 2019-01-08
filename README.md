@@ -1,10 +1,23 @@
-# UoitSignatureGenerator
+# UOIT Signature Generator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
+This tool allows users to create personalized email signatures within a consistent, branded template, and email the finished signature to themselves for copying into Outlook or another email client.
+
+**Currently supported elements:**
+
+- Personal (name, phone, credentials, etc)
+- Business (hours)
+- Social networks (links or buttons)
+- Imagery (logos, wordmarks, custom)
+- Promotional (event details)
+- Messaging (disclaimers, policies, land acknowledgement)
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm start` for a dev server with hot module reloading. Navigate to `http://localhost:4200/` to view the app.
+
+A proxy has been set up for `http://localhost:8888/` so that an *AMP-based server can run in the background and perform PHP-related tasks, as well as serve uploaded assets. Any relative requests to `/php` or `/uploads` will be properly routed to their *AMP server from the app.
+
+See the [Content Edits section](#content-edits) for notes on making changes to signature data (i.e. adding new logos or social networks).
 
 ## Code scaffolding
 
@@ -12,7 +25,9 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `npm run build` to build the project for testing inside a local *AMP environment. The build artifacts will be stored in the `dist/` directory, and all URLs will reflect that as the base directory (most likely to be `http://localhost:8888/uoit-signature-generator/dist`).
+
+Run `npm run prod` to build the project for uploading to a live production server. Ensure the `--base-href` option of the NPM build script points to the correct production server directory.
 
 ## Running unit tests
 
@@ -23,6 +38,12 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
-## Further help
+## Content edits
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Model files that store content-related data can be found in `/src/app/shared/models`. Related data includes:
+
+- logos
+- icons
+- social networks
+
+To add new selection options to the signature generator, any new assets must be referred to in a model file.

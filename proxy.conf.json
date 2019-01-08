@@ -1,8 +1,13 @@
 [{
   "context": [
-    "/php",
-    "/uploads"
+    "/php"
   ],
   "target": "http://localhost:8888/uoit-signature-generator/dist/",
+  "secure": false
+}, {
+  "context": [
+    "/uploads"
+  ],
+  "target": "http://localhost:8888/uoit-signature-generator/",
   "secure": false
 }]
