@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 /* Feature modules */
 import { SignatureFormModule } from './signature-form/signature-form.module';
 import { SignaturePreviewModule } from './signature-preview/signature-preview.module';
+import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CoreModule } from './core/core.module';
     SignatureFormModule,
     SignaturePreviewModule,
     RouterModule.forRoot([]),
-    CoreModule.forRoot({ url: 'https://api.uoit.ca/v2/directory' })
+    CoreModule.forRoot({ url: 'https://api.uoit.ca/v2/directory' }),
+    SharedModule
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
