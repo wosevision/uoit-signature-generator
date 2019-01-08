@@ -7,7 +7,7 @@
           <div class="card-section">
             <p>{{ image.name }}</p>
           </div>
-          <img src="uploads/{{image.name}}">
+          <img [src]="'../uploads/' + image.name | absoluteUrl">
         </div>
       </div>
     </div>
