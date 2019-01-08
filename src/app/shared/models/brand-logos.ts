@@ -81,6 +81,12 @@ export const BrandLogos: FormControlOptGroup[] = [
     name: 'Associated',
     options: [
       {
+        name: 'Brilliant Catalyst',
+        value: 'brc',
+        src: '/assets/logos/brilliant_logo-horizontal.gif',
+        href: 'https://www.uoitbrilliant.ca/'
+      },
+      {
         name: 'Indigenous Education and Cultural Services',
         value: 'iecs',
         src: '/assets/logos/indigenous_logo-horizontal.gif',
