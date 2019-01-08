@@ -25,10 +25,10 @@
     "angular2-text-mask": "^9.0.0",
     "core-js": "^2.5.7",
     "ng2-completer": "^2.0.8",
+    "resolve-url": "^0.2.1",
     "rxjs": "^6.2.2",
-    "url-join": "^4.0.0",
-    "zone.js": "^0.8.26",
-    "rxjs-compat": "^6.0.0-rc.0"
+    "rxjs-compat": "^6.0.0-rc.0",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.4",
