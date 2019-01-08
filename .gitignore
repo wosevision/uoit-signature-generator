@@ -6,8 +6,8 @@
 /out-tsc
 
 # php upload destination
-/src/php/upload/*
-!/src/php/upload/.gitkeep
+uploads/*
+!uploads/upload-record.json
 
 # dependencies
 /node_modules
