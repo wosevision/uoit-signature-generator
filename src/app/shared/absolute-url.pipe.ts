@@ -1,10 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as urlJoin from 'url-join';
+import * as resolveUrl from 'resolve-url';
 
 @Pipe({ name: 'absoluteUrl' })
 export class AbsoluteUrlPipe implements PipeTransform {
-  transform(value) {
-    const { protocol, host, pathname } = window.location;
-    return urlJoin(`${protocol}//${host}/${pathname}`, value);
+  transform(value: string) {
+    return resolveUrl(value);
   }
 }

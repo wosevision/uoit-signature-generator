@@ -27,6 +27,6 @@ export class UploaderService {
   }
 
   getUploads() {
-    return this.http.get<UploadRecord[]>('uploads/upload-record.json');
+    return this.http.get<UploadRecord[]>('../uploads/upload-record.json');
   }
 }

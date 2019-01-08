@@ -3,8 +3,7 @@ $message = '';
 $status = 500;
 
 try {
-
-  $target_dir = dirname(dirname(__FILE__)) . '/uploads/';
+  $target_dir = dirname(dirname(dirname(__FILE__))) . '/uploads/';
   $target_file = $target_dir . basename($_FILES['upload']['name']);
   $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
   $upload_record = $target_dir . 'upload-record.json';

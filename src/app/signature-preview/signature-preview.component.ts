@@ -15,7 +15,6 @@ export class SignaturePreviewComponent {
     return this.el.nativeElement.innerHTML;
   }
 
-  logoUrl = '../assets/logos/uoit_logo-gs-horizontal.gif';
   socialNetworks = SocialNetworks;
 
   constructor(private el: ElementRef) {}

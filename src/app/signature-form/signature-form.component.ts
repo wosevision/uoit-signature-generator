@@ -203,7 +203,7 @@ export class SignatureFormComponent implements OnInit {
 
   selectFile(file: File | UploadRecord) {
     this.imageControls.patchValue({
-      src: `/uploads/${file.name}`
+      src: `../uploads/${file.name}`
     });
   }
 
