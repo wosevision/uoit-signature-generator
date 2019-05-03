@@ -96,7 +96,7 @@ export class SignatureFormComponent implements OnInit {
         fax: '',
         faxext: '',
         email: ['', Validators.required],
-        website: ['uoit.ca', Validators.required]
+        website: ['ontariotechu.ca', Validators.required]
       }),
       credentials: this.fb.group({
         title: '',
@@ -106,11 +106,11 @@ export class SignatureFormComponent implements OnInit {
       social: this.fb.group({
         style: this.buttonStyles[0],
         networks: this.fb.array([
-          this.initSocial({ type: 'fb', username: 'myuoit' }),
-          this.initSocial({ type: 'tw', username: 'uoit' }),
-          this.initSocial({ type: 'li', username: 'uoit', account: 'school' }),
-          this.initSocial({ type: 'yt', username: 'universityofontario' }),
-          this.initSocial({ type: 'in', username: 'uoit' })
+          this.initSocial({ type: 'fb', username: 'ontariotechu' }),
+          this.initSocial({ type: 'tw', username: 'ontariotech_u' }),
+          this.initSocial({ type: 'li', username: 'ontariotech', account: 'school' }),
+          this.initSocial({ type: 'yt', username: 'UOIT' }),
+          this.initSocial({ type: 'in', username: 'ontariotechu' })
         ])
       }),
       logo: this.brandLogos[0].options[0],
