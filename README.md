@@ -25,7 +25,11 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
+**Test build**
+
 Run `npm run build` to build the project for testing inside a local *AMP environment. The build artifacts will be stored in the `dist/` directory, and all URLs will reflect that as the base directory (most likely to be `http://localhost:8888/uoit-signature-generator/dist`).
+
+**Production (server) build**
 
 Run `npm run prod` to build the project for uploading to a live production server. Ensure the `--base-href` option of the NPM build script points to the correct production server directory.
 
