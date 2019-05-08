@@ -136,6 +136,7 @@ export class SignatureFormComponent implements OnInit {
       message: this.fb.group({
         style: '',
         content: '',
+        brand: true,
         acknowledgement: true
       })
     });

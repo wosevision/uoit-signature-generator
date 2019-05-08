@@ -345,6 +345,17 @@
       </div>
       <div class="row padding-1">
         <div class="small-12 columns">
+          <label>Include brand disclaimer?
+            <input type="checkbox" formControlName="brand">
+          </label>
+          <small *ngIf="formData.value.message.brand">
+            "Ontario Tech University is the brand name used to refer to the University of Ontario Institute of
+            Technology."
+          </small>
+        </div>
+      </div>
+      <div class="row padding-1">
+        <div class="small-12 columns">
           <label>Include land acknowledgement?
             <input type="checkbox" formControlName="acknowledgement">
           </label>
