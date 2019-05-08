@@ -23,15 +23,17 @@
     "@angular/platform-browser-dynamic": "^6.1.4",
     "@angular/router": "^6.1.4",
     "angular2-text-mask": "^9.0.0",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.7",
     "ng2-completer": "^2.0.8",
     "resolve-url": "^0.2.1",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.0.0-rc.0",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.7.4",
+    "@angular-devkit/build-angular": "^0.13.9",
     "@angular/cli": "^6.0.5",
     "@angular/compiler-cli": "^6.1.4",
     "@angular/language-service": "^6.1.4",
