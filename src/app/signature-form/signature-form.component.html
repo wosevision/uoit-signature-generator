@@ -1,4 +1,5 @@
-<form [formGroup]="formData" (ngSubmit)="onSubmit($event, formData.value)" class="row flex-dir-column" enctype="multipart/form-data">
+<form [formGroup]="formData" (ngSubmit)="onSubmit($event, formData.value)" class="row flex-dir-column"
+  enctype="multipart/form-data">
   <br />
   <label>Design</label>
   <!-- 	<label class="disabled">Use a linked Expert Centre profile?
@@ -21,13 +22,15 @@
             <div class="small-6 columns">
               <label>First
                 <!-- <input type="text" placeholder="Jane" formControlName="first"> -->
-                <ng2-completer [datasource]="directoryData.firstNames" [minSearchLength]="0" formControlName="first"></ng2-completer>
+                <ng2-completer [datasource]="directoryData.firstNames" [minSearchLength]="0" formControlName="first">
+                </ng2-completer>
               </label>
             </div>
             <div class="small-6 columns">
               <label>Last
                 <!-- <input type="text" placeholder="Doe" formControlName="last"> -->
-                <ng2-completer [datasource]="directoryData.lastNames" [minSearchLength]="0" formControlName="last"></ng2-completer>
+                <ng2-completer [datasource]="directoryData.lastNames" [minSearchLength]="0" formControlName="last">
+                </ng2-completer>
               </label>
             </div>
           </div>
@@ -69,7 +72,8 @@
             <div class="small-6 columns">
               <label>Email
                 <!-- <input type="email" placeholder="jane.doe@uoit.ca" formControlName="email"> -->
-                <ng2-completer [datasource]="directoryData.emails" [minSearchLength]="0" formControlName="email"></ng2-completer>
+                <ng2-completer [datasource]="directoryData.emails" [minSearchLength]="0" formControlName="email">
+                </ng2-completer>
               </label>
             </div>
             <div class="small-6 columns">
@@ -88,13 +92,15 @@
             <div class="small-6 columns">
               <label>Title
                 <!-- <input type="text" placeholder="Head chef" formControlName="title"> -->
-                <ng2-completer [datasource]="directoryData.titles" [minSearchLength]="0" formControlName="title"></ng2-completer>
+                <ng2-completer [datasource]="directoryData.titles" [minSearchLength]="0" formControlName="title">
+                </ng2-completer>
               </label>
             </div>
             <div class="small-6 columns">
               <label>Department or faculty
                 <!-- <input type="text" placeholder="Faculty of Fun and Games" formControlName="dept"> -->
-                <ng2-completer [datasource]="directoryData.departments" [minSearchLength]="0" formControlName="dept"></ng2-completer>
+                <ng2-completer [datasource]="directoryData.departments" [minSearchLength]="0" formControlName="dept">
+                </ng2-completer>
               </label>
             </div>
           </div>
@@ -143,7 +149,8 @@
                 <small class="subheader">Network {{i + 1}}:</small>
                 {{ formData.value.social.networks[i].type?.name || '(Select)' }}
               </span>
-              <button *ngIf="socialNetworksControls.length > 1" (click)="removeSocial(i)" [attr.aria-label]="'Remove social network: ' + (formData.value.social.networks[i].type?.name || '(Select)')"
+              <button *ngIf="socialNetworksControls.length > 1" (click)="removeSocial(i)"
+                [attr.aria-label]="'Remove social network: ' + (formData.value.social.networks[i].type?.name || '(Select)')"
                 class="button hollow alert icon_cancel">
                 Remove
               </button>
@@ -153,7 +160,8 @@
                 <select formControlName="type">
                   <option *ngFor="let type of socialNetworks;" [ngValue]="type">{{type.name}}</option>
                 </select>
-                <span class="form-error" [class.is-visible]="socialNetworksControls.controls[i].controls.type.invalid && socialNetworksControls.controls[i].controls.type.dirty">
+                <span class="form-error"
+                  [class.is-visible]="socialNetworksControls.controls[i].controls.type.invalid && socialNetworksControls.controls[i].controls.type.dirty">
                   Type is required
                 </span>
               </label>
@@ -166,10 +174,12 @@
               </fieldset>
               <label>Username
                 <div class="input-group">
-                  <span class="input-group-label" [hidden]="formData.value.social.networks[i].type?.value !== 'tw'">@</span>
+                  <span class="input-group-label"
+                    [hidden]="formData.value.social.networks[i].type?.value !== 'tw'">@</span>
                   <input type="text" class="input-group-field" formControlName="username">
                 </div>
-                <span class="form-error" [class.is-visible]="socialNetworksControls.controls[i].controls.username.invalid && socialNetworksControls.controls[i].controls.username.dirty">
+                <span class="form-error"
+                  [class.is-visible]="socialNetworksControls.controls[i].controls.username.invalid && socialNetworksControls.controls[i].controls.username.dirty">
                   Username is required
                 </span>
               </label>
@@ -203,8 +213,7 @@
                     secondary: !uploadDragging,
                     success: uploadSuccess,
                     alert: uploadError
-                  }"
-                  (drop)="onDropFile($event)" (dragover)="onDragOverFile($event)" (dragenter)="onDragEnterFile()"
+                  }" (drop)="onDropFile($event)" (dragover)="onDragOverFile($event)" (dragenter)="onDragEnterFile()"
                   (dragleave)="onDragLeaveFile()">
                   <span *ngIf="!uploadUploading">
                     Drag a file here or click to upload<br /><small>or use menu to the right to select one</small>
@@ -232,8 +241,9 @@
                   <div class="columns">
                     <label>Scale
                       <div class="input-group">
-                        <input type="range" class="input-group-field" [class.is-invalid-input]="imageControls.get('scale').invalid"
-                          min="0" max="100" formControlName="scale">
+                        <input type="range" class="input-group-field"
+                          [class.is-invalid-input]="imageControls.get('scale').invalid" min="0" max="100"
+                          formControlName="scale">
                         &nbsp;{{ imageControls.get('scale').value }}%
                       </div>
                     </label>
@@ -241,8 +251,9 @@
                   <div class="columns">
                     <label>Set width
                       <div class="input-group">
-                        <input type="number" class="input-group-field" [class.is-invalid-input]="imageControls.get('width').invalid"
-                          min="0" max="600" formControlName="width">
+                        <input type="number" class="input-group-field"
+                          [class.is-invalid-input]="imageControls.get('width').invalid" min="0" max="600"
+                          formControlName="width">
                         <span class="input-group-label">px</span>
                       </div>
                     </label>
@@ -338,7 +349,8 @@
         </div>
         <div class="small-10 columns">
           <label>Content:
-            <textarea formControlName="content" placeholder="Enter full message text here..." style="min-height: 150px;">
+            <textarea formControlName="content" placeholder="Enter full message text here..."
+              style="min-height: 150px;">
             </textarea>
           </label>
         </div>

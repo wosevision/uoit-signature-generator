@@ -8,7 +8,6 @@ import { SocialNetworks, FormData } from '../shared/models';
   styleUrls: ['./signature-preview.component.scss']
 })
 export class SignaturePreviewComponent {
-
   @Input() data: Partial<FormData> = {};
 
   get template() {

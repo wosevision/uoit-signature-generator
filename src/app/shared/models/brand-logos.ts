@@ -45,8 +45,7 @@ export const BrandLogos: FormControlOptGroup[] = [
         href: 'https://ontariotechu.ca'
       }
     ]
-  },
-  
+  }
 
   // {
   //   name: 'Faculty',
@@ -119,5 +118,4 @@ export const BrandLogos: FormControlOptGroup[] = [
   //     }
   //   ]
   // }
-
 ];
