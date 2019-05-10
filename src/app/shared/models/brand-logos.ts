@@ -27,20 +27,8 @@ export const BrandLogos: FormControlOptGroup[] = [
     name: 'Athletics',
     options: [
       {
-        name: 'Ontario Tech University Spirit 1',
-        value: 'spirit1',
-        src: 'assets/logos/spirit1.png',
-        href: 'https://ontariotechu.ca'
-      },
-      {
-        name: 'Ontario Tech University Spirit 2',
-        value: 'spirit2',
-        src: 'assets/logos/spirit2.png',
-        href: 'https://ontariotechu.ca'
-      },
-      {
-        name: 'Ontario Tech University Spirit 3',
-        value: 'spirit2',
+        name: 'Ontario Tech University Spirit',
+        value: 'spirit',
         src: 'assets/logos/spirit3.png',
         href: 'https://ontariotechu.ca'
       }
