@@ -27,9 +27,9 @@ export const BrandLogos: FormControlOptGroup[] = [
     name: 'Athletics',
     options: [
       {
-        name: 'Ontario Tech University Spirit',
+        name: 'Ontario Tech University Ridgebacks',
         value: 'spirit',
-        src: 'assets/logos/spirit3.png',
+        src: 'assets/logos/ridgebacks.png',
         href: 'https://ontariotechu.ca'
       }
     ]
