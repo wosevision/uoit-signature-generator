@@ -47,6 +47,7 @@ export interface EventData {
 export interface MessageData {
   style: string;
   content: string;
+  brand: boolean;
   acknowledgement: boolean;
 }
 
