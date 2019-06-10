@@ -1,7 +1,7 @@
 <form [formGroup]="formData" (ngSubmit)="onSubmit($event, formData.value)" class="row flex-dir-column"
   enctype="multipart/form-data">
   <br />
-  <label>Design</label>
+  <!-- <label>Design</label> -->
   <!-- 	<label class="disabled">Use a linked Expert Centre profile?
 		<input type="checkbox" formControlName="expert">
 	</label>
@@ -14,7 +14,7 @@
 		</label>
 	</fieldset> -->
   <accordion>
-    <accordion-panel heading="Personal">
+    <accordion-panel heading="Contact Information">
       <div class="padding-1">
         <fieldset class="fieldset" formGroupName="name">
           <legend>Name</legend>
@@ -108,7 +108,7 @@
       </div>
     </accordion-panel>
 
-    <accordion-panel heading="Business">
+    <accordion-panel heading="Office Hours">
       <div class="padding-1">
         <label>Hours
           <input type="text" formControlName="hours">
