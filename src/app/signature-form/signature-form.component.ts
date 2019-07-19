@@ -137,7 +137,8 @@ export class SignatureFormComponent implements OnInit {
         style: '',
         content: '',
         brand: true,
-        acknowledgement: true
+        acknowledgement: true,
+        acknowledgementImage: true,
       })
     });
 

@@ -49,6 +49,7 @@ export interface MessageData {
   content: string;
   brand: boolean;
   acknowledgement: boolean;
+  acknowledgementImage: boolean;
 }
 
 export interface FormData {

@@ -175,21 +175,69 @@
     </tr>
   </table>
 
+
+
+  <table width="560" cellpadding="0" cellspacing="0" *ngIf="data.message?.acknowledgement || data.message?.brand">
+    <tbody>
+      <tr>
+        <td valign="top" style="padding:0 9px;font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 1.5; color: #666666;" >
+
+          <table *ngIf="data.message?.brand" cellpadding="0" cellspacing="0" >
+            <tbody>
+              <tr>
+                <td valign="top" >
+                    Ontario Tech University is the brand name used to refer to the University of Ontario Institute of Technology.<br /><br />
+                  </td>
+
+              </tr>
+            </tbody>
+          </table>
+
+         
+          <table *ngIf="data.message?.acknowledgement" cellpadding="0" cellspacing="0">
+            <tbody>
+              <tr >
+                <td valign="top" *ngIf="data.message?.acknowledgement && data.message?.acknowledgementImage" width="60">
+                  <img id="indigenousImage" width="50" height="auto" style="width:50px;height: auto;" [src]="'assets/logos/indigenous.jpg' | absoluteUrl" alt="Indigenous Logo">
+                </td>
+
+                <td valign="top" *ngIf="data.message?.acknowledgement" >
+                    We are proud to acknowledge the lands and people of the Mississaugas of Scugog Island First Nation
+                    which is
+                    covered under
+                    the Williams Treaties. We are situated on the Traditional Territory of the Mississaugas, a branch of the
+                    greater
+                    Anishinaabeg Nation, which includes Algonquin, Ojibway, Odawa and Pottawatomi.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+        </td>
+    	</tr>
+	</tbody>
+</table>
+
+<!-- 
   <table width="560" cellpadding="0" cellspacing="0" *ngIf="data.message?.acknowledgement || data.message?.brand">
     <tr>
       <td style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 1.5; color: #666666;">
         <span *ngIf="data.message?.brand">Ontario Tech University is the brand name used to refer to the University of
           Ontario Institute of Technology.<br /><br /></span>
         <span *ngIf="data.message?.acknowledgement">
-          The university is proud to acknowledge the lands and people of the Mississaugas of Scugog Island First Nation
+          <span *ngIf="data.message?.acknowledgement && data.message?.acknowledgementImage" >
+            <img id="indigenousImage" width="50" style="width:50px;" [src]="'assets/logos/indigenous.jpg' | absoluteUrl" alt="Indigenous Logo" style="float:left;">
+          </span>The university is proud to acknowledge the lands and people of the Mississaugas of Scugog Island First Nation
           which is
           covered under
           the Williams Treaties. We are situated on the Traditional Territory of the Mississaugas, a branch of the
           greater
           Anishinaabeg Nation which includes Algonquin, Ojibway, Odawa and Pottawatomi.
         </span>
+
       </td>
     </tr>
-  </table>
+  </table> -->
 
 </div>
