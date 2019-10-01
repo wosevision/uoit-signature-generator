@@ -149,7 +149,7 @@
                 <small class="subheader">Network {{i + 1}}:</small>
                 {{ formData.value.social.networks[i].type?.name || '(Select)' }}
               </span>
-              <button *ngIf="socialNetworksControls.length > 1" (click)="removeSocial(i)"
+              <button *ngIf="socialNetworksControls.length >= 1" (click)="removeSocial(i)"
                 [attr.aria-label]="'Remove social network: ' + (formData.value.social.networks[i].type?.name || '(Select)')"
                 class="button hollow alert icon_cancel">
                 Remove
