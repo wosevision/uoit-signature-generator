@@ -58,8 +58,18 @@ export const SocialNetworks: SocialNetwork[] = [
   },
   {
     name: 'YouTube',
-    href: 'https://youtube.com/user/',
+    href: 'https://youtube.com/',
     cta: 'Subscribe to',
+    options: [
+      {
+        value: 'user',
+        label: 'User'
+      },
+      {
+        value: 'c',
+        label: 'Channel'
+      }
+    ],
     value: 'yt',
     src: 'assets/social_icons/socialicon_youtube.gif'
   },

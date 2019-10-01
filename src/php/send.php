@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   //Set who the message is to be sent from
   $mail->setFrom('donotreply@uoit.ca', 'Do not reply - Ontario Tech University signature mailer');
   //Set an alternative reply-to address
-  $mail->addReplyTo('webteam@uoit.ca', 'UOIT Webteam');
+  $mail->addReplyTo('webteam@uoit.ca', 'Ontario Tech University Webteam');
 
 	// $mail->isHTML(true);
 	//Set who the message is to be sent to

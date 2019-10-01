@@ -20,6 +20,12 @@ export const BrandLogos: FormControlOptGroup[] = [
         value: 'otdc',
         src: 'assets/logos/ot-dc.png',
         href: 'https://ontariotechu.ca'
+      },
+      {
+        name: 'Ontario Tech University and Brilliant Catalyst',
+        value: 'otbc',
+        src: 'assets/logos/brilliant-catalyst.jpg',
+        href: 'https://ontariotechu.ca'
       }
     ]
   },
