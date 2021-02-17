@@ -39,6 +39,17 @@ export const BrandLogos: FormControlOptGroup[] = [
         href: 'https://ontariotechu.ca'
       }
     ]
+  },
+  {
+    name: 'Events',
+    options: [
+      {
+        name: 'Pi Day',
+        value: 'piday',
+        src: 'assets/logos/piday.jpg',
+        href: 'https://ontariotechu.ca/piday'
+      }
+    ]
   }
 
   // {
