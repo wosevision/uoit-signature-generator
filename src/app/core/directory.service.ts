@@ -32,7 +32,7 @@ export const DirectoryServiceConfigToken = new InjectionToken<DirectoryServiceCo
 })
 export class DirectoryService {
   private directoryCache: DirectoryEntry[];
-  private departmentsCache: DirectoryEntry[];
+  private departmentsCache: string[];
   private titlesCache: string[];
 
   constructor(
@@ -51,9 +51,9 @@ export class DirectoryService {
     return res => res.json().data.map(item => item[column]);
   }
 
-  get(endpoint = '') {
+  get<T>(endpoint = '') {
     return this.http
-      .get<ApiResponse<DirectoryEntry[]>>(`${this.config.url}${endpoint}`, {
+      .get<ApiResponse<T>>(`${this.config.url}${endpoint}`, {
         headers: new HttpHeaders({ Accept: 'application/json', 'X-XSRF-TOKEN': [null] })
       })
       .pipe(
@@ -71,21 +71,18 @@ export class DirectoryService {
   getAll() {
     return this.directoryCache
       ? of(this.directoryCache)
-      : this.get().pipe(tap(data => (this.directoryCache = data)));
+      : this.get<DirectoryEntry[]>().pipe(tap(data => (this.directoryCache = data)));
   }
 
   getDepartments() {
     return this.departmentsCache
       ? of(this.departmentsCache)
-      : this.get('/departments').pipe(tap(data => (this.departmentsCache = data)));
+      : this.get<string[]>('/departments').pipe(tap(data => (this.departmentsCache = data)));
   }
 
   getTitles() {
     return this.titlesCache
       ? of(this.titlesCache)
-      : this.getAll().pipe(
-          concatMap(data => data.map(item => item[LdapColumns.TITLE])),
-          distinct()
-        );
+      : this.get<string[]>('/titles').pipe(tap(data => (this.departmentsCache = data)));
   }
 }
