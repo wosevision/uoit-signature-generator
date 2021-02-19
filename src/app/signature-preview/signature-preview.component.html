@@ -198,7 +198,7 @@
             <tbody>
               <tr >
                 <td valign="top" *ngIf="data.message?.acknowledgement && data.message?.acknowledgementImage" width="60">
-                  <img id="indigenousImage" width="50" height="28" style="width:50px;height: 28px;" [src]="'assets/logos/indigenous.jpg' | absoluteUrl" alt="Indigenous Logo">
+                  <img class="indigenous-image" width="50" height="28" style="width:50px;height: 28px;" [src]="'assets/logos/indigenous.jpg' | absoluteUrl" alt="Indigenous Logo">
                 </td>
 
                 <td valign="top" *ngIf="data.message?.acknowledgement" >
@@ -227,7 +227,7 @@
           Ontario Institute of Technology.<br /><br /></span>
         <span *ngIf="data.message?.acknowledgement">
           <span *ngIf="data.message?.acknowledgement && data.message?.acknowledgementImage" >
-            <img id="indigenousImage" width="50" style="width:50px;" [src]="'assets/logos/indigenous.jpg' | absoluteUrl" alt="Indigenous Logo" style="float:left;">
+            <img class="indigenous-image" width="50" style="width:50px;" [src]="'assets/logos/indigenous.jpg' | absoluteUrl" alt="Indigenous Logo" style="float:left;">
           </span>The university is proud to acknowledge the lands and people of the Mississaugas of Scugog Island First Nation
           which is
           covered under
