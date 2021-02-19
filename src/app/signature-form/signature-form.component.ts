@@ -109,7 +109,7 @@ export class SignatureFormComponent implements OnInit {
           this.initSocial({ type: 'fb', username: 'ontariotechu' }),
           this.initSocial({ type: 'tw', username: 'ontariotech_u' }),
           this.initSocial({ type: 'li', username: 'ontariotech', account: 'school' }),
-          this.initSocial({ type: 'yt', username: 'UOIT' }),
+          this.initSocial({ type: 'yt', username: 'ontariotech', account: 'c' }),
           this.initSocial({ type: 'in', username: 'ontariotechu' })
         ])
       }),
@@ -137,7 +137,8 @@ export class SignatureFormComponent implements OnInit {
         style: '',
         content: '',
         brand: true,
-        acknowledgement: true
+        acknowledgement: true,
+        acknowledgementImage: true,
       })
     });
 

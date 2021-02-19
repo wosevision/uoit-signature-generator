@@ -149,7 +149,7 @@
                 <small class="subheader">Network {{i + 1}}:</small>
                 {{ formData.value.social.networks[i].type?.name || '(Select)' }}
               </span>
-              <button *ngIf="socialNetworksControls.length > 1" (click)="removeSocial(i)"
+              <button *ngIf="socialNetworksControls.length >= 1" (click)="removeSocial(i)"
                 [attr.aria-label]="'Remove social network: ' + (formData.value.social.networks[i].type?.name || '(Select)')"
                 class="button hollow alert icon_cancel">
                 Remove
@@ -355,7 +355,7 @@
           </label>
         </div>
       </div>
-      <div class="row padding-1">
+      <!-- <div class="row padding-1">
         <div class="small-12 columns">
           <label>Include brand disclaimer?
             <input type="checkbox" formControlName="brand">
@@ -365,17 +365,26 @@
             Technology."
           </small>
         </div>
-      </div>
+      </div> -->
       <div class="row padding-1">
         <div class="small-12 columns">
           <label>Include land acknowledgement?
             <input type="checkbox" formControlName="acknowledgement">
           </label>
           <small *ngIf="formData.value.message.acknowledgement">
-            &ldquo;Ontario Tech University acknowledges the lands and people of the Mississaugas of Scugog Island First Nation. We are thankful to be welcomed on these lands in friendship. The lands we are situated on are covered under the Williams Treaties and the traditional territory of the Mississauga, a branch of the great Anishinaabeg Nation, including Algonquin, Ojibway, Odawa and Pottawatomi. These lands remain home to a number of Indigenous nations and people.&rdquo;
+            "We are proud to acknowledge the lands and people of the Mississaugas of Scugog Island First Nation which is covered under the Williams Treaties. We are situated on the Traditional Territory of the Mississaugas, a branch of the greater Anishinaabeg Nation, which includes Algonquin, Ojibway, Odawa and Pottawatomi."
           </small>
         </div>
       </div>
+      <div class="row padding-1" *ngIf="formData.value.message.acknowledgement">
+        <div class="small-12 columns">
+          <label>Include land acknowledgement image?
+            <input type="checkbox" formControlName="acknowledgementImage">
+          </label>
+            <img *ngIf="formData.value.message.acknowledgementImage" [src]="'assets/logos/indigenous.jpg' | absoluteUrl" alt="">
+        </div>
+      </div>
+
     </accordion-panel>
   </accordion>
 </form>

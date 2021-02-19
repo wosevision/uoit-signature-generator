@@ -26,15 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   //Useful character encoding
   $mail->CharSet = 'UTF-8';
   //Set who the message is to be sent from
-  $mail->setFrom('donotreply@uoit.ca', 'Do not reply - UOIT signature mailer');
+  $mail->setFrom('donotreply@uoit.ca', 'Do not reply - Ontario Tech University signature mailer');
   //Set an alternative reply-to address
-  $mail->addReplyTo('webteam@uoit.ca', 'UOIT Webteam');
+  $mail->addReplyTo('webteam@uoit.ca', 'Ontario Tech University Webteam');
 
 	// $mail->isHTML(true);
 	//Set who the message is to be sent to
 	// $addressees = explode(',', trim($_POST['to']));//, 'John Doe');
 	//Set the subject line
-	$mail->Subject = 'Your UOIT email signature';
+	$mail->Subject = 'Your Ontario Tech University email signature';
 	//Read an HTML message body from an external file, convert referenced images to embedded,
 	//convert HTML into a basic plain-text alternative body
 	//Replace the plain text body with one created manually
