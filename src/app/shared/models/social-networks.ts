@@ -66,8 +66,12 @@ export const SocialNetworks: SocialNetwork[] = [
         label: 'User'
       },
       {
-        value: 'c',
+        value: 'channel',
         label: 'Channel'
+      },
+      {
+        value: 'c',
+        label: 'Custom'
       }
     ],
     value: 'yt',
