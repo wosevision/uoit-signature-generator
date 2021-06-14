@@ -3,6 +3,11 @@
     <strong *ngIf="data.name?.first || data.name?.last">{{ data.name.first }} {{ data.name.last }}
       <br />
     </strong>
+    <span *ngIf="data.name?.pronouns">Pronouns:<a style="text-decoration: underline;"
+        href="https://studentlife.ontariotechu.ca/services/equity-and-inclusion/equity-resources/pronouns.php">
+        {{ data.name.pronouns }}</a>
+      <br />
+    </span>
     <span *ngIf="data.credentials?.title || data.credentials?.dept">{{ data.credentials.title }} - {{
       data.credentials.dept }}
       <br />
@@ -180,8 +185,9 @@
   <table width="560" cellpadding="0" cellspacing="0" *ngIf="data.message?.acknowledgement || data.message?.brand">
     <tbody>
       <tr>
-        <td valign="top" style="padding:0 9px;font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 1.5; color: #666666;" >
-<!-- 
+        <td valign="top"
+          style="padding:0 9px;font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 1.5; color: #666666;">
+          <!-- 
           <table *ngIf="data.message?.brand" cellpadding="0" cellspacing="0" >
             <tbody>
               <tr>
@@ -193,16 +199,19 @@
             </tbody>
           </table> -->
 
-         
+
           <table *ngIf="data.message?.acknowledgement" cellpadding="0" cellspacing="0">
             <tbody>
-              <tr >
+              <tr>
                 <td valign="top" *ngIf="data.message?.acknowledgement && data.message?.acknowledgementImage" width="60">
-                  <img class="indigenous-image" width="50" height="28" style="width:50px;height: 28px;" [src]="'assets/logos/indigenous.jpg' | absoluteUrl" alt="Indigenous Logo">
+                  <img class="indigenous-image" width="50" height="28" style="width:50px;height: 28px;"
+                    [src]="'assets/logos/indigenous.jpg' | absoluteUrl" alt="Indigenous Logo">
                 </td>
 
-                <td valign="top" *ngIf="data.message?.acknowledgement" >
-                    We acknowledge the lands and people of the Mississaugas of Scugog Island First Nation which is covered under the Williams Treaties. We are situated on the Traditional Territory of the Mississaugas, a branch of the greater Anishinaabeg Nation which includes Algonquin, Ojibway, Odawa and Pottawatomi.
+                <td valign="top" *ngIf="data.message?.acknowledgement">
+                  We acknowledge the lands and people of the Mississaugas of Scugog Island First Nation which is covered
+                  under the Williams Treaties. We are situated on the Traditional Territory of the Mississaugas, a
+                  branch of the greater Anishinaabeg Nation which includes Algonquin, Ojibway, Odawa and Pottawatomi.
                 </td>
               </tr>
             </tbody>
@@ -210,11 +219,11 @@
 
 
         </td>
-    	</tr>
-	</tbody>
-</table>
+      </tr>
+    </tbody>
+  </table>
 
-<!-- 
+  <!-- 
   <table width="560" cellpadding="0" cellspacing="0" *ngIf="data.message?.acknowledgement || data.message?.brand">
     <tr>
       <td style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 1.5; color: #666666;">

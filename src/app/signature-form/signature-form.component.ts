@@ -87,7 +87,8 @@ export class SignatureFormComponent implements OnInit {
     this.formData = this.fb.group({
       name: this.fb.group({
         first: ['', Validators.required],
-        last: ['', Validators.required]
+        last: ['', Validators.required],
+        pronouns:''
       }),
       contact: this.fb.group({
         phone: ['905.721.8668', Validators.required],

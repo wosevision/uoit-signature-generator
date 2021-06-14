@@ -3,6 +3,7 @@ import { FormControlOption, SocialNetwork, SocialNetworkOption } from '.';
 export interface NameData {
   first: string;
   last: string;
+  pronouns: string;
 }
 
 export interface ContactData {
